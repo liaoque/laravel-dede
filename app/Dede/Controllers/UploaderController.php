@@ -2,8 +2,10 @@
 
 namespace App\Dede\Controllers;
 
+use Illuminate\Http\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class UploaderController extends Controller
 {
@@ -20,7 +22,7 @@ class UploaderController extends Controller
                 if (in_array($file->guessClientExtension(), config('uedit.imageAllowFiles'))) {
                     $d = date('Ymd');
                     $path = $file->store($d, config('uedit.imagePathFormat'));
-                    $state = 'SUCCESS';
+                    $state = 'success';
                 }
                 $data = [
                     "state" => $state,
@@ -105,15 +107,29 @@ class UploaderController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+
+    public function stream(Request $request)
     {
         //
+        $d = date('Ymd');
+        $file = $request->post('upfile');
+        preg_match('/^(data:\s*image\/(\w+);base64,)/', $file, $result);
+        $storage = Storage::disk('public');
+        $fileName = $d . '/' . Str::random(40) . '.jpeg';
+        $data = base64_decode(str_replace($result[1], '', $file));
+        $message = 'error';
+        $url = $fileName;
+        if (!empty($data)) {
+            $result = $storage->put($fileName, $data);
+            if ($result) {
+                $message = 'success';
+            }
+        }
+        return [
+            'message' => $message,
+            'url' => '/storage/' . $url,
+            'error' => '上传失败'
+        ];
     }
 
     /**

@@ -11,10 +11,11 @@
             </span>
 
             <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool">
-                    <i class="fa fa-eye" title="预览"></i>
+                <button type="button" class="btn btn-box-tool ">
+                    <i class="fa fa-eye" title="预览" ></i>
                 </button>
-                <button type="button" class="btn btn-box-tool">
+                <button type="button" class="btn btn-box-tool webhaeder" data-href="{{route('admin.content', ['arctype' => $nav->id])
+                    }}">
                     <i class="fa fa-book" title="内容"></i>
                 </button>
                 <button type="button" class="btn btn-box-tool webhaeder"
@@ -30,10 +31,11 @@
                         data-target="#modal-moving">
                     <i class="fa fa-share" title="移动"></i>
                 </button>
-                <button type="button" class="btn btn-box-tool">
+                <button type="button" class="btn btn-box-tool" onclick="deleteItem(event, this)"
+                        data-name="{{$nav->typename}}" data-id="{{$nav->id}}" data-action="{{route('admin.catalog.delete')}}">
                     <i class="fa fa-trash-o" title="删除"></i>
                 </button>
-                <input type="text" class=" " value="{{$nav->sortrank}}"
+                <input type="text"  name="sortrank{{$nav->id}}" value="{{$nav->sortrank}}"
                        style="width: 30px;text-align: center;" placeholder="排序">
             </div>
 

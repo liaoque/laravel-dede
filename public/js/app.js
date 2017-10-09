@@ -70,7 +70,7 @@ function moveShow(e, obj) {
 }
 
 
-$('.modal .btn-primary').click(function () {
+$('.modal .btn-ajax').click(function () {
     var self = $(this);
     var form = self.parents('form');
     var ation = form.attr('action');
@@ -85,19 +85,21 @@ $('.modal .btn-primary').click(function () {
         url: ation,
         data: data,
         success: function (data) {
-            data = JSON.parse(data);
             if (data.message == 'success') {
+                showTip('成功', '操作成功', 1);
+                $('body').trigger('delete', [1]);
                 self.parents('.modal').modal('toggle');
-                showTip('成功', '移动成功', 1);
+            } else {
+                $('body').trigger('delete', [0]);
             }
         },
         error: function (error, data2, data3) {
-            console.log(error, data2, data3)
             var desc = [];
             for (var k in error.responseJSON.errors) {
                 desc.push(k + ':' + error.responseJSON.errors[k]);
             }
             showTip(error.status, desc.join('<br/>'), 0)
+            $('body').trigger('delete', [0]);
         }
 
     });
@@ -114,6 +116,136 @@ function showTip(title, desc, s) {
     $('#modal-alert').modal('toggle');
 }
 
+$('#modal-confirm').on('hide.bs.modal', function (event) {
+    $('body').trigger('delete', [0]);
+})
+
+function deleteItem(e, obj) {
+    e.preventDefault();
+    e.stopPropagation();
+    var self = $(obj);
+    var name = self.data('name');
+    var action = self.data('action');
+    var id = self.data('id');
+    $('#modal-confirm input[name="id"]').val(id);
+    $('#modal-confirm form').attr('action', action);
+    var _title = "你要确实要删除栏目： [" + name + "] 吗？";
+    $('#modal-confirm .modal-body').html('<p class="text-red">' + _title + '</p>');
+    $('#modal-confirm').modal('toggle');
+    $('body').one('delete', function (event, flag) {
+        if (flag) {
+            self.parents('.treeview').remove();
+        }
+    });
+}
 
 
+function sortrank(e, obj) {
+    var self = $(obj);
+    var form = self.parents('form');
+    var url = form.attr('action');
+    var data = form.serialize();
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: data,
+        success: function (data) {
+            if (data.message == 'success') {
+                showTip('成功', '操作成功', 1);
+            }
+        },
+        error: function (error, data2, data3) {
+            var desc = [];
+            for (var k in error.responseJSON.errors) {
+                desc.push(k + ':' + error.responseJSON.errors[k]);
+            }
+            showTip(error.status, desc.join('<br/>'), 0)
+        }
 
+    });
+}
+
+
+$(function () {
+    //Enable iCheck plugin for checkboxes
+    //iCheck for checkbox and radio inputs
+    $('.mailbox-messages input[type="checkbox"]').iCheck({
+        checkboxClass: 'icheckbox_flat-blue',
+        radioClass: 'iradio_flat-blue'
+    });
+
+    //Enable check and uncheck all functionality
+    $("body").on('click', '.checkbox-toggle', function () {
+        var clicks = $(this).data('clicks');
+        if (clicks) {
+            //Uncheck all checkboxes
+            $(".mailbox-messages input[type='checkbox']").iCheck("uncheck");
+            $(".fa", this).removeClass("fa-check-square-o").addClass('fa-square-o');
+        } else {
+            //Check all checkboxes
+            $(".mailbox-messages input[type='checkbox']").iCheck("check");
+            $(".fa", this).removeClass("fa-square-o").addClass('fa-check-square-o');
+        }
+        $(this).data("clicks", !clicks);
+    });
+
+    $('.search-form-button').click(function () {
+        var self = $(this);
+        var form = self.parents('form');
+        form.attr('action', form.data('action'));
+        searchData(self);
+    });
+
+
+    $('body').on('click', '.pagination li a', function (event) {
+        event.preventDefault();
+        var self = $(this);
+        var form = self.parents('form');
+        form.attr('action', self.attr('href'));
+        searchData(self);
+    });
+
+
+    $('.btn-cropper').click(function () {
+        $('#modal-cropper').modal();
+    })
+
+    $('.btn-cropper2').click(function () {
+        $('#modal-cropper').modal();
+        var file = location.origin + $('.picname').val();
+        getImageObj(file);
+    })
+});
+
+
+function searchData(self) {
+    var form = self.parents('form');
+    var ation = form.attr('action');
+    var data = form.serializeArray();
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.ajax({
+        type: "GET",
+        url: ation,
+        data: data,
+        success: function (data) {
+            $('.box-body').html(data);
+        },
+        error: function (error, data2, data3) {
+            var desc = [];
+            for (var k in error.responseJSON.errors) {
+                desc.push(k + ':' + error.responseJSON.errors[k]);
+            }
+            showTip(error.status, desc.join('<br/>'), 0)
+            $('body').trigger('delete', [0]);
+        }
+    });
+}

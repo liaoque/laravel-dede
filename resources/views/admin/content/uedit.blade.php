@@ -1,18 +1,12 @@
-<div class="box-body">
-    <div class="form-group">
-        <div class="box-body pad">
-            <p>说明：栏目内容是替代原来栏目单独页的更灵活的一种方式，可在栏目模板中用 <span class="text-green">{dede:field.content/}</span>调用，通常用于企业简介之类的用途。</p>
-            <script id="editor" type="text/plain" style="height: 500px;">
+<script id="editor" type="text/plain" style="height: 500px;">
 
-            </script>
-        </div>
-    </div>
-</div>
+</script>
+
 
 @push('scripts')
 
 <!-- CK Editor -->
-<script type="text/javascript" src="/uedit/ueditor.config.js"></script>
+<script type = "text/javascript" src = "/uedit/ueditor.config.js"></script>
 <script type="text/javascript" src="/uedit/ueditor.all.min.js"></script>
 <script type="text/javascript" src="/uedit/lang/zh-cn/zh-cn.js"></script>
 <!-- Bootstrap WYSIHTML5 -->

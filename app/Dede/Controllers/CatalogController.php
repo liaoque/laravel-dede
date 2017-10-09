@@ -7,7 +7,9 @@ use App\CfgConfig;
 use App\ChannelType;
 use App\Arcrank;
 use App\SysEnum;
+use Illuminate\Database\Query\Expression;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 
 class CatalogController extends Controller
@@ -15,19 +17,29 @@ class CatalogController extends Controller
     //
     public function index()
     {
+
+//        DB::table(new Expression('xxx'))->delete();dd();
 //        $channelTypeList = ChannelType::getShowAll();
         $arrayOne = Arctype::listAllTypeArrayOne(Arctype::listAllTypeArray());
         $listNav = Arctype::ListAllType();
+        $list = [];
+        foreach ($arrayOne as $v) {
+            $list[] = [
+                '_typename' => $v->_typename,
+                'id' => $v->id,
+                'channeltype' => $v->channeltype,
+            ];
+        }
 //        dd(json_encode($arrayOne));
         return view('admin.catalog.index', [
-            'navListArrayOne' => $arrayOne,
+            'navListArrayOne' => $list,
             'listNav' => $listNav
         ]);
     }
 
     public function add(Arctype $parentArctype = null)
     {
-        $sysConfig = CfgConfig::sysConfig();
+
         $arctype = Arctype::defalutArctype();
 //        dd($parentArctype);
         if (!$parentArctype) {
@@ -186,4 +198,31 @@ class CatalogController extends Controller
         return response()
             ->json(['message' => $mes, 'errors' => $error], $status);
     }
+
+    public function delete(Request $request)
+    {
+        $rule = [
+            'id' => 'required|numeric|exists:arctype'
+        ];
+        $this->validate($request, $rule);
+        $status = 200;
+
+        Arctype::deleteArctype($request->post('id'));
+        return response()
+            ->json(['message' => 'success', 'errors' => []], $status);
+    }
+
+    public function sotrRank(){
+        $result = \request()->all();
+        $all = Arctype::getAllWithCache();
+        foreach ($all as  $id => $value){
+            $sort = intval($result['sortrank'.$id]);
+            Arctype::where('id', $id)->update([
+                'sortrank' => $sort
+            ]);
+        }
+        return response()
+            ->json(['message' => 'success', 'errors' => []], 200);
+    }
+
 }

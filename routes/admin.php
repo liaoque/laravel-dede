@@ -24,9 +24,21 @@
 
         \Illuminate\Support\Facades\Route::post('/catalog/move', '\App\Dede\Controllers\CatalogController@move')->name('admin.catalog.move');
 
+        \Illuminate\Support\Facades\Route::post('/catalog/delete/', '\App\Dede\Controllers\CatalogController@delete')->name('admin.catalog.delete');
+        \Illuminate\Support\Facades\Route::post('/catalog/sotrrank/', '\App\Dede\Controllers\CatalogController@sotrRank')->name('admin.catalog.sotrrank');
 
         \Illuminate\Support\Facades\Route::get('/uploader', '\App\Dede\Controllers\UploaderController@action')->name('admin.uploader');
         \Illuminate\Support\Facades\Route::post('/uploader', '\App\Dede\Controllers\UploaderController@index')->name('admin.uploader');
+        \Illuminate\Support\Facades\Route::post('/uploader/stream', '\App\Dede\Controllers\UploaderController@stream')
+            ->name('admin.uploader.stream');
+
+        \Illuminate\Support\Facades\Route::get('/content', '\App\Dede\Controllers\ContentController@index')->name('admin.content');
+        \Illuminate\Support\Facades\Route::get('/content/list', '\App\Dede\Controllers\ContentController@pageList')->name
+        ('admin.content.list');
+        \Illuminate\Support\Facades\Route::get('/content/add/', '\App\Dede\Controllers\ContentController@add')->name('admin.content.create');
+        \Illuminate\Support\Facades\Route::post('/content/add/', '\App\Dede\Controllers\ContentController@create')->name('admin.content.create');
+
+
 
 
     });

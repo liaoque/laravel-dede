@@ -17,6 +17,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="box">
+                <form action="{{route('admin.catalog.sotrrank')}}">
                 <div class="box-header with-border">
                     <i class="fa fa-text-width"></i>
 
@@ -31,7 +32,8 @@
                                 <button type="button" class="btn btn-default btn-sm webhaeder"
                                         data-href="{{route('admin.catalog.create')}}"><i class="fa fa-plus"></i>
                                 </button>
-                                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-reply"></i>
+                                <button type="button" class="btn btn-default btn-sm" onclick="sortrank(event, this)"><i
+                                            class="fa fa-sort"></i>
                                 </button>
                                 <button type="button" class="btn btn-default btn-sm"><i class="fa fa-share"></i>
                                 </button>
@@ -56,6 +58,7 @@
                     <!-- /.mail-box-messages -->
                 </div>
                 <!-- /.box-body -->
+                </form>
             </div>
             <!-- /. box -->
         </div>
@@ -70,8 +73,9 @@
 
 @section('tool')
     @include('tool.modal.move')
-    @include('tool.modal.alert')
     @include('tool.modal.confirm')
+    @include('tool.modal.alert')
+
 
 
 @endsection

@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Query\Expression;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
 class Arctype extends Model
 {
@@ -56,6 +59,7 @@ class Arctype extends Model
     const NID = 'article';
 
     //
+
     /**
      *  读出所有分类,在类目管理页(list_type)中使用
      */
@@ -142,7 +146,7 @@ class Arctype extends Model
 
     public function channelType()
     {
-        return $this->hasOne('App\ChannelType', 'id', 'channeltype');
+        return $this->hasOne(ChannelType::class , 'id', 'channeltype');
     }
 
 
@@ -277,7 +281,7 @@ class Arctype extends Model
             $idList = [];
             $result = self::getAllWithCache();
             foreach ($result as $id => $value) {
-                if (strpos($value['path'], $this->id) == 0) {
+                if (strpos($value['path'].'', $this->id.'') === 0) {
                     $idList[] = $id;
                 }
             }
@@ -345,6 +349,22 @@ class Arctype extends Model
         return $data;
     }
 
+    public static function getChildAllWithCache($id)
+    {
+        $list = [];
+//        self::deleteCacheWithAll();
+        $all = self::getAllWithCache();
+        if (!empty($all)) {
+            $path = $all[$id]['path'];
+            foreach ($all as $id => $v) {
+                if (strpos( $v['path'].'', $path.'') === 0) {
+                    $list[$id] = $v;
+                }
+            }
+        }
+        return $list;
+    }
+
     public static function getAdminAllWithCache($user)
     {
         $key = self::getCacheKey('admin_' . $user->id);
@@ -380,5 +400,43 @@ class Arctype extends Model
         $key = self::getCacheKey('admin_' . $user->id);
         Cache::forget($key);
     }
+
+    public static function deleteArctype($id)
+    {
+        $arctype = Arctype::where('id', $id)->first();
+        $result = self::getChildAllWithCache($id);
+        $addtable = $arctype->channelType->addtable;
+        if ($addtable) {
+            $addtable = new Expression($addtable);
+        }
+        foreach ($result as $cid => $value) {
+            Arctype::where('id', $cid)->delete();
+            Archives::where('typeid', $cid)->delete();
+            Arctiny::where('typeid', $cid)->delete();
+            Feedback::where('typeid', $cid)->delete();
+
+            Spec::where('typeid', $cid)->delete();
+//            Schema::hasTable(strtolower(Spec::class)) && Spec::where('typeid', $cid)->delete();
+
+            if ($addtable) {
+                DB::table($addtable)->where('typeid', $cid)->delete();
+            }
+
+            //删除目录和目录里的所有文件 ### 禁止了此功能
+            //删除单独页面
+//            if($myrow['ispart']==2 && $myrow['typedir']=='')
+//            {
+//                if( is_file($this->baseDir.'/'.$myrow['defaultname']) )
+//                {
+//                    @unlink($this->baseDir.'/'.$myrow['defaultname']);
+//                }
+//            }
+
+            //清空缓存
+            Cache::flush();
+        }
+        return true;
+    }
+
 
 }
