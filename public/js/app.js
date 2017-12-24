@@ -202,6 +202,17 @@ $(function () {
     });
 
 
+    $('<mate name="remoteImage" >').attr('checked', $('input[name="remote"]').prop('checked')).appendTo('head');
+    $('<mate name="waterMark" >').attr('checked', $('input[name="remote"]').prop('checked')).appendTo('head');
+    $('input[name="remote"]').change(function () {
+        $('mate[name="remoteImage"]').attr('checked', this.checked);
+    });
+
+    $('input[name="needwatermark"]').change(function () {
+        $('mate[name="waterMark"]').attr('checked', this.checked);
+    });
+
+
     $('body').on('click', '.pagination li a', function (event) {
         event.preventDefault();
         var self = $(this);

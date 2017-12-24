@@ -6,8 +6,8 @@
 @push('scripts')
 
 <!-- CK Editor -->
-<script type = "text/javascript" src = "/uedit/ueditor.config.js"></script>
-<script type="text/javascript" src="/uedit/ueditor.all.min.js"></script>
+<script type= "text/javascript"  src= "/uedit/ueditor.config.js"></script>
+<script type="text/javascript" src="/uedit/ueditor.all.js"></script>
 <script type="text/javascript" src="/uedit/lang/zh-cn/zh-cn.js"></script>
 <!-- Bootstrap WYSIHTML5 -->
 

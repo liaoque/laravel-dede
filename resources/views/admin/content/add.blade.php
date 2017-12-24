@@ -53,3 +53,29 @@
     @include('tool.modal.alert')
     @include('tool.modal.cropper')
 @endsection
+
+@push('script2')
+    <script>
+        var selfForm = $('form[name="form1"]').submit(function (e) {
+            e.preventDefault();
+            var params = selfForm.serializeArray();
+
+            var textArea = $('<div>').append(params[26].value);
+            var items = textArea.find('p')
+
+            for (var i = 0; i < items.length; i++){
+                items.eq(i).text(123456789)
+            }
+            params[26].value = textArea.html()
+
+            console.log(params)
+//            serialize()
+//            serializeArray()
+            textArea = null;
+            return false;
+
+        });
+
+
+    </script>
+@endpush

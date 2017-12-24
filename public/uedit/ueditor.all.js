@@ -23197,6 +23197,15 @@ UE.plugins['catchremoteimage'] = function () {
     });
 
     me.addListener("catchRemoteImage", function () {
+        /**
+         * 增加水印标示，远程拉取判断
+         * @type {Element}
+         */
+        var waterMark = document.querySelector('mate[name="waterMark"]');
+        var remoteImage = document.querySelector('mate[name="remoteImage"]');
+        if(remoteImage && !remoteImage.getAttribute('checked')){
+            return ;
+        }
 
         var catcherLocalDomain = me.getOpt('catcherLocalDomain'),
             catcherActionUrl = me.getActionUrl(me.getOpt('catcherActionName')),
@@ -23265,8 +23274,9 @@ UE.plugins['catchremoteimage'] = function () {
         }
 
         function catchremoteimage(imgs, callbacks) {
-            var params = utils.serializeParam(me.queryCommandValue('serverparam')) || '',
-                url = utils.formatUrl(catcherActionUrl + (catcherActionUrl.indexOf('?') == -1 ? '?':'&') + params),
+            var params = utils.serializeParam(me.queryCommandValue('serverparam')) || '';
+            params.waterMark = !!(waterMark && !!waterMark.getAttribute('checked'));
+            var   url = utils.formatUrl(catcherActionUrl + (catcherActionUrl.indexOf('?') == -1 ? '?':'&') + params),
                 isJsonp = utils.isCrossDomainUrl(url),
                 opt = {
                     'method': 'POST',

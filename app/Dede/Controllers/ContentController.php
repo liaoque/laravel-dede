@@ -30,7 +30,8 @@ class ContentController extends Controller
         ]);
     }
 
-    public function pageList(Request $request){
+    public function pageList(Request $request)
+    {
         $rule = [
             'cid' => 'numeric',
             'channelid' => 'numeric',
@@ -48,7 +49,7 @@ class ContentController extends Controller
 
     public function add()
     {
-        dd(HttpRequest::get('http://www.dilidili.wang/uploads/allimg/171202/290_1527337801.jpg'));
+//        dd(HttpRequest::get('http://www.dilidili.wang/uploads/allimg/171202/290_1527337801.jpg'));
         $arcRankList = Arcrank::where('adminrank', '<=', Auth::user()->usertype)->get();
         $sysConfig = CfgConfig::sysConfig();
         return view('admin.content.add', [
@@ -58,13 +59,13 @@ class ContentController extends Controller
             'sortArticleList' => Archives::$sortArticleList,
             'isHtmlList' => Archives::$isHtmlList,
             'arcRankList' => $arcRankList,
-            'sysConfig' =>$sysConfig
+            'sysConfig' => $sysConfig
         ]);
     }
 
     public function create(Request $request)
     {
-
+        dd($request);
         $sysConfig = CfgConfig::sysConfig();
         if ($request->isMethod('post')) {
             $rule = [
@@ -84,7 +85,7 @@ class ContentController extends Controller
 
                 'keywords' => 'string|nullable|max:60',
 
-                'description' => 'string|nullable|max:'.$sysConfig->cfg_auot_description,
+                'description' => 'string|nullable|max:' . $sysConfig->cfg_auot_description,
                 'autokey' => 'string|nullable',
 
                 'remote' => 'string|nullable',
@@ -114,19 +115,15 @@ class ContentController extends Controller
             ];
             $this->validate($request, $rule);
 //            处理水印
-
-            $arctiny = new Arctiny();
-            if(!$arctiny->save()){
+            $arctiny = Arctiny::createNewArctiny($request);
+            if (!$arctiny->save()) {
                 return \Redirect::back()->withErrors("无法获得主键，因此无法进行后续操作！");
             }
 
-
-
-
-
-
+            $request->offsetSet('id', $arctiny->id);
             $result = Archives::createNewArctype($request);
             if (!$result) {
+                $arctiny->delete();
                 return \Redirect::back()->withErrors("保存目录数据时失败，请检查你的输入资料是否存在问题！");
             }
             return redirect(route('admin.content'));

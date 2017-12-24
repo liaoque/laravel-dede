@@ -138,6 +138,7 @@ class Archives extends Model
 //    '$adminid','$voteid','$notpost','$description','$keywords','$filename','$adminid','$weight');";
 
         $parmas = $request->post([
+            'id',
             'typeid',
             'typeid2',
             'sortrank',

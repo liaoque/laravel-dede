@@ -4,22 +4,28 @@ namespace App\Dede\Controllers;
 
 use Illuminate\Http\File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use App\Helpers\HttpRequest;
 
 class UploaderController extends Controller
 {
+    const SUCCESS = 'SUCCESS';
+    const ERROR = 'ERROR';
+
     /**
      * @param Request $request
      */
     public function index(Request $request)
     {
         //
+        $data = [];
         switch ($request->get('action')) {
             case 'uploadimage':
                 $file = $request->file(config('uedit.imageFieldName'));
                 $state = '文件类型错误';
-                if (in_array('.'.$file->guessClientExtension(), config('uedit.imageAllowFiles'))) {
+                if (in_array('.' . $file->guessClientExtension(), config('uedit.imageAllowFiles'))) {
                     $d = date('Ymd');
                     $path = $file->store($d, config('uedit.imagePathFormat'));
                     $state = 'success';
@@ -33,8 +39,37 @@ class UploaderController extends Controller
                     "size" => $file->getSize()
                 ];
                 break;
-            case 'uploadscrawl':
             case 'catchimage':
+                $d = date('Ymd');
+                foreach ($request->post('source') as $imgUrl) {
+                    $imgObj = HttpRequest::get($imgUrl, 0, 1);
+                    $fileName = md5($imgUrl) . '.' . $imgObj->getContentType();
+                    $fillname = $d . '/' . $fileName;
+                    $publicPath = Storage::disk('public');
+                    $state = self::SUCCESS;
+                    if (!$publicPath->exists($fillname)) {
+                        $state = Storage::disk('public')->put($fillname, $imgObj->getBody()) ? self::SUCCESS : self::ERROR;
+                    }
+                    preg_match("/[\/]([^\/]*)[\.]?[^\.\/]*$/", $imgUrl, $m);
+                    $original = '';
+                    if ($m) {
+                        $original = htmlspecialchars($m[1]);
+                    }
+                    array_push($data, array(
+                        "state" => $state,
+                        "url" => url('storage').'/' . $fillname,
+                        "size" => $imgObj->sizeDownload,
+                        "title" => htmlspecialchars($fileName),
+                        "original" => $original,
+                        "source" => htmlspecialchars($imgUrl)
+                    ));
+                }
+                $data = [
+                    'state' => count($data) ? self::SUCCESS : self::ERROR,
+                    'list' => $data
+                ];
+                break;
+            case 'uploadscrawl':
             case 'uploadvideo':
             case 'uploadfile':
                 $data = [];

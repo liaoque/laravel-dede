@@ -54,8 +54,8 @@ class Upload extends Model
                 $fileName = $d . '/' . Str::random(40) . '.'.$data->getContentType();
                 $result = $storage->put($fileName, $data->getBody());
                 if($result){
-                    $imginfos = GetImageSize($rndFileName, $info);
-                    $fsize = filesize($rndFileName);
+//                    $imginfos = GetImageSize($rndFileName, $info);
+//                    $fsize = filesize($rndFileName);
                     //保存图片附件信息
                     $imageUpload = new self();
                     $imageUpload->arcid = '';
