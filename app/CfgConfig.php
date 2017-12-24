@@ -46,6 +46,9 @@ class CfgConfig extends Model
         return $data;
     }
 
-
+//    public function getCfgBasehostAttribute($value)
+//    {
+//        return ucfirst($value);
+//    }
 
 }

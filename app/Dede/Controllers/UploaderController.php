@@ -19,7 +19,7 @@ class UploaderController extends Controller
             case 'uploadimage':
                 $file = $request->file(config('uedit.imageFieldName'));
                 $state = '文件类型错误';
-                if (in_array($file->guessClientExtension(), config('uedit.imageAllowFiles'))) {
+                if (in_array('.'.$file->guessClientExtension(), config('uedit.imageAllowFiles'))) {
                     $d = date('Ymd');
                     $path = $file->store($d, config('uedit.imagePathFormat'));
                     $state = 'success';

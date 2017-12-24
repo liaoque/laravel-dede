@@ -97,6 +97,37 @@ class Archives extends Model
         return $this->hasOne(Arctype::class, 'id', 'typeid');
     }
 
+    public static function defalutArchives()
+    {
+        $arctype = new self();
+//        $arctype->id = 0;
+        $arctype->typeid = 0;
+        $arctype->typeid2 = 0;
+        $arctype->sortrank = 50;
+        $arctype->flag = '';
+        $arctype->ismake = 0;
+        $arctype->channel = 0;
+        $arctype->arcrank = 0;
+        $arctype->click = 0;
+        $arctype->money = 0;
+        $arctype->title = '';
+        $arctype->shorttitle = '';
+        $arctype->color = '';
+        $arctype->writer = '';
+        $arctype->source = '';
+        $arctype->litpic = '';
+        $arctype->pubdate = time();
+        $arctype->mid = '';
+        $arctype->voteid = 0;
+        $arctype->notpost = 1;
+        $arctype->description = '';
+        $arctype->keywords = '';
+        $arctype->filename = '';
+        $arctype->dutyadmin = '';
+        $arctype->weight = '';
+        return $arctype;
+    }
+
     public static function createNewArctype(Request $request)
     {
 
@@ -136,7 +167,12 @@ class Archives extends Model
 
         $parmas = array_filter($parmas);
 
-        $archives = new self();
+        $archives = self::defalutArchives();
+        foreach ($parmas as $key => $v){
+            $archives->$key = $v;
+        }
+
+       return $archives->save();
 
     }
 

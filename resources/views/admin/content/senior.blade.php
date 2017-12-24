@@ -50,7 +50,7 @@
 
     <div class="form-group">
         <label for="" class=" control-label">消费金币：</label>
-        <input name="click" type="text" value="" class="form-control"/>
+        <input name="click" type="text" value="0" class="form-control"/>
     </div>
 
     <div class="form-group">

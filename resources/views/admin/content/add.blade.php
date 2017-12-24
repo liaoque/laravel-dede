@@ -6,7 +6,7 @@
             <div class="col-md-12">
             @include('admin.layout.error')
             <!-- Custom Tabs -->
-                <form role="form" name="form1" action="{{$action}}" method="post" onSubmit="return checkSubmit();">
+                <form role="form" name="form1" action="{{$action}}" method="post">
                     <input type="hidden" value="{{csrf_token()}}" name="_token"/>
                     <div class="nav-tabs-custom">
                         <ul class="nav nav-tabs">
@@ -34,7 +34,7 @@
                         <!-- /.tab-content -->
 
                         <div class="box-footer">
-                            <button type="submit" class="btn btn-default">返回</button>
+                            <button type="button" class="btn btn-default">返回</button>
                             <button type="submit" class="btn btn-info pull-right">确定</button>
                         </div>
                     </div>

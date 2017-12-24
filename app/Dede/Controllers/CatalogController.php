@@ -39,12 +39,10 @@ class CatalogController extends Controller
 
     public function add(Arctype $parentArctype = null)
     {
-
         $arctype = Arctype::defalutArctype();
-//        dd($parentArctype);
+        $sysConfig = CfgConfig::sysConfig();
         if (!$parentArctype) {
             $parentArctype = clone $arctype;
-            $sysConfig = CfgConfig::sysConfig();
             $parentArctype->typedir = '{cmspath}' . $sysConfig->cfg_arcdir;
         }
         $arctype->typedir = preg_replace("/\/{1,}/", '/', $arctype->typedir);

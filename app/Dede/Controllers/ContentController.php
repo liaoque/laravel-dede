@@ -5,11 +5,13 @@ namespace App\Dede\Controllers;
 use App\Arcatt;
 use App\Archives;
 use App\Arcrank;
+use App\Arctiny;
 use App\Arctype;
 use App\CfgConfig;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Helpers\HttpRequest;
 
 class ContentController extends Controller
 {
@@ -46,6 +48,7 @@ class ContentController extends Controller
 
     public function add()
     {
+        dd(HttpRequest::get('http://www.dilidili.wang/uploads/allimg/171202/290_1527337801.jpg'));
         $arcRankList = Arcrank::where('adminrank', '<=', Auth::user()->usertype)->get();
         $sysConfig = CfgConfig::sysConfig();
         return view('admin.content.add', [
@@ -61,51 +64,74 @@ class ContentController extends Controller
 
     public function create(Request $request)
     {
+
         $sysConfig = CfgConfig::sysConfig();
         if ($request->isMethod('post')) {
             $rule = [
-                'typeid' => 'required|numeric|exists:channeltype,id',
                 'title' => 'required|string',
-                'shorttitle' => 'string',
-                'keywords' => 'string',
-                'body' => 'string',
-                'description' => 'string',
-                'tags' => 'string',
-                'picname' => 'string',
-                'filename' => 'string',
-                'templet' => 'string',
-                'litpic' => 'string',
-                'redirecturl' => 'string|url',
-                'channelid' => 'required|numeric|exists:channeltype,id',
-                'flags' => 'string',
-                'typeid2' => 'string',
-                'autokey' => 'string',
-                'remote' => 'string',
-                'dellink' => 'string',
-                'autolitpic' => 'string',
-                'sptype' => 'string',
-                'click' => 'string',
-                'color' => 'string',
-                'pubdate' => 'string',
-                'voteid' => 'numeric',
-                'writer' => 'string',
-                'source' => 'numeric',
-                'ishtml' => 'numeric',
+                'shorttitle' => 'string|nullable|max:36',
+                'flags[]' => 'string|nullable',
+                'redirecturl' => 'string|nullable|url',
+                'tags' => 'string|nullable',
                 'weight' => 'numeric',
+
+                'picname' => 'string|nullable',
+                'isremote' => 'numeric|nullable',
+                'source' => 'string|nullable|max:30',
+                'writer' => 'string|nullable|max:30',
+                'typeid' => 'required|numeric|exists:arctype,id',
+                'typeid2' => 'string|nullable',
+
+                'keywords' => 'string|nullable|max:60',
+
+                'description' => 'string|nullable|max:'.$sysConfig->cfg_auot_description,
+                'autokey' => 'string|nullable',
+
+                'remote' => 'string|nullable',
+                'dellink' => 'string|nullable',
+                'autolitpic' => 'string|nullable',
+                'needwatermark' => 'numeric',
+
+                'sptype' => 'string|nullable',
                 'spsize' => 'numeric',
+                'body' => 'string|nullable',
+
+                'voteid' => 'numeric|nullable',
+
+                'notpost' => 'numeric',
+                'click' => 'string|nullable|max:7',
                 'sortup' => 'numeric',
+                'color' => 'string|nullable',
                 'arcrank' => 'numeric',
                 'money' => 'numeric',
-                'notpost' => 'numeric'
+                'pubdate' => 'string|nullable',
+                'ishtml' => 'numeric',
+
+                'filename' => 'string|nullable|max:40',
+                'templet' => 'string|nullable',
+                'litpic' => 'string|nullable',
+
             ];
             $this->validate($request, $rule);
+//            处理水印
+
+            $arctiny = new Arctiny();
+            if(!$arctiny->save()){
+                return \Redirect::back()->withErrors("无法获得主键，因此无法进行后续操作！");
+            }
+
+
+
+
+
+
             $result = Archives::createNewArctype($request);
             if (!$result) {
                 return \Redirect::back()->withErrors("保存目录数据时失败，请检查你的输入资料是否存在问题！");
             }
-            return redirect(route('admin.catalog'));
+            return redirect(route('admin.content'));
         }
-        return redirect(route('admin.catalog.create'));
+        return redirect(route('admin.content.create'));
     }
 
     public function edit(Arctype $arctype)
@@ -157,9 +183,9 @@ class ContentController extends Controller
             if (!$result) {
                 return \Redirect::back()->withErrors("保存目录数据时失败，请检查你的输入资料是否存在问题！");
             }
-            return redirect(route('admin.catalog'));
+            return redirect(route('admin.content'));
         }
-        return redirect(route('admin.catalog.update'));
+        return redirect(route('admin.content.update'));
     }
 
 
