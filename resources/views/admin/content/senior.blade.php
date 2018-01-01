@@ -2,26 +2,17 @@
 
     <div class="form-group">
         <label for="" class="control-label">评论选项：</label>
-        @if($sysConfig->cfg_feedback_forbid == 'Y')
-            <label>
-                <input name="notpost" type="radio" value="0"/>允许评论
-            </label>
-            <label>
-                <input name="notpost" type="radio" value="1" checked="checked"/>禁止评论
-            </label>
-        @else
-            <label>
-                <input name="notpost" type="radio" value="0" checked="checked"/>允许评论
-            </label>
-            <label>
-                <input name="notpost" type="radio" value="1"/>禁止评论
-            </label>
-        @endif
+        <label>
+            <input name="notpost" type="radio" value="0" @if($archives->notpost == 0) checked="checked" @endif />允许评论
+        </label>
+        <label>
+            <input name="notpost" type="radio" value="1"  @if($archives->notpost == 1) checked="checked" @endif/>禁止评论
+        </label>
     </div>
 
     <div class="form-group">
         <label for="" class=" control-label">浏览次数：</label>
-        <input name="click" type="text" value="" class="form-control"/>
+        <input name="click" type="text" class="form-control" value="{{$archives->click}}" />
         {{--<input type='text' name='click' value='echo ($cfg_arc_click=='-1' ? mt_rand(50, 200) : $cfg_arc_click); ' style='width:100px;' />--}}
     </div>
 
@@ -29,14 +20,14 @@
         <label for="" class=" control-label">文章排序：</label>
         <select name="sortup" class="form-control">
             @foreach($sortArticleList as $key=> $value)
-                <option value="{{$key}}" >{{$value}}</option>
+                <option value="{{$key}}"   @if($archives->sortrank == $key) selected="selected" @endif>{{$value}}</option>
             @endforeach
         </select>
     </div>
 
     <div class="form-group">
         <label for="" class=" control-label">标题颜色：</label>
-        <input type="text" name="modcolor" class="form-control my-colorpicker1">
+        <input type="color" name="color" value="{{$archives->color}}" class="form-control my-colorpicker1">
     </div>
 
     <div class="form-group">
@@ -50,12 +41,7 @@
 
     <div class="form-group">
         <label for="" class=" control-label">消费金币：</label>
-        <input name="click" type="text" value="0" class="form-control"/>
-    </div>
-
-    <div class="form-group">
-        <label for="" class=" control-label">浏览次数：</label>
-        <input name="money" type="text" value="" class="form-control"/>
+        <input name="click" type="text" value="{{$archives->money}}" class="form-control"/>
     </div>
 
     <div class="form-group">
@@ -64,7 +50,7 @@
             <div class="input-group-addon">
                 <i class="fa fa-calendar"></i>
             </div>
-            <input type="text" name="pubdate"  class="form-control pull-right" id="datepicker">
+            <input type="text" name="pubdate"  value="{{$archives->pubdate}}" class="form-control pull-right" id="datepicker">
         </div>
         <!-- /.input group -->
     </div>
@@ -73,7 +59,7 @@
         <label for="" class=" control-label">发布选项：</label>
         @foreach($isHtmlList as $key => $value)
             <label>
-                <input name="autolitpic" type="radio" value="{{$key}}" checked="checked"/>{{$value}}
+                <input name="ishtml" type="radio" value="{{$key}}"   @if($archives->ismake == $key) checked="checked" @endif/>{{$value}}
             </label>
         @endforeach
     </div>

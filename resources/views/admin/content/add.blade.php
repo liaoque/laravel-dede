@@ -58,19 +58,38 @@
     <script>
         var selfForm = $('form[name="form1"]').submit(function (e) {
             e.preventDefault();
-            var params = selfForm.serializeArray();
+            var textArea = $('<div>').append(UE.getEditor('editor').getContent());
 
-            var textArea = $('<div>').append(params[26].value);
-            var items = textArea.find('p')
-
-            for (var i = 0; i < items.length; i++){
-                items.eq(i).text(123456789)
+            /**
+             * 自动内容摘要
+             * */
+            if($('input[name="description"]').val().length){
+                $('input[name="description"]').val(textArea.text().substr(0, config.cfg_auot_description));
             }
-            params[26].value = textArea.html()
 
-            console.log(params)
-//            serialize()
-//            serializeArray()
+            /**
+             * 自动获取缩略图
+             * */
+            if($('input[name="autolitpic"]').prop('checked')){
+                var items = textArea.find('img')
+                if(items.length){
+                    $('input[name="autolitpic"]').val(items.eq(0).attr('href'));
+                }
+            }
+
+            /**
+             * 删除站外连接
+              */
+            if($('input[name="dellink"]').prop('checked')){
+                var items = textArea.find('a')
+                for (var i = 0; i < items.length; i++){
+                    items.eq(i).attr('href', 'javascript:void(0)');
+                }
+                UE.getEditor('editor').setContent(textArea.html())
+            }
+
+
+
             textArea = null;
             return false;
 

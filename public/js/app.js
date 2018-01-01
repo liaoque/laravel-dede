@@ -231,6 +231,16 @@ $(function () {
         var file = location.origin + $('.picname').val();
         getImageObj(file);
     })
+
+
+    $('.attr-flag input[value="j"]').change(function(){
+        $('.redirecturl-row').toggle();
+    });
+
+    if( $('.attr-flag input[value="j"]').prop('checked')){
+        $('.redirecturl-row').toggle();
+    }
+
 });
 
 

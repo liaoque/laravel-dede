@@ -39,6 +39,11 @@
         \Illuminate\Support\Facades\Route::post('/content/add/', '\App\Dede\Controllers\ContentController@create')->name('admin.content.create');
 
 
+        \Illuminate\Support\Facades\Route::get('/siteConfig', '\App\Dede\Controllers\SiteConfigController@index')->name('admin.siteConfig');
+
+//        \Illuminate\Support\Facades\Route::get('/content/edit/{}', '\App\Dede\Controllers\ContentController@edit')->name('admin.content.create');
+//        \Illuminate\Support\Facades\Route::post('/content/add/', '\App\Dede\Controllers\ContentController@create')->name('admin.content.create');
+
 
 
     });

@@ -1,5 +1,5 @@
 <script id="editor" type="text/plain" style="height: 500px;">
-
+{{$content}}
 </script>
 
 

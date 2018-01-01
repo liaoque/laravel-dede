@@ -8,6 +8,7 @@ use App\Arcrank;
 use App\Arctiny;
 use App\Arctype;
 use App\CfgConfig;
+use App\ChannelType;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -52,6 +53,7 @@ class ContentController extends Controller
 //        dd(HttpRequest::get('http://www.dilidili.wang/uploads/allimg/171202/290_1527337801.jpg'));
         $arcRankList = Arcrank::where('adminrank', '<=', Auth::user()->usertype)->get();
         $sysConfig = CfgConfig::sysConfig();
+        $archives = Archives::defalutArchives();
         return view('admin.content.add', [
             'action' => url()->current(),
             'navListArrayOne' => Arctype::listAllTypeArrayOne(Arctype::listAllTypeArray()),
@@ -59,6 +61,8 @@ class ContentController extends Controller
             'sortArticleList' => Archives::$sortArticleList,
             'isHtmlList' => Archives::$isHtmlList,
             'arcRankList' => $arcRankList,
+            'archives' => $archives,
+            'content' => '',
             'sysConfig' => $sysConfig
         ]);
     }
@@ -121,13 +125,30 @@ class ContentController extends Controller
             }
 
             $request->offsetSet('id', $arctiny->id);
-            $result = Archives::createNewArctype($request);
-            if (!$result) {
+            $archives = Archives::createNewArctype($request);
+            if (!$archives) {
                 $arctiny->delete();
                 return \Redirect::back()->withErrors("保存目录数据时失败，请检查你的输入资料是否存在问题！");
             }
+
+            $channelType = ChannelType::where('id', $request->post('channelid'));
+            if(empty($channelType->addtable)){
+                $arctiny->delete();
+                $archives->delete();
+                return \Redirect::back()->withErrors("没找到当前模型的主表信息，无法完成操作！。");
+            }
+
+            $tableName = str_replace('', '', $channelType->addtable);
+            $tableName = ucfirst($tableName);
+            $obj = $tableName::createNew($request);
+            if(empty($obj)){
+                $arctiny->delete();
+                $archives->delete();
+                return \Redirect::back()->withErrors("把数据保存到数据库附加表。");
+            }
             return redirect(route('admin.content'));
         }
+
         return redirect(route('admin.content.create'));
     }
 
@@ -156,6 +177,7 @@ class ContentController extends Controller
             'arctype' => $arctype,
             'parentArctype' => $parentArctype,
             'sysConfig' => $sysConfig,
+            'content' => '',
         ]);
     }
 

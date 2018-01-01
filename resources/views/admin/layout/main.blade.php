@@ -38,6 +38,8 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <script src="{{route('admin.siteConfig')}}"></script>
+
 </head>
 <body class="sidebar-mini skin-blue-light" style="font-size: 12px">
 <div class="wrapper">

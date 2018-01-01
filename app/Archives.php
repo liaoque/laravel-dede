@@ -99,6 +99,7 @@ class Archives extends Model
 
     public static function defalutArchives()
     {
+        $sysConfig = CfgConfig::sysConfig();
         $arctype = new self();
 //        $arctype->id = 0;
         $arctype->typeid = 0;
@@ -108,11 +109,11 @@ class Archives extends Model
         $arctype->ismake = 0;
         $arctype->channel = 0;
         $arctype->arcrank = 0;
-        $arctype->click = 0;
+        $arctype->click = $sysConfig->getAttribute('cfg_arc_click') == -1  ? mt_rand(50, 200) : $sysConfig->getAttribute('cfg_arc_click');
         $arctype->money = 0;
         $arctype->title = '';
         $arctype->shorttitle = '';
-        $arctype->color = '';
+        $arctype->color = '#000';
         $arctype->writer = '';
         $arctype->source = '';
         $arctype->litpic = '';
@@ -173,7 +174,7 @@ class Archives extends Model
             $archives->$key = $v;
         }
 
-       return $archives->save();
+       return $archives->save() ? $archives : false;
 
     }
 
