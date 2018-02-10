@@ -14,4 +14,13 @@ class ChannelType extends Model
     {
         return ChannelType::where('id', '<>', -1)->where('isshow', 1)->orderBy('id')->get();
     }
+
+//    public function getTemplet(){
+//        if($this->addtable){
+//            $tableName = ucfirst($this->addtable);
+//            $obj = new $tableName;
+//        }
+//
+//    }
+
 }

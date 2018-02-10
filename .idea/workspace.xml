@@ -2,247 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fb5ec994-0d5a-4baa-88da-a4296598c875" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/laravel-plugin.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/Helpers/common.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/advancedsearch.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/ajaxfeedback.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/ajaxfeedback2.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/article_article.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/article_article1.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/article_article2.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/article_article_frame.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/article_article_m.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/article_default.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/article_default_m.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/article_default_sg.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/article_image.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/article_image_cl.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/article_image_frame.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/article_image_new.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/article_infos.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/article_shop.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/article_soft.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/article_soft_frame.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/article_spec.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/article_spec_test.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/footer.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/footer_m.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/googlemap.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/head.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/head2.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/header_m.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/actbox-ico.gif" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/banner-header.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/bcastr3.swf" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/boxoff.gif" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/btn-bg2.gif" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/but_bg_sr.gif" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/but_bg_sr1.gif" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/but_bg_sr2.gif" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/but_bg_sr3.gif" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/but_bg_sr4.gif" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/but_bg_sr5.gif" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/channel_bg.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/channel_bg_skin1.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/channel_bg_skin2.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/cmt-bad.gif" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/cmt-good.gif" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/cmt-neu.gif" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/comm-bt.gif" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/digg-bg.gif" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/downurl-bg.gif" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/green_skin.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/ico-1.gif" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/ico-2.gif" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/ico-3.gif" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/img_scroll.gif" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/logo.gif" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/mood/ico-mood-1.gif" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/mood/ico-mood-10.gif" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/mood/ico-mood-11.gif" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/mood/ico-mood-12.gif" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/mood/ico-mood-2.gif" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/mood/ico-mood-3.gif" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/mood/ico-mood-4.gif" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/mood/ico-mood-5.gif" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/mood/ico-mood-6.gif" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/mood/ico-mood-7.gif" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/mood/ico-mood-8.gif" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/mood/ico-mood-9.gif" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/new-article.gif" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/newdigg-bg.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/nophoto.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/number-range.gif" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/page_bg.gif" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/photo/a.gif" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/photo/album.css" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/photo/e_m_01.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/photo/e_m_02.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/photo/e_m_03.gif" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/photo/e_m_05.gif" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/photo/e_m_06.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/photo/e_m_07.gif" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/photo/fl-bg.gif" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/photo/heiphoto.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/photo/loading_01.gif" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/photo/m.gif" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/photo/photo.swf" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/photo/sinaflash.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/photo/unfcn_mj_01.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/picbox-listbg.gif" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/rsso.gif" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/search-bt.gif" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/search-top-bg.gif" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/theme.gif" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/view-labeltitle-bg.gif" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/images/white_bg.gif" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/index.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/index_article.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/index_default.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/index_default_m.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/index_default_sg.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/index_image.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/index_infos.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/index_m.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/index_shop.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/index_soft.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/infosw9_index.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/infosw9_list.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/js/art_share.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/js/art_web20.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/js/jcarousellite.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/js/list.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/js/pic_scroll.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/list_article.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/list_default.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/list_default_m.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/list_default_sg.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/list_default_sg_m.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/list_free.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/list_image.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/list_infos.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/list_shop.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/list_soft.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/list_spec.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/search.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/search_m.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/singlepage.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/style/dedecms.css" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/style/layout.css" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/style/page.css" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/style/picture.css" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/style/scroll.css" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/style/search.css" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/style/share.css" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/style/table.css" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/tag.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/default/taglist.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/lurd/lurd-add.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/lurd/lurd-edit.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/lurd/lurd-list.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/plus/bookfeedback_confirm.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/plus/bookfeedback_quote.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/plus/bookfeedback_templet.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/plus/bookfeedback_templet_js.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/plus/car.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/plus/carbuyaction.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/plus/comments_frame.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/plus/digg_frame.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/plus/download_links_templet.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/plus/erraddsave.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/plus/feedback_confirm.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/plus/feedback_quote.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/plus/feedback_quote_ajax.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/plus/feedback_templet.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/plus/feedback_templet_js.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/plus/flink-add.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/plus/flink-list.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/plus/guestbook-admin.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/plus/guestbook-user.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/plus/guestbook.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/plus/heightsearch.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/plus/js.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/plus/list_diyform.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/plus/plus_foot.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/plus/post_diyform.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/plus/qrcode.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/plus/recommend.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/plus/rss.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/plus/rssmap.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/plus/shops_action_payment.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/plus/showphoto.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/plus/sitemap.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/plus/view_diyform.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/plus/view_msg.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/plus/view_msg_catalog.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/plus/vote.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/plus/win_templet.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/system/asks.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/system/bookcontentlist.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/system/booklist.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/system/channel_addon.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/system/channel_article_image.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/system/channel_downlinkpage.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/system/channel_downlinks.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/system/channel_list.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/system/channel_spec_note.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/system/custom_fields_admin.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/system/custom_fields_diy.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/system/custom_fields_member.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/system/custom_fields_membermodel.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/system/custom_fields_membermodel2.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/system/groups.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/system/groupthreads.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/system/info_guide.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/system/info_link.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/system/list_fulllist.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/system/list_sglist.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/system/memberinfos.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/system/memberlist.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/system/mynews.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/system/part_arclist.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/system/part_arclistsg.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/system/part_autochannel.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/system/part_channelartlist.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/system/part_imginfolist.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/system/part_imglist.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/system/part_type_list.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/system/spec_arclist.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/system/spec_list.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/system/tag_arclist.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/system/tag_feedback.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/system/tag_fieldlist.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/system/tag_likepage.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/system/tag_likesgpage.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/system/tag_one.htm" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/templet-dirlist.inc" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/templet-filelist.inc" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/templets/templet-pluslist.inc" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change beforePath="$PROJECT_DIR$/app/Archives.php" afterPath="$PROJECT_DIR$/app/Archives.php" />
-      <change beforePath="$PROJECT_DIR$/app/Dede/Controllers/ContentController.php" afterPath="$PROJECT_DIR$/app/Dede/Controllers/ContentController.php" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
-      <change beforePath="$PROJECT_DIR$/bootstrap/app.php" afterPath="$PROJECT_DIR$/bootstrap/app.php" />
-      <change beforePath="$PROJECT_DIR$/composer.json" afterPath="$PROJECT_DIR$/composer.json" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" afterPath="$PROJECT_DIR$/composer.lock" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" afterPath="$PROJECT_DIR$/config/app.php" />
-      <change beforePath="$PROJECT_DIR$/public/index.php" afterPath="$PROJECT_DIR$/public/index.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/autoload.php" afterPath="$PROJECT_DIR$/vendor/autoload.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/ClassLoader.php" afterPath="$PROJECT_DIR$/vendor/composer/ClassLoader.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/LICENSE" afterPath="$PROJECT_DIR$/vendor/composer/LICENSE" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_files.php" afterPath="$PROJECT_DIR$/vendor/composer/autoload_files.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_namespaces.php" afterPath="$PROJECT_DIR$/vendor/composer/autoload_namespaces.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" afterPath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_real.php" afterPath="$PROJECT_DIR$/vendor/composer/autoload_real.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.json" afterPath="$PROJECT_DIR$/vendor/composer/installed.json" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php" afterPath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Application.php" afterPath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Application.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php" afterPath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/ProviderRepository.php" afterPath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/ProviderRepository.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/laravel-dede.iml" afterPath="$PROJECT_DIR$/.idea/laravel-dede.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Archives.php" afterPath="$PROJECT_DIR$/app/Archives.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/ChannelType.php" afterPath="$PROJECT_DIR$/app/ChannelType.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Helpers/common.php" afterPath="$PROJECT_DIR$/app/Helpers/common.php" />
     </list>
     <ignored path="_dede.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -268,18 +32,8 @@
       <file leaf-file-name="ContentController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Dede/Controllers/ContentController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="162" column="31" lean-forward="false" selection-start-line="162" selection-start-column="23" selection-end-line="162" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TagIndex.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/TagIndex.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="148">
-              <caret line="20" column="19" lean-forward="true" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
+            <state relative-caret-position="228">
+              <caret line="12" column="16" lean-forward="true" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -288,18 +42,38 @@
       <file leaf-file-name="Archives.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Archives.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="180" column="28" lean-forward="false" selection-start-line="180" selection-start-column="28" selection-end-line="180" selection-end-column="28" />
+            <state relative-caret-position="576">
+              <caret line="238" column="24" lean-forward="true" selection-start-line="238" selection-start-column="24" selection-end-line="238" selection-end-column="24" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TagList.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/TagList.php">
+      <file leaf-file-name="app.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/app.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="20" column="26" lean-forward="false" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="26" />
+            <state relative-caret-position="247">
+              <caret line="144" column="51" lean-forward="true" selection-start-line="144" selection-start-column="51" selection-end-line="144" selection-end-column="51" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="common.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Helpers/common.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="171">
+              <caret line="14" column="9" lean-forward="false" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ChannelType.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/ChannelType.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="342">
+              <caret line="18" column="16" lean-forward="false" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -332,7 +106,17 @@
       <find>when</find>
       <find>load</find>
       <find>arcrank</find>
+      <find>HttpRequest</find>
+      <find>App\Helpers\HttpRequest</find>
+      <find>$sysConfig</find>
     </findStrings>
+    <dirStrings>
+      <dir>E:\vmShare\zhenghua\dede\laravel-dede\app</dir>
+      <dir>E:\vmShare\zhenghua\dede\laravel-dede\config\</dir>
+      <dir>E:\vmShare\zhenghua\dede\laravel-dede\config</dir>
+      <dir>E:\vmShare\zhenghua\dede\laravel-dede\vendor</dir>
+      <dir>E:\vmShare\zhenghua\dede\laravel-dede\</dir>
+    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -355,6 +139,8 @@
         <option value="$PROJECT_DIR$/app/TagIndex.php" />
         <option value="$PROJECT_DIR$/app/TagList.php" />
         <option value="$PROJECT_DIR$/app/Dede/Controllers/ContentController.php" />
+        <option value="$PROJECT_DIR$/app/ChannelType.php" />
+        <option value="$PROJECT_DIR$/app/Helpers/common.php" />
         <option value="$PROJECT_DIR$/app/Archives.php" />
       </list>
     </option>
@@ -451,10 +237,10 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-4" />
-    <option name="y" value="-4" />
-    <option name="width" value="1346" />
-    <option name="height" value="684" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -475,6 +261,9 @@
       </profile-state>
     </entry>
   </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="添加" />
+  </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
@@ -490,6 +279,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -506,19 +296,6 @@
               <item name="laravel-dede" type="b2602c69:ProjectViewProjectNode" />
               <item name="laravel-dede" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Dede" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="laravel-dede" type="b2602c69:ProjectViewProjectNode" />
-              <item name="laravel-dede" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Dede" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Controllers" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="laravel-dede" type="b2602c69:ProjectViewProjectNode" />
-              <item name="laravel-dede" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="Helpers" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
@@ -526,83 +303,15 @@
               <item name="laravel-dede" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="config" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
-            <path>
-              <item name="laravel-dede" type="b2602c69:ProjectViewProjectNode" />
-              <item name="laravel-dede" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="vendor" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="laravel-dede" type="b2602c69:ProjectViewProjectNode" />
-              <item name="laravel-dede" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="vendor" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="laravel" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="laravel-dede" type="b2602c69:ProjectViewProjectNode" />
-              <item name="laravel-dede" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="vendor" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="laravel" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="framework" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="laravel-dede" type="b2602c69:ProjectViewProjectNode" />
-              <item name="laravel-dede" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="vendor" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="laravel" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="framework" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="laravel-dede" type="b2602c69:ProjectViewProjectNode" />
-              <item name="laravel-dede" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="vendor" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="laravel" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="framework" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Illuminate" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="laravel-dede" type="b2602c69:ProjectViewProjectNode" />
-              <item name="laravel-dede" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="vendor" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="laravel" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="framework" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Illuminate" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Database" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="laravel-dede" type="b2602c69:ProjectViewProjectNode" />
-              <item name="laravel-dede" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="vendor" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="laravel" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="framework" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Illuminate" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Database" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Concerns" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="laravel-dede" type="b2602c69:ProjectViewProjectNode" />
-              <item name="laravel-dede" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="vendor" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="laravel" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="framework" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Illuminate" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Database" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Query" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="D:/WWW/lcms/yyyy2" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php.composer" />
@@ -613,17 +322,18 @@
     <property name="nodejs.mocha.mocha_node_package_dir" value="" />
     <property name="nodejs.protractor.protractor_package" value="" />
     <property name="SearchEverywhereHistoryKey" value="RegisterProviders&#9;null&#9;null" />
+    <property name="nodejs_interpreter_path" value="D:/Program Files/nodejs/node" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\phpStudy\PHPTutorial\WWW\laravel-dede\app\Helpers\pscws4\etc" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\phpStudy\PHPTutorial\WWW\laravel-dede\resources" />
       <recent name="E:\phpStudy\PHPTutorial\WWW\laravel-dede\bootstrap\cache" />
       <recent name="E:\phpStudy\PHPTutorial\WWW\laravel-dede\app\Helpers\pscws4" />
       <recent name="E:\phpStudy\PHPTutorial\WWW\laravel-dede\resources\pscws4" />
       <recent name="E:\phpStudy\PHPTutorial\WWW\laravel-dede\app\Helpers" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\phpStudy\PHPTutorial\WWW\laravel-dede\app\Helpers\pscws4\etc" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -681,22 +391,23 @@
       <workItem from="1518226916214" duration="2443000" />
       <workItem from="1518230077262" duration="204000" />
       <workItem from="1518230429299" duration="4932000" />
+      <workItem from="1518267688360" duration="3716000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31901000" />
+    <option name="totallyTimeSpent" value="35617000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2987897" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3022388" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -707,7 +418,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -742,13 +453,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Providers/EventServiceProvider.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="543">
-          <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Providers/BroadcastServiceProvider.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -763,13 +467,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Helpers/HttpRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Exceptions/EloquentMd5UserProvider.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
@@ -777,13 +474,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Helpers/pscws4/etc/rules.utf8.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Helpers/pscws4/etc/rules.utf8.ini" />
     <entry file="file://$PROJECT_DIR$/resources/pscws4/pscws4.class.php" />
     <entry file="file://$PROJECT_DIR$/resources/pscws4/PSCWS4.php" />
     <entry file="file://$PROJECT_DIR$/app/Helpers/pscws4/xdb_r.class.php" />
@@ -823,27 +514,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Helpers/pscws4/XDB_R.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="2" lean-forward="false" selection-start-line="0" selection-start-column="2" selection-end-line="0" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Helpers/pscws4/PSCWS4.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="207" column="24" lean-forward="false" selection-start-line="207" selection-start-column="24" selection-end-line="207" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Helpers/pscws4/test.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="37" column="37" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="37" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Helpers/pscws4/XDB_R.php" />
+    <entry file="file://$PROJECT_DIR$/app/Helpers/pscws4/PSCWS4.php" />
+    <entry file="file://$PROJECT_DIR$/app/Helpers/pscws4/test.php" />
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/Core/Core_c.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="50">
@@ -883,13 +556,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="186">
           <caret line="1063" column="20" lean-forward="false" selection-start-line="1063" selection-start-column="20" selection-end-line="1063" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bootstrap/app.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="13" column="36" lean-forward="false" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="36" />
         </state>
       </provider>
     </entry>
@@ -971,13 +637,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Providers/ScwsServiceProvider.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-12">
-          <caret line="17" column="10" lean-forward="true" selection-start-line="17" selection-start-column="10" selection-end-line="22" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Providers/ScwsServiceProvider.php" />
     <entry file="file://$PROJECT_DIR$/public/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="444">
@@ -996,22 +656,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Helpers/common.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/app.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="133" column="36" lean-forward="false" selection-start-line="133" selection-start-column="36" selection-end-line="133" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1047,34 +691,60 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/TagIndex.php">
+    <entry file="file://$PROJECT_DIR$/app/TagIndex.php" />
+    <entry file="file://$PROJECT_DIR$/app/TagList.php" />
+    <entry file="file://$PROJECT_DIR$/app/ChannelType.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="20" column="19" lean-forward="true" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
+        <state relative-caret-position="342">
+          <caret line="18" column="16" lean-forward="false" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/TagList.php">
+    <entry file="file://$PROJECT_DIR$/app/Helpers/HttpRequest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="20" column="26" lean-forward="false" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="26" />
+        <state relative-caret-position="-285">
+          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bootstrap/app.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-42">
+          <caret line="13" column="36" lean-forward="false" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="36" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Dede/Controllers/ContentController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="162" column="31" lean-forward="false" selection-start-line="162" selection-start-column="23" selection-end-line="162" selection-end-column="31" />
+        <state relative-caret-position="228">
+          <caret line="12" column="16" lean-forward="true" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/app.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="144" column="51" lean-forward="true" selection-start-line="144" selection-start-column="51" selection-end-line="144" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Helpers/common.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="14" column="9" lean-forward="false" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Archives.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="180" column="28" lean-forward="false" selection-start-line="180" selection-start-column="28" selection-end-line="180" selection-end-column="28" />
+        <state relative-caret-position="576">
+          <caret line="238" column="24" lean-forward="true" selection-start-line="238" selection-start-column="24" selection-end-line="238" selection-end-column="24" />
           <folding />
         </state>
       </provider>
