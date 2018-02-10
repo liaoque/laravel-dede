@@ -178,4 +178,8 @@ class Archives extends Model
 
     }
 
+    public function makeHtml(){
+
+    }
+
 }

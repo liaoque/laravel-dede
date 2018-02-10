@@ -137,10 +137,11 @@ return [
     */
 
     'providers' => [
-
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         /*
          * Laravel Framework Service Providers...
          */
+        App\Providers\ScwsServiceProvider::class,
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
         Illuminate\Bus\BusServiceProvider::class,
@@ -179,6 +180,7 @@ return [
 
         Overtrue\LaravelPinyin\ServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
+
 
     ],
 

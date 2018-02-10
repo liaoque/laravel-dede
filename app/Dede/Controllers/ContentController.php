@@ -9,6 +9,8 @@ use App\Arctiny;
 use App\Arctype;
 use App\CfgConfig;
 use App\ChannelType;
+use App\TagIndex;
+use App\TagList;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -131,8 +133,8 @@ class ContentController extends Controller
                 return \Redirect::back()->withErrors("保存目录数据时失败，请检查你的输入资料是否存在问题！");
             }
 
-            $channelType = ChannelType::where('id', $request->post('channelid'));
-            if(empty($channelType->addtable)){
+            $channelType = ChannelType::where('id', $request->post('channelid'))->first();
+            if (empty($channelType->addtable)) {
                 $arctiny->delete();
                 $archives->delete();
                 return \Redirect::back()->withErrors("没找到当前模型的主表信息，无法完成操作！。");
@@ -141,11 +143,26 @@ class ContentController extends Controller
             $tableName = str_replace('', '', $channelType->addtable);
             $tableName = ucfirst($tableName);
             $obj = $tableName::createNew($request);
-            if(empty($obj)){
+            if (empty($obj)) {
                 $arctiny->delete();
                 $archives->delete();
                 return \Redirect::back()->withErrors("把数据保存到数据库附加表。");
             }
+
+            $tag = $request->post('tags');
+            $typeid = $request->post('typeid');
+            $tagIndex = TagIndex::where('tag', 'like', $tag)->first();
+            if ($tagIndex) {
+                $tagIndex->increment('total');
+            } else {
+                $tagIndex= TagIndex::createTagIndex($tag, $typeid);
+            }
+
+            TagList::createTagList($tagIndex->id, $arctiny->id, $tag, $typeid, $request->post('arcrank'));
+
+            $archives->makeHtml();
+
+
             return redirect(route('admin.content'));
         }
 
