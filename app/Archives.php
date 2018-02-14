@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Helpers\DedeTagParse;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,6 +14,8 @@ class Archives extends Model
 
     //
     protected $table = 'archives';
+
+    protected $tempSource = '';
 
     public static $sortTypeList = [
         'id' => '排序',
@@ -188,15 +191,37 @@ class Archives extends Model
 
     public function loadTemplet()
     {
-        $tempfile = $this->getTempletFile();
-        if (!file_exists($tempfile) || !is_file($tempfile)) {
+        if ($this->getTempSource() == '') {
+            $tempfile = $this->getTempletFile();
+            if (!file_exists($tempfile) || !is_file($tempfile)) {
 //            throw new \Error("文档ID：{$this->Fields['id']} - {$this->TypeLink->TypeInfos['typename']} - {$this->Fields['title']}<br />");
-            return false;
+                return false;
+            }
+            $this->getDtp()->LoadTemplate($tempfile);
+            $this->setTempSource($this->getDtp()->SourceString)  ;
+        } else {
+            $this->getDtp()->LoadSource($this->getTempSource());
         }
-        $this->dtp->LoadTemplate($tempfile);
-        $this->TempSource = $this->dtp->SourceString;
     }
 
+    public function getTempSource()
+    {
+        return $this->tempSource;
+    }
+
+    public function setTempSource($tempSource)
+    {
+        return $this->tempSource = $tempSource;
+    }
+
+    public function getDtp()
+    {
+        static $dtp = null;
+        if (empty($dtp)) {
+            $dtp = new DedeTagParse();
+        }
+        return $dtp;
+    }
 
     public function getTempletFile()
     {
@@ -240,7 +265,6 @@ class Archives extends Model
     }
 
 
-
     public function addonarticle()
     {
         return $this->hasOne(Addonarticle::class, 'aid', 'id');
@@ -271,15 +295,168 @@ class Archives extends Model
         return $this->hasOne(Addonspec::class, 'aid', 'id');
     }
 
-
-    public function parAddTable()
+    /**
+     *  解析附加表的内容
+     * @access    public
+     * @return    void
+     */
+    function ParAddTable()
     {
+        //读取附加表信息，并把附加表的资料经过编译处理后导入到$this->Fields中，以方便在模板中用 {dede:field name='fieldname' /} 标记统一调用
+        if ($this->channelType->addtable != '') {
+            $row = $this->addTableRow;
+            if ($this->channelType->issystem == -1) {
+//                $this->Fields['title'] = $row['title'];
+//                $this->Fields['senddate'] = $this->Fields['pubdate'] = $row['senddate'];
+//                $this->Fields['mid'] = $this->Fields['adminid'] = $row['mid'];
+//                $this->Fields['ismake'] = 1;
+//                $this->Fields['arcrank'] = 0;
+//                $this->Fields['money'] = 0;
+//                $this->Fields['filename'] = '';
+            }
 
+            if (is_array($row)) {
+                foreach ($row as $k => $v) $row[strtolower($k)] = $v;
+            }
+            if (is_array($this->channelType) && !empty($this->channelType)) {
+                foreach ($this->channelType as $k => $arr) {
+                    if (isset($row[$k])) {
+                        if (!empty($arr['rename'])) {
+                            $nk = $arr['rename'];
+                        } else {
+                            $nk = $k;
+                        }
+                        $cobj = $this->getDtp()->GetCurTag($k);
+                        if (is_object($cobj)) {
+                            foreach ($this->dtp->CTags as $ctag) {
+                                if ($ctag->GetTagName() == 'field' && $ctag->GetAtt('name') == $k) {
+                                    //带标识的专题节点
+                                    if ($ctag->GetAtt('noteid') != '') {
+                                        $this->Fields[$k . '_' . $ctag->GetAtt('noteid')] = $this->ChannelUnit->MakeField($k, $row[$k], $ctag);
+                                    } //带类型的字段节点
+                                    else if ($ctag->GetAtt('type') != '') {
+                                        $this->Fields[$k . '_' . $ctag->GetAtt('type')] = $this->ChannelUnit->MakeField($k, $row[$k], $ctag);
+                                    } //其它字段
+                                    else {
+                                        $this->Fields[$nk] = $this->ChannelUnit->MakeField($k, $row[$k], $ctag);
+                                    }
+                                }
+                            }
+                        } else {
+                            $this->Fields[$nk] = $row[$k];
+                        }
+                        if ($arr['type'] == 'htmltext' && $GLOBALS['cfg_keyword_replace'] == 'Y' && !empty($this->Fields['keywords'])) {
+                            $this->Fields[$nk] = $this->ReplaceKeyword($this->Fields['keywords'], $this->Fields[$nk]);
+                        }
+                    }
+                }//End foreach
+            }
+            //设置全局环境变量
+            $this->Fields['typename'] = $this->TypeLink->TypeInfos['typename'];
+            @SetSysEnv($this->Fields['typeid'], $this->Fields['typename'], $this->Fields['id'], $this->Fields['title'], 'archives');
+        }
+        //完成附加表信息读取
+        unset($row);
+
+        //处理要分页显示的字段
+        $this->SplitTitles = Array();
+        if ($this->SplitPageField != '' && $GLOBALS['cfg_arcsptitle'] = 'Y'
+                && isset($this->Fields[$this->SplitPageField])) {
+            $this->SplitFields = explode("#p#", $this->Fields[$this->SplitPageField]);
+            $i = 1;
+            foreach ($this->SplitFields as $k => $v) {
+                $tmpv = cn_substr($v, 50);
+                $pos = strpos($tmpv, '#e#');
+                if ($pos > 0) {
+                    $st = trim(cn_substr($tmpv, $pos));
+                    if ($st == "" || $st == "副标题" || $st == "分页标题") {
+                        $this->SplitFields[$k] = preg_replace("/^(.*)#e#/is", "", $v);
+                        continue;
+                    } else {
+                        $this->SplitFields[$k] = preg_replace("/^(.*)#e#/is", "", $v);
+                        $this->SplitTitles[$k] = $st;
+                    }
+                } else {
+                    continue;
+                }
+                $i++;
+            }
+            $this->TotalPage = count($this->SplitFields);
+            $this->Fields['totalpage'] = $this->TotalPage;
+        }
+
+        //处理默认缩略图等
+        if (isset($this->Fields['litpic'])) {
+            if ($this->Fields['litpic'] == '-' || $this->Fields['litpic'] == '') {
+                $this->Fields['litpic'] = $GLOBALS['cfg_cmspath'] . '/images/defaultpic.gif';
+            }
+            if (!preg_match("#^http:\/\/#i", $this->Fields['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y') {
+                $this->Fields['litpic'] = $GLOBALS['cfg_mainsite'] . $this->Fields['litpic'];
+            }
+            $this->Fields['picname'] = $this->Fields['litpic'];
+
+            //模板里直接使用{dede:field name='image'/}获取缩略图
+            $this->Fields['image'] = (!preg_match('/jpg|gif|png/i', $this->Fields['picname']) ? '' : "<img src='{$this->Fields['picname']}' />");
+        }
+        // 处理投票选项
+        if (isset($this->Fields['voteid']) && !empty($this->Fields['voteid'])) {
+            $this->Fields['vote'] = '';
+            $voteid = $this->Fields['voteid'];
+            $this->Fields['vote'] = "<script language='javascript' src='{$GLOBALS['cfg_cmspath']}/data/vote/vote_{$voteid}.js'></script>";
+            if ($GLOBALS['cfg_multi_site'] == 'Y') {
+                $this->Fields['vote'] = "<script language='javascript' src='{$GLOBALS['cfg_mainsite']}/data/vote/vote_{$voteid}.js'></script>";
+            }
+        }
+
+        if (isset($this->Fields['goodpost']) && isset($this->Fields['badpost'])) {
+            //digg
+            if ($this->Fields['goodpost'] + $this->Fields['badpost'] == 0) {
+                $this->Fields['goodper'] = $this->Fields['badper'] = 0;
+            } else {
+                $this->Fields['goodper'] = number_format($this->Fields['goodpost'] / ($this->Fields['goodpost'] + $this->Fields['badpost']), 3) * 100;
+                $this->Fields['badper'] = 100 - $this->Fields['goodper'];
+            }
+        }
     }
 
-    public function parseTempletsFirst()
+    /**
+     *  解析模板，对固定的标记进行初始给值
+     * @access    public
+     * @return    void
+     */
+    function ParseTempletsFirst()
     {
+        if (empty($this->Fields['keywords'])) {
+            $this->Fields['keywords'] = '';
+        }
 
+        if (empty($this->Fields['reid'])) {
+            $this->Fields['reid'] = 0;
+        }
+
+        $GLOBALS['envs']['tags'] = $this->Fields['tags'];
+
+        if (isset($this->TypeLink->TypeInfos['reid'])) {
+            $GLOBALS['envs']['reid'] = $this->TypeLink->TypeInfos['reid'];
+        }
+
+        $GLOBALS['envs']['keyword'] = $this->Fields['keywords'];
+
+        $GLOBALS['envs']['typeid'] = $this->Fields['typeid'];
+
+        $GLOBALS['envs']['topid'] = GetTopid($this->Fields['typeid']);
+
+        $GLOBALS['envs']['aid'] = $GLOBALS['envs']['id'] = $this->Fields['id'];
+
+        $GLOBALS['envs']['adminid'] = $GLOBALS['envs']['mid'] = isset($this->Fields['mid']) ? $this->Fields['mid'] : 1;
+
+        $GLOBALS['envs']['channelid'] = $this->TypeLink->TypeInfos['channeltype'];
+
+        if ($this->Fields['reid'] > 0) {
+            $GLOBALS['envs']['typeid'] = $this->Fields['reid'];
+        }
+
+        MakeOneTag($this->dtp, $this, 'N');
     }
 
 
