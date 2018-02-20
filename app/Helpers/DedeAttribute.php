@@ -14,18 +14,18 @@ function c____DedeAttribute();
  **********************************************/
 class DedeAttribute
 {
-    var $Count = -1;
-    var $Items = ""; //属性元素的集合
+    public $count = -1;
+    public $items = ""; //属性元素的集合
     //获得某个属性
-    function GetAtt($str)
+    function getAtt($str)
     {
         if($str=="")
         {
             return "";
         }
-        if(isset($this->Items[$str]))
+        if(isset($this->items[$str]))
         {
-            return $this->Items[$str];
+            return $this->items[$str];
         }
         else
         {
@@ -34,27 +34,27 @@ class DedeAttribute
     }
 
     //同上
-    function GetAttribute($str)
+    function getAttribute($str)
     {
-        return $this->GetAtt($str);
+        return $this->getAtt($str);
     }
 
     //判断属性是否存在
-    function IsAttribute($str)
+    function isAttribute($str)
     {
-        if(isset($this->Items[$str])) return TRUE;
+        if(isset($this->items[$str])) return TRUE;
         else return FALSE;
     }
 
     //获得标记名称
-    function GetTagName()
+    function getTagName()
     {
-        return $this->GetAtt("tagname");
+        return $this->getAtt("tagname");
     }
 
     // 获得属性个数
-    function GetCount()
+    function getCount()
     {
-        return $this->Count+1;
+        return $this->count+1;
     }
 }

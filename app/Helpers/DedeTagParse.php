@@ -18,19 +18,19 @@ namespace App\Helpers;
  */
 class DedeTagParse
 {
-    var $NameSpace = 'dede';   //标记的名字空间
-    var $TagStartWord = '{';   //标记起始
-    var $TagEndWord = '}';     //标记结束
-    var $TagMaxLen = 64;       //标记名称的最大值
-    var $CharToLow = TRUE;     // TRUE表示对属性和标记名称不区分大小写
-    var $IsCache = FALSE;      //是否使用缓冲
-    var $TempMkTime = 0;
-    var $CacheFile = '';
-    var $SourceString = '';    //模板字符串
-    var $CTags = '';           //标记集合
-    var $Count = -1;           //$Tags标记个数
-    var $refObj = '';          //引用当前模板类的对象
-    var $taghashfile = '';
+    public $nameSpace = 'dede';   //标记的名字空间
+    public $tagStartWord = '{';   //标记起始
+    public $tagEndWord = '}';     //标记结束
+    public $tagMaxLen = 64;       //标记名称的最大值
+    public $charToLow = TRUE;     // TRUE表示对属性和标记名称不区分大小写
+    public $isCache = FALSE;      //是否使用缓冲
+    public $tempMkTime = 0;
+    public $cacheFile = '';
+    public $sourceString = '';    //模板字符串
+    public $cTags = '';           //标记集合
+    public $count = -1;           //$Tags标记个数
+    public $refObj = '';          //引用当前模板类的对象
+    public $taghashfile = '';
 
     function __construct()
     {
@@ -45,16 +45,16 @@ class DedeTagParse
         if (DEDE_ENVIRONMENT == 'development') {
             $this->IsCache = FALSE;
         }
-        $this->NameSpace = 'dede';
-        $this->TagStartWord = '{';
-        $this->TagEndWord = '}';
-        $this->TagMaxLen = 64;
-        $this->CharToLow = TRUE;
-        $this->SourceString = '';
-        $this->CTags = array();
-        $this->Count = -1;
-        $this->TempMkTime = 0;
-        $this->CacheFile = '';
+        $this->nameSpace = 'dede';
+        $this->tagStartWord = '{';
+        $this->tagEndWord = '}';
+        $this->tagMaxLen = 64;
+        $this->charToLow = TRUE;
+        $this->sourceString = '';
+        $this->cTags = array();
+        $this->count = -1;
+        $this->tempMkTime = 0;
+        $this->cacheFile = '';
     }
 
     function DedeTagParse()
@@ -71,11 +71,11 @@ class DedeTagParse
      * @param     string $e 结束标记
      * @return    void
      */
-    function SetNameSpace($str, $s = "{", $e = "}")
+    function setNameSpace($str, $s = "{", $e = "}")
     {
-        $this->NameSpace = strtolower($str);
-        $this->TagStartWord = $s;
-        $this->TagEndWord = $e;
+        $this->nameSpace = strtolower($str);
+        $this->tagStartWord = $s;
+        $this->tagEndWord = $e;
     }
 
     /**
@@ -84,11 +84,11 @@ class DedeTagParse
      * @access    public
      * @return    void
      */
-    function SetDefault()
+    function setDefault()
     {
-        $this->SourceString = '';
-        $this->CTags = array();
-        $this->Count = -1;
+        $this->sourceString = '';
+        $this->cTags = array();
+        $this->count = -1;
     }
 
     /**
@@ -98,19 +98,19 @@ class DedeTagParse
      * @param     object $refObj 隶属对象
      * @return    void
      */
-    function SetRefObj(&$refObj)
+    function setRefObj(&$refObj)
     {
         $this->refObj = $refObj;
     }
 
-    function GetCount()
+    function getCount()
     {
-        return $this->Count + 1;
+        return $this->count + 1;
     }
 
-    function Clear()
+    function clear()
     {
-        $this->SetDefault();
+        $this->setDefault();
     }
 
     // ------------------------------------------------------------------------
@@ -124,7 +124,7 @@ class DedeTagParse
      * @param    string
      * @return    bool
      */
-    function CheckDisabledFunctions($str, &$errmsg = '')
+    function checkDisabledFunctions($str, &$errmsg = '')
     {
         global $cfg_disable_funs;
         $cfg_disable_funs = isset($cfg_disable_funs) ? $cfg_disable_funs : 'phpinfo,eval,exec,passthru,shell_exec,system,proc_open,popen,curl_exec,curl_multi_exec,parse_ini_file,show_source,file_put_contents,fsockopen,fopen,fwrite';
@@ -151,7 +151,7 @@ class DedeTagParse
      * @param     string $filename 文件名称
      * @return    string
      */
-    function LoadCache($filename)
+    function loadCache($filename)
     {
         global $cfg_tplcache, $cfg_tplcache_dir;
         if (!$this->IsCache) {
@@ -162,8 +162,8 @@ class DedeTagParse
         $ckfile = str_replace($cdir, '', $filename) . substr(md5($filename), 0, 16) . '.inc';
         $ckfullfile = $cachedir . '/' . $ckfile;
         $ckfullfile_t = $cachedir . '/' . $ckfile . '.txt';
-        $this->CacheFile = $ckfullfile;
-        $this->TempMkTime = filemtime($filename);
+        $this->cacheFile = $ckfullfile;
+        $this->tempMkTime = filemtime($filename);
         if (!file_exists($ckfullfile) || !file_exists($ckfullfile_t)) {
             return FALSE;
         }
@@ -172,18 +172,18 @@ class DedeTagParse
         $fp = fopen($ckfullfile_t, 'r');
         $time_info = trim(fgets($fp, 64));
         fclose($fp);
-        if ($time_info != $this->TempMkTime) {
+        if ($time_info != $this->tempMkTime) {
             return FALSE;
         }
 
         //引入缓冲数组
-        include($this->CacheFile);
+        include($this->cacheFile);
         $errmsg = '';
 
         //把缓冲数组内容读入类
         if (isset($z) && is_array($z)) {
             foreach ($z as $k => $v) {
-                $this->Count++;
+                $this->count++;
                 $ctag = new DedeTAg();
                 $ctag->CAttribute = new DedeAttribute();
                 $ctag->IsReplace = FALSE;
@@ -196,16 +196,16 @@ class DedeTagParse
                 if (isset($v[4]) && is_array($v[4])) {
                     $i = 0;
                     foreach ($v[4] as $k => $v) {
-                        $ctag->CAttribute->Count++;
+                        $ctag->CAttribute->count++;
                         $ctag->CAttribute->Items[$k] = $v;
                     }
                 }
-                $this->CTags[$this->Count] = $ctag;
+                $this->cTags[$this->count] = $ctag;
             }
         } else {
             //模板没有缓冲数组
-            $this->CTags = '';
-            $this->Count = -1;
+            $this->cTags = '';
+            $this->count = -1;
         }
         return TRUE;
     }
@@ -217,23 +217,23 @@ class DedeTagParse
      * @param     string
      * @return    string
      */
-    function SaveCache()
+    function saveCache()
     {
-        $fp = fopen($this->CacheFile . '.txt', "w");
-        fwrite($fp, $this->TempMkTime . "\n");
+        $fp = fopen($this->cacheFile . '.txt', "w");
+        fwrite($fp, $this->tempMkTime . "\n");
         fclose($fp);
-        $fp = fopen($this->CacheFile, "w");
+        $fp = fopen($this->cacheFile, "w");
         flock($fp, 3);
         fwrite($fp, '<' . '?php' . "\r\n");
         $errmsg = '';
-        if (is_array($this->CTags)) {
-            foreach ($this->CTags as $tid => $ctag) {
+        if (is_array($this->cTags)) {
+            foreach ($this->cTags as $tid => $ctag) {
                 $arrayValue = 'Array("' . $ctag->TagName . '",';
                 if (!$this->CheckDisabledFunctions($ctag->InnerText, $errmsg)) {
                     fclose($fp);
                     @unlink($this->taghashfile);
-                    @unlink($this->CacheFile);
-                    @unlink($this->CacheFile . '.txt');
+                    @unlink($this->cacheFile);
+                    @unlink($this->cacheFile . '.txt');
                     die($errmsg);
                 }
                 $arrayValue .= '"' . str_replace('$', '\$', str_replace("\r", "\\r", str_replace("\n", "\\n", str_replace('"', '\"', str_replace("\\", "\\\\", $ctag->InnerText))))) . '"';
@@ -266,16 +266,16 @@ class DedeTagParse
      * @param     string $filename 文件名称
      * @return    string
      */
-    function LoadTemplate($filename)
+    function loadTemplate($filename)
     {
         $this->SetDefault();
         if (!file_exists($filename)) {
-            $this->SourceString = " $filename Not Found! ";
+            $this->sourceString = " $filename Not Found! ";
             $this->ParseTemplet();
         } else {
             $fp = @fopen($filename, "r");
             while ($line = fgets($fp, 1024)) {
-                $this->SourceString .= $line;
+                $this->sourceString .= $line;
             }
             fclose($fp);
             if ($this->LoadCache($filename)) {
@@ -287,13 +287,13 @@ class DedeTagParse
     }
 
     // 仅用于兼容旧版本
-    function LoadTemplet($filename)
+    function loadTemplet($filename)
     {
         $this->LoadTemplate($filename);
     }
 
     // 仅用于兼容旧版本
-    function LoadFile($filename)
+    function loadFile($filename)
     {
         $this->LoadTemplate($filename);
     }
@@ -305,11 +305,11 @@ class DedeTagParse
      * @param     string $str 字符串
      * @return    void
      */
-    function LoadSource($str)
+    function loadSource($str)
     {
         /*
         $this->SetDefault();
-        $this->SourceString = $str;
+        $this->sourceString = $str;
         $this->IsCache = FALSE;
         $this->ParseTemplet();
         */
@@ -321,7 +321,7 @@ class DedeTagParse
         $this->LoadTemplate($filename);
     }
 
-    function LoadString($str)
+    function loadString($str)
     {
         $this->LoadSource($str);
     }
@@ -333,15 +333,15 @@ class DedeTagParse
      * @param     string $str 字符串
      * @return    int
      */
-    function GetTagID($str)
+    function getTagID($str)
     {
-        if ($this->Count == -1) {
+        if ($this->count == -1) {
             return -1;
         }
-        if ($this->CharToLow) {
+        if ($this->charToLow) {
             $str = strtolower($str);
         }
-        foreach ($this->CTags as $id => $CTag) {
+        foreach ($this->cTags as $id => $CTag) {
             if ($CTag->TagName == $str && !$CTag->IsReplace) {
                 return $id;
                 break;
@@ -357,15 +357,15 @@ class DedeTagParse
      * @param     string $str 字符串
      * @return    string
      */
-    function GetTag($str)
+    function getTag($str)
     {
-        if ($this->Count == -1) {
+        if ($this->count == -1) {
             return '';
         }
-        if ($this->CharToLow) {
+        if ($this->charToLow) {
             $str = strtolower($str);
         }
-        foreach ($this->CTags as $id => $CTag) {
+        foreach ($this->cTags as $id => $CTag) {
             if ($CTag->TagName == $str && !$CTag->IsReplace) {
                 return $CTag;
                 break;
@@ -381,7 +381,7 @@ class DedeTagParse
      * @param     string $str 字符串
      * @return    string
      */
-    function GetTagByName($str)
+    function getTagByName($str)
     {
         return $this->GetTag($str);
     }
@@ -393,24 +393,24 @@ class DedeTagParse
      * @param     string  标签id
      * @return    string
      */
-    function GetTagByID($id)
+    function getTagByID($id)
     {
-        if (isset($this->CTags[$id])) {
-            return $this->CTags[$id];
+        if (isset($this->cTags[$id])) {
+            return $this->cTags[$id];
         } else {
             return '';
         }
     }
 
     /**
-     *  给_vars数组传递一个元素
+     *  给_publics数组传递一个元素
      *
      * @access    public
      * @param     string $vname 标签名
      * @param     string $vvalue 标签值
      * @return    string
      */
-    function AssignVar($vname, $vvalue)
+    function assignpublic($vname, $vvalue)
     {
         if (!isset($_sys_globals['define'])) {
             $_sys_globals['define'] = 'yes';
@@ -427,14 +427,14 @@ class DedeTagParse
      * @param     string $runfunc 运行函数
      * @return    void
      */
-    function Assign($i, $str, $runfunc = TRUE)
+    function assign($i, $str, $runfunc = TRUE)
     {
-        if (isset($this->CTags[$i])) {
-            $this->CTags[$i]->IsReplace = TRUE;
-            $this->CTags[$i]->TagValue = $str;
+        if (isset($this->cTags[$i])) {
+            $this->cTags[$i]->IsReplace = TRUE;
+            $this->cTags[$i]->TagValue = $str;
 
-            if ($this->CTags[$i]->GetAtt('function') != '' && $runfunc) {
-                $this->CTags[$i]->TagValue = $this->EvalFunc($str, $this->CTags[$i]->GetAtt('function'), $this->CTags[$i]);
+            if ($this->cTags[$i]->getAtt('function') != '' && $runfunc) {
+                $this->cTags[$i]->TagValue = $this->EvalFunc($str, $this->cTags[$i]->getAtt('function'), $this->cTags[$i]);
             }
         }
     }
@@ -447,9 +447,9 @@ class DedeTagParse
      * @param     string $str 字符串
      * @return    void
      */
-    function AssignName($tagname, $str)
+    function assignName($tagname, $str)
     {
-        foreach ($this->CTags as $id => $CTag) {
+        foreach ($this->cTags as $id => $CTag) {
             if ($CTag->TagName == $tagname) {
                 $this->Assign($id, $str);
             }
@@ -462,79 +462,79 @@ class DedeTagParse
      * @access    public
      * @return    void
      */
-    function AssignSysTag()
+    function assignSysTag()
     {
         global $_sys_globals;
-        for ($i = 0; $i <= $this->Count; $i++) {
-            $CTag = $this->CTags[$i];
+        for ($i = 0; $i <= $this->count; $i++) {
+            $CTag = $this->cTags[$i];
             $str = '';
 
             //获取一个外部变量
             if ($CTag->TagName == 'global') {
-                $str = $this->GetGlobals($CTag->GetAtt('name'));
-                if ($this->CTags[$i]->GetAtt('function') != '') {
-                    //$str = $this->EvalFunc( $this->CTags[$i]->TagValue, $this->CTags[$i]->GetAtt('function'),$this->CTags[$i] );
-                    $str = $this->EvalFunc($str, $this->CTags[$i]->GetAtt('function'), $this->CTags[$i]);
+                $str = $this->GetGlobals($CTag->getAtt('name'));
+                if ($this->cTags[$i]->getAtt('function') != '') {
+                    //$str = $this->EvalFunc( $this->cTags[$i]->TagValue, $this->cTags[$i]->getAtt('function'),$this->cTags[$i] );
+                    $str = $this->EvalFunc($str, $this->cTags[$i]->getAtt('function'), $this->cTags[$i]);
                 }
-                $this->CTags[$i]->IsReplace = TRUE;
-                $this->CTags[$i]->TagValue = $str;
+                $this->cTags[$i]->IsReplace = TRUE;
+                $this->cTags[$i]->TagValue = $str;
             } //引入静态文件
             else if ($CTag->TagName == 'include') {
-                $filename = ($CTag->GetAtt('file') == '' ? $CTag->GetAtt('filename') : $CTag->GetAtt('file'));
-                $str = $this->IncludeFile($filename, $CTag->GetAtt('ismake'));
-                $this->CTags[$i]->IsReplace = TRUE;
-                $this->CTags[$i]->TagValue = $str;
+                $filename = ($CTag->getAtt('file') == '' ? $CTag->getAtt('filename') : $CTag->getAtt('file'));
+                $str = $this->IncludeFile($filename, $CTag->getAtt('ismake'));
+                $this->cTags[$i]->IsReplace = TRUE;
+                $this->cTags[$i]->TagValue = $str;
             } //循环一个普通数组
             else if ($CTag->TagName == 'foreach') {
-                $arr = $this->CTags[$i]->GetAtt('array');
+                $arr = $this->cTags[$i]->getAtt('array');
                 if (isset($GLOBALS[$arr])) {
                     foreach ($GLOBALS[$arr] as $k => $v) {
                         $istr = '';
-                        $istr .= preg_replace("/\[field:key([\r\n\t\f ]+)\/\]/is", $k, $this->CTags[$i]->InnerText);
+                        $istr .= preg_replace("/\[field:key([\r\n\t\f ]+)\/\]/is", $k, $this->cTags[$i]->InnerText);
                         $str .= preg_replace("/\[field:value([\r\n\t\f ]+)\/\]/is", $v, $istr);
                     }
                 }
-                $this->CTags[$i]->IsReplace = TRUE;
-                $this->CTags[$i]->TagValue = $str;
+                $this->cTags[$i]->IsReplace = TRUE;
+                $this->cTags[$i]->TagValue = $str;
             } //设置/获取变量值
-            else if ($CTag->TagName == 'var') {
-                $vname = $this->CTags[$i]->GetAtt('name');
+            else if ($CTag->TagName == 'public') {
+                $vname = $this->cTags[$i]->getAtt('name');
                 if ($vname == '') {
                     $str = '';
-                } else if ($this->CTags[$i]->GetAtt('value') != '') {
-                    $_vars[$vname] = $this->CTags[$i]->GetAtt('value');
+                } else if ($this->cTags[$i]->getAtt('value') != '') {
+                    $_publics[$vname] = $this->cTags[$i]->getAtt('value');
                 } else {
-                    $str = (isset($_vars[$vname]) ? $_vars[$vname] : '');
+                    $str = (isset($_publics[$vname]) ? $_publics[$vname] : '');
                 }
-                $this->CTags[$i]->IsReplace = TRUE;
-                $this->CTags[$i]->TagValue = $str;
+                $this->cTags[$i]->IsReplace = TRUE;
+                $this->cTags[$i]->TagValue = $str;
             }
 
             //运行PHP接口
-            if ($CTag->GetAtt('runphp') == 'yes') {
+            if ($CTag->getAtt('runphp') == 'yes') {
                 $this->RunPHP($CTag, $i);
             }
-            if (is_array($this->CTags[$i]->TagValue)) {
-                $this->CTags[$i]->TagValue = 'array';
+            if (is_array($this->cTags[$i]->TagValue)) {
+                $this->cTags[$i]->TagValue = 'array';
             }
         }
     }
 
     //运行PHP代码
-    function RunPHP(&$refObj, $i)
+    function runPHP(&$refObj, $i)
     {
         $DedeMeValue = $phpcode = '';
-        if ($refObj->GetAtt('source') == 'value') {
-            $phpcode = $this->CTags[$i]->TagValue;
+        if ($refObj->getAtt('source') == 'value') {
+            $phpcode = $this->cTags[$i]->TagValue;
         } else {
-            $DedeMeValue = $this->CTags[$i]->TagValue;
+            $DedeMeValue = $this->cTags[$i]->TagValue;
             $phpcode = $refObj->GetInnerText();
         }
         $phpcode = preg_replace("/'@me'|\"@me\"|@me/i", '$DedeMeValue', $phpcode);
         @eval($phpcode); //or die("<xmp>$phpcode</xmp>");
 
-        $this->CTags[$i]->TagValue = $DedeMeValue;
-        $this->CTags[$i]->IsReplace = TRUE;
+        $this->cTags[$i]->TagValue = $DedeMeValue;
+        $this->cTags[$i]->IsReplace = TRUE;
     }
 
     /**
@@ -544,28 +544,28 @@ class DedeTagParse
      * @access    public
      * @return    string
      */
-    function GetResultNP()
+    function getResultNP()
     {
         $ResultString = '';
-        if ($this->Count == -1) {
-            return $this->SourceString;
+        if ($this->count == -1) {
+            return $this->sourceString;
         }
         $this->AssignSysTag();
         $nextTagEnd = 0;
         $strok = "";
-        for ($i = 0; $i <= $this->Count; $i++) {
-            if ($this->CTags[$i]->GetValue() != "") {
-                if ($this->CTags[$i]->GetValue() == '#@Delete@#') {
-                    $this->CTags[$i]->TagValue = "";
+        for ($i = 0; $i <= $this->count; $i++) {
+            if ($this->cTags[$i]->GetValue() != "") {
+                if ($this->cTags[$i]->GetValue() == '#@Delete@#') {
+                    $this->cTags[$i]->TagValue = "";
                 }
-                $ResultString .= substr($this->SourceString, $nextTagEnd, $this->CTags[$i]->StartPos - $nextTagEnd);
-                $ResultString .= $this->CTags[$i]->GetValue();
-                $nextTagEnd = $this->CTags[$i]->EndPos;
+                $ResultString .= substr($this->sourceString, $nextTagEnd, $this->cTags[$i]->StartPos - $nextTagEnd);
+                $ResultString .= $this->cTags[$i]->GetValue();
+                $nextTagEnd = $this->cTags[$i]->EndPos;
             }
         }
-        $slen = strlen($this->SourceString);
+        $slen = strlen($this->sourceString);
         if ($slen > $nextTagEnd) {
-            $ResultString .= substr($this->SourceString, $nextTagEnd, $slen - $nextTagEnd);
+            $ResultString .= substr($this->sourceString, $nextTagEnd, $slen - $nextTagEnd);
         }
         return $ResultString;
     }
@@ -576,23 +576,23 @@ class DedeTagParse
      * @access    public
      * @return    string
      */
-    function GetResult()
+    function getResult()
     {
         $ResultString = '';
-        if ($this->Count == -1) {
-            return $this->SourceString;
+        if ($this->count == -1) {
+            return $this->sourceString;
         }
         $this->AssignSysTag();
         $nextTagEnd = 0;
         $strok = "";
-        for ($i = 0; $i <= $this->Count; $i++) {
-            $ResultString .= substr($this->SourceString, $nextTagEnd, $this->CTags[$i]->StartPos - $nextTagEnd);
-            $ResultString .= $this->CTags[$i]->GetValue();
-            $nextTagEnd = $this->CTags[$i]->EndPos;
+        for ($i = 0; $i <= $this->count; $i++) {
+            $ResultString .= substr($this->sourceString, $nextTagEnd, $this->cTags[$i]->StartPos - $nextTagEnd);
+            $ResultString .= $this->cTags[$i]->GetValue();
+            $nextTagEnd = $this->cTags[$i]->EndPos;
         }
-        $slen = strlen($this->SourceString);
+        $slen = strlen($this->sourceString);
         if ($slen > $nextTagEnd) {
-            $ResultString .= substr($this->SourceString, $nextTagEnd, $slen - $nextTagEnd);
+            $ResultString .= substr($this->sourceString, $nextTagEnd, $slen - $nextTagEnd);
         }
         return $ResultString;
     }
@@ -603,7 +603,7 @@ class DedeTagParse
      * @access    public
      * @return    void
      */
-    function Display()
+    function display()
     {
         echo $this->GetResult();
     }
@@ -615,7 +615,7 @@ class DedeTagParse
      * @param     string $filename 要保存到的文件
      * @return    string
      */
-    function SaveTo($filename)
+    function saveTo($filename)
     {
         $fp = @fopen($filename, "w") or die("DedeTag Engine Create File False");
         fwrite($fp, $this->GetResult());
@@ -628,23 +628,23 @@ class DedeTagParse
      * @access    public
      * @return    string
      */
-    function ParseTemplet()
+    function parseTemplet()
     {
-        $TagStartWord = $this->TagStartWord;
-        $TagEndWord = $this->TagEndWord;
+        $tagStartWord = $this->tagStartWord;
+        $tagEndWord = $this->tagEndWord;
         $sPos = 0;
         $ePos = 0;
-        $FullTagStartWord = $TagStartWord . $this->NameSpace . ":";
-        $sTagEndWord = $TagStartWord . "/" . $this->NameSpace . ":";
-        $eTagEndWord = "/" . $TagEndWord;
+        $FullTagStartWord = $tagStartWord . $this->nameSpace . ":";
+        $sTagEndWord = $tagStartWord . "/" . $this->nameSpace . ":";
+        $eTagEndWord = "/" . $tagEndWord;
         $tsLen = strlen($FullTagStartWord);
-        $sourceLen = strlen($this->SourceString);
+        $sourceLen = strlen($this->sourceString);
 
         if ($sourceLen <= ($tsLen + 3)) {
             return;
         }
         $cAtt = new DedeAttributeParse();
-        $cAtt->charToLow = $this->CharToLow;
+        $cAtt->charToLow = $this->charToLow;
 
         //遍历模板字符串，请取标记及其属性信息
         for ($i = 0; $i < $sourceLen; $i++) {
@@ -656,10 +656,10 @@ class DedeTagParse
             } else {
                 $ss = 0;
             }
-            $sPos = strpos($this->SourceString, $FullTagStartWord, $ss);
+            $sPos = strpos($this->sourceString, $FullTagStartWord, $ss);
             $isTag = $sPos;
             if ($i == 0) {
-                $headerTag = substr($this->SourceString, 0, strlen($FullTagStartWord));
+                $headerTag = substr($this->sourceString, 0, strlen($FullTagStartWord));
                 if ($headerTag == $FullTagStartWord) {
                     $isTag = TRUE;
                     $sPos = 0;
@@ -675,23 +675,23 @@ class DedeTagParse
                 break;
             }
             */
-            for ($j = ($sPos + $tsLen); $j < ($sPos + $tsLen + $this->TagMaxLen); $j++) {
+            for ($j = ($sPos + $tsLen); $j < ($sPos + $tsLen + $this->tagMaxLen); $j++) {
                 if ($j > ($sourceLen - 1)) {
                     break;
-                } else if (preg_match("/[\/ \t\r\n]/", $this->SourceString[$j]) || $this->SourceString[$j] == $this->TagEndWord) {
+                } else if (preg_match("/[\/ \t\r\n]/", $this->sourceString[$j]) || $this->sourceString[$j] == $this->tagEndWord) {
                     break;
                 } else {
-                    $tTagName .= $this->SourceString[$j];
+                    $tTagName .= $this->sourceString[$j];
                 }
             }
             if ($tTagName != '') {
                 $i = $sPos + $tsLen;
                 $endPos = -1;
-                $fullTagEndWordThis = $sTagEndWord . $tTagName . $TagEndWord;
+                $fullTagEndWordThis = $sTagEndWord . $tTagName . $tagEndWord;
 
-                $e1 = strpos($this->SourceString, $eTagEndWord, $i);
-                $e2 = strpos($this->SourceString, $FullTagStartWord, $i);
-                $e3 = strpos($this->SourceString, $fullTagEndWordThis, $i);
+                $e1 = strpos($this->sourceString, $eTagEndWord, $i);
+                $e2 = strpos($this->sourceString, $FullTagStartWord, $i);
+                $e3 = strpos($this->sourceString, $fullTagEndWordThis, $i);
 
                 //$eTagEndWord = /} $FullTagStartWord = {tag: $fullTagEndWordThis = {/tag:xxx]
 
@@ -734,29 +734,29 @@ class DedeTagParse
                 $innerText = '';
                 $startInner = 0;
                 for ($j = ($sPos + $tsLen); $j < $ePos; $j++) {
-                    if ($startInner == 0 && ($this->SourceString[$j] == $TagEndWord && $this->SourceString[$j - 1] != "\\")) {
+                    if ($startInner == 0 && ($this->sourceString[$j] == $tagEndWord && $this->sourceString[$j - 1] != "\\")) {
                         $startInner = 1;
                         continue;
                     }
                     if ($startInner == 0) {
-                        $attStr .= $this->SourceString[$j];
+                        $attStr .= $this->sourceString[$j];
                     } else {
-                        $innerText .= $this->SourceString[$j];
+                        $innerText .= $this->sourceString[$j];
                     }
                 }
                 //echo "<xmp>$attStr</xmp>\r\n";
                 $cAtt->SetSource($attStr);
-                if ($cAtt->cAttributes->GetTagName() != '') {
-                    $this->Count++;
+                if ($cAtt->cAttributes->getTagName() != '') {
+                    $this->count++;
                     $CDTag = new DedeTag();
-                    $CDTag->TagName = $cAtt->cAttributes->GetTagName();
+                    $CDTag->TagName = $cAtt->cAttributes->getTagName();
                     $CDTag->StartPos = $sPos;
                     $CDTag->EndPos = $i;
                     $CDTag->CAttribute = $cAtt->cAttributes;
                     $CDTag->IsReplace = FALSE;
-                    $CDTag->TagID = $this->Count;
+                    $CDTag->TagID = $this->count;
                     $CDTag->InnerText = $innerText;
-                    $this->CTags[$this->Count] = $CDTag;
+                    $this->cTags[$this->count] = $CDTag;
                 }
             } else {
                 $i = $sPos + $tsLen;
@@ -778,7 +778,7 @@ class DedeTagParse
      * @param     object $refObj 隶属对象
      * @return    string
      */
-    function EvalFunc($fieldvalue, $functionname, &$refObj)
+    function evalFunc($fieldvalue, $functionname, &$refObj)
     {
         $DedeFieldValue = $fieldvalue;
         $functionname = str_replace("{\"", "[\"", $functionname);
@@ -797,21 +797,21 @@ class DedeTagParse
      *  获得一个外部变量
      *
      * @access    public
-     * @param     string $varname 变量名称
+     * @param     string $publicname 变量名称
      * @return    string
      */
-    function GetGlobals($varname)
+    function getGlobals($publicname)
     {
-        $varname = trim($varname);
+        $publicname = trim($publicname);
 
         //禁止在模板文件读取数据库密码
-        if ($varname == "dbuserpwd" || $varname == "cfg_dbpwd") {
+        if ($publicname == "dbuserpwd" || $publicname == "cfg_dbpwd") {
             return "";
         }
 
         //正常情况
-        if (isset($GLOBALS[$varname])) {
-            return $GLOBALS[$varname];
+        if (isset($GLOBALS[$publicname])) {
+            return $GLOBALS[$publicname];
         } else {
             return "";
         }
@@ -825,7 +825,7 @@ class DedeTagParse
      * @param     string $ismake 是否需要编译
      * @return    string
      */
-    function IncludeFile($filename, $ismake = 'no')
+    function includeFile($filename, $ismake = 'no')
     {
         global $cfg_df_style;
         $restr = '';
@@ -855,13 +855,13 @@ class DedeTagParse
         return $restr;
     }
 
-    function GetCurTag($fieldname)
+    function getCurTag($fieldname)
     {
-        if (!isset($this->CTags)) {
+        if (!isset($this->cTags)) {
             return '';
         }
-        foreach ($this->CTags as $ctag) {
-            if ($ctag->GetTagName() == 'field' && $ctag->GetAtt('name') == $fieldname) {
+        foreach ($this->cTags as $ctag) {
+            if ($ctag->getTagName() == 'field' && $ctag->getAtt('name') == $fieldname) {
                 return $ctag;
             } else {
                 continue;

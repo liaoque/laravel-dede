@@ -198,7 +198,7 @@ class Archives extends Model
                 return false;
             }
             $this->getDtp()->LoadTemplate($tempfile);
-            $this->setTempSource($this->getDtp()->SourceString)  ;
+            $this->setTempSource($this->getDtp()->SourceString);
         } else {
             $this->getDtp()->LoadSource($this->getTempSource());
         }
@@ -233,7 +233,7 @@ class Archives extends Model
         $cfgBasedir = $sysConfig->cfg_basedir;
         $cfgTempletsDir = $sysConfig->cfg_templets_dir;
         if ($templet) {
-            $filetag = common::MfTemplet($templet);
+            $filetag = common::mfTemplet($templet);
 
             if (!preg_match("#\/#", $filetag))
                 $filetag = $cfgDfStyle . '/' . $filetag;
@@ -328,17 +328,17 @@ class Archives extends Model
                         }
                         $cobj = $this->getDtp()->GetCurTag($k);
                         if (is_object($cobj)) {
-                            foreach ($this->dtp->CTags as $ctag) {
-                                if ($ctag->GetTagName() == 'field' && $ctag->GetAtt('name') == $k) {
+                            foreach ($this->getDtp()->CTags as $ctag) {
+                                if ($ctag->getTagName() == 'field' && $ctag->getAtt('name') == $k) {
                                     //带标识的专题节点
-                                    if ($ctag->GetAtt('noteid') != '') {
-                                        $this->Fields[$k . '_' . $ctag->GetAtt('noteid')] = $this->ChannelUnit->MakeField($k, $row[$k], $ctag);
+                                    if ($ctag->getAtt('noteid') != '') {
+                                        $this->Fields[$k . '_' . $ctag->getAtt('noteid')] = $this->channelType->makeField($k, $row[$k], $ctag);
                                     } //带类型的字段节点
-                                    else if ($ctag->GetAtt('type') != '') {
-                                        $this->Fields[$k . '_' . $ctag->GetAtt('type')] = $this->ChannelUnit->MakeField($k, $row[$k], $ctag);
+                                    else if ($ctag->getAtt('type') != '') {
+                                        $this->Fields[$k . '_' . $ctag->getAtt('type')] = $this->channelType->makeField($k, $row[$k], $ctag);
                                     } //其它字段
                                     else {
-                                        $this->Fields[$nk] = $this->ChannelUnit->MakeField($k, $row[$k], $ctag);
+                                        $this->Fields[$nk] = $this->channelType->makeField($k, $row[$k], $ctag);
                                     }
                                 }
                             }
@@ -361,7 +361,8 @@ class Archives extends Model
         //处理要分页显示的字段
         $this->SplitTitles = Array();
         if ($this->SplitPageField != '' && $GLOBALS['cfg_arcsptitle'] = 'Y'
-                && isset($this->Fields[$this->SplitPageField])) {
+                && isset($this->Fields[$this->SplitPageField])
+        ) {
             $this->SplitFields = explode("#p#", $this->Fields[$this->SplitPageField]);
             $i = 1;
             foreach ($this->SplitFields as $k => $v) {
@@ -459,5 +460,28 @@ class Archives extends Model
         MakeOneTag($this->dtp, $this, 'N');
     }
 
+    function ReplaceKeyword($kw, $body)
+    {
+        $maxkey = 5;
+        $kws = explode(",", trim($kw));    //以分好为间隔符
+        $i = 0;
+        $karr = $kaarr = array();
 
+        //暂时屏蔽超链接
+        $body = preg_replace("#(<a(.*))(>)(.*)(<)(\/a>)#isU", '\\1-]-\\4-[-\\6', $body);
+        $rowList = KeyWord::where('rpurl', '<>', '')->orderBy('rank', 'desc')->all()->toArray();
+        foreach ($rowList as $row) {
+            $key = trim($row['keyword']);
+            $key_url = trim($row['rpurl']);
+            $karr[] = $key;
+            $kaarr[] = "<a href='$key_url' target='_blank'><u>$key</u></a>";
+        }
+
+        // 这里可能会有错误
+        $body = @preg_replace("#(^|>)([^<]+)(?=<|$)#sUe", "_highlight('\\2', \$karr, \$kaarr, '\\1')", $body);
+
+        //恢复超链接
+        $body = preg_replace("#(<a(.*))-\]-(.*)-\[-(\/a>)#isU", '\\1>\\3<\\4', $body);
+        return $body;
+    }
 }

@@ -86,7 +86,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">
-      <library name="PHP" type="php">
+      <library name="PHP">
         <CLASSES>
           <root url="file://$MODULE_DIR$/vendor/almasaeed2010/adminlte" />
           <root url="file://$MODULE_DIR$/vendor/barryvdh/laravel-ide-helper" />

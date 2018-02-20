@@ -15,11 +15,11 @@ function c____DedeAttributeParse();
  ********************************/
 class DedeAttributeParse
 {
-    var $sourceString = "";
-    var $sourceMaxSize = 1024;
-    var $cAttributes = "";
-    var $charToLow = TRUE;
-    function SetSource($str='')
+    public $sourceString = "";
+    public $sourceMaxSize = 1024;
+    public $cAttributes = "";
+    public $charToLow = TRUE;
+    function setSource($str='')
     {
         $this->cAttributes = new DedeAttribute();
         $strLen = 0;
@@ -43,7 +43,7 @@ class DedeAttributeParse
     }
 
     //解析属性
-    function ParseAttribute()
+    function parseAttribute()
     {
         $d = '';
         $tmpatt = '';
@@ -54,7 +54,7 @@ class DedeAttributeParse
         $strLen = strlen($this->sourceString);
         $this->cAttributes->Items = array();
 
-        // 获得Tag的名称，解析到 cAtt->GetAtt('tagname') 中
+        // 获得Tag的名称，解析到 cAtt->getAtt('tagname') 中
         for($i=0; $i<$strLen; $i++)
         {
             if($this->sourceString[$i]==' ')

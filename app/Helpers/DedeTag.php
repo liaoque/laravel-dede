@@ -18,14 +18,14 @@ namespace App\Helpers;
  */
 class DedeTag
 {
-    var $IsReplace=FALSE; //标记是否已被替代，供解析器使用
-    var $TagName="";      //标记名称
-    var $InnerText="";    //标记之间的文本
-    var $StartPos=0;      //标记起始位置
-    var $EndPos=0;        //标记结束位置
-    var $CAttribute="";   //标记属性描述,即是class DedeAttribute
-    var $TagValue="";     //标记的值
-    var $TagID = 0;
+    public $isReplace=FALSE; //标记是否已被替代，供解析器使用
+    public $tagName="";      //标记名称
+    public $innerText="";    //标记之间的文本
+    public $startPos=0;      //标记起始位置
+    public $endPos=0;        //标记结束位置
+    public $cAttribute="";   //标记属性描述,即是class DedeAttribute
+    public $tagValue="";     //标记的值
+    public $tagID = 0;
 
     /**
      *  获取标记的名称和值
@@ -33,9 +33,9 @@ class DedeTag
      * @access    public
      * @return    string
      */
-    function GetName()
+    function getName()
     {
-        return strtolower($this->TagName);
+        return strtolower($this->tagName);
     }
 
     /**
@@ -44,40 +44,40 @@ class DedeTag
      * @access    public
      * @return    string
      */
-    function GetValue()
+    function getValue()
     {
-        return $this->TagValue;
+        return $this->tagValue;
     }
 
     //下面两个成员函数仅是为了兼容旧版
-    function GetTagName()
+    function getTagName()
     {
-        return strtolower($this->TagName);
+        return strtolower($this->tagName);
     }
 
-    function GetTagValue()
+    function getTagValue()
     {
-        return $this->TagValue;
+        return $this->tagValue;
     }
 
     //获取标记的指定属性
-    function IsAttribute($str)
+    function isAttribute($str)
     {
-        return $this->CAttribute->IsAttribute($str);
+        return $this->cAttribute->IsAttribute($str);
     }
 
-    function GetAttribute($str)
+    function getAttribute($str)
     {
-        return $this->CAttribute->GetAtt($str);
+        return $this->cAttribute->getAtt($str);
     }
 
-    function GetAtt($str)
+    function getAtt($str)
     {
-        return $this->CAttribute->GetAtt($str);
+        return $this->cAttribute->getAtt($str);
     }
 
-    function GetInnerText()
+    function getInnerText()
     {
-        return $this->InnerText;
+        return $this->innerText;
     }
 }
