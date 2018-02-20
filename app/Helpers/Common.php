@@ -5,6 +5,7 @@
  * Date: 2018/2/10
  * Time: 10:57
  */
+namespace App\Helpers;
 
 class Common
 {
@@ -24,17 +25,17 @@ class Common
         $str = preg_replace("/<[\/]{0,1}style([^>]*)>(.*)<\/style>/i", '', $str);//2011-06-30 禁止会员投稿添加css样式 (by:织梦的鱼)
         if($rptype==0)
         {
-            $str = dede_htmlspecialchars($str);
+            $str = htmlspecialchars($str);
         }
         else if($rptype==1)
         {
-            $str = dede_htmlspecialchars($str);
+            $str = htmlspecialchars($str);
             $str = str_replace("　", ' ', $str);
             $str = preg_replace("/[\r\n\t ]{1,}/", ' ', $str);
         }
         else if($rptype==2)
         {
-            $str = dede_htmlspecialchars($str);
+            $str = htmlspecialchars($str);
             $str = str_replace("　", '', $str);
             $str = preg_replace("/[\r\n\t ]/", '', $str);
         }
@@ -46,5 +47,17 @@ class Common
         }
         return addslashes($str);
     }
+
+    public static function getSysTemplets($filename)
+    {
+        $sysConfig=CfgConfig::sysConfig();
+        return getTemplets($sysConfig->cfg_basedir.$sysConfig->cfg_templets_dir.'/system/'.$filename);
+    }
+
+    public static function getTemplets($filename)
+    {
+        return file_exists($filename) ? file_get_contents($filename) : '';
+    }
+
 
 }

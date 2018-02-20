@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Helpers\Common;
 use App\Helpers\DedeTagParse;
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,7 +14,7 @@ class ChannelType extends Model
     private $allFieldNames = '';
     private $channelFields = [];
     private $splitPageField = '';
-
+    private $archives = null;
 
     public static function getShowAll()
     {
@@ -67,12 +68,26 @@ class ChannelType extends Model
 
 
     /**
+     * @return Archives
+     */
+    public function getArchives()
+    {
+        return $this->archives;
+    }
+
+    public function setArchives(Archives $arc)
+    {
+        $this->archives = $arc;
+        return $this;
+    }
+
+    /**
      *  处理某个字段的值
      *
      * @access    public
      * @param     string $fname 字段名称
      * @param     string $fvalue 字段值
-     * @param     string $addvalue 增加值
+     * @param     string|DedeTag $addvalue 增加值
      * @return    string
      */
     function makeField($fname, $fvalue, $addvalue = '')
@@ -87,10 +102,11 @@ class ChannelType extends Model
         if ($ftype == 'text') {
             $fvalue = Common::HtmlReplace($fvalue);
         } else if ($ftype == 'textdata') {
-            if (!is_file($GLOBALS['cfg_basedir'] . $fvalue)) {
+            $cfgBasedir = CfgConfig::sysConfig()->cfg_basedir;
+            if (!is_file($cfgBasedir . $fvalue)) {
                 return '';
             }
-            $fp = fopen($GLOBALS['cfg_basedir'] . $fvalue, 'r');
+            $fp = fopen($cfgBasedir . $fvalue, 'r');
             $fvalue = '';
             while (!feof($fp)) {
                 $fvalue .= fgets($fp, 1024);
@@ -98,13 +114,20 @@ class ChannelType extends Model
             fclose($fp);
         } else if ($ftype == 'addon') {
             $foldvalue = $fvalue;
-            $tmptext = GetSysTemplets("channel_addon.htm");
+            $tmptext = Common::getSysTemplets("channel_addon.htm");
             $fvalue = str_replace('~link~', $foldvalue, $tmptext);
-            $fvalue = str_replace('~phpurl~', $GLOBALS['cfg_phpurl'], $fvalue);
-        } else if (file_exists(DEDEINC . '/taglib/channel/' . $ftype . '.lib.php')) {
-            include_once(DEDEINC . '/taglib/channel/' . $ftype . '.lib.php');
-            $func = 'ch_' . $ftype;
-            $fvalue = $func($fvalue, $addvalue, $this, $fname);
+            $fvalue = str_replace('~phpurl~', CfgConfig::sysConfig()->cfg_phpurl, $fvalue);
+        } else if (class_exists(ucfirst($ftype) . 'Lib')) {
+            $className = ucfirst($ftype) . 'Lib';
+            $fvalue = call_user_func_array([
+                new $className,
+                'ch_' . $ftype
+            ], [
+                $fvalue, $addvalue, $this, $fname
+            ]);
+//            include_once(DEDEINC . '/taglib/channel/' . $ftype . '.lib.php');
+//            $func = 'ch_' . $ftype;
+//            $fvalue = $func($fvalue, $addvalue, $this, $fname);
         }
         return $fvalue;
     }

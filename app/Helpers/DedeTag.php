@@ -63,7 +63,7 @@ class DedeTag
     //获取标记的指定属性
     function isAttribute($str)
     {
-        return $this->cAttribute->IsAttribute($str);
+        return $this->cAttribute->isAttribute($str);
     }
 
     function getAttribute($str)

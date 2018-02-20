@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Helpers\Common;
 use App\Helpers\DedeTagParse;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
@@ -183,7 +184,6 @@ class Archives extends Model
 
     public function makeHtml()
     {
-
         $this->loadTemplet();
         $this->parAddTable();
         $this->parseTempletsFirst();
@@ -197,10 +197,10 @@ class Archives extends Model
 //            throw new \Error("文档ID：{$this->Fields['id']} - {$this->TypeLink->TypeInfos['typename']} - {$this->Fields['title']}<br />");
                 return false;
             }
-            $this->getDtp()->LoadTemplate($tempfile);
+            $this->getDtp()->loadTemplate($tempfile);
             $this->setTempSource($this->getDtp()->SourceString);
         } else {
-            $this->getDtp()->LoadSource($this->getTempSource());
+            $this->getDtp()->loadSource($this->getTempSource());
         }
     }
 
@@ -226,6 +226,7 @@ class Archives extends Model
     public function getTempletFile()
     {
         $cid = $this->channelType->nid;
+        $this->channelType->setArchives($this);
         $addtable = $this->channelType->addtable;
         $templet = $this->$addtable->templet;
         $sysConfig = CfgConfig::sysConfig();
@@ -233,12 +234,11 @@ class Archives extends Model
         $cfgBasedir = $sysConfig->cfg_basedir;
         $cfgTempletsDir = $sysConfig->cfg_templets_dir;
         if ($templet) {
-            $filetag = common::mfTemplet($templet);
-
-            if (!preg_match("#\/#", $filetag))
+            $filetag = Common::mfTemplet($templet);
+            if (!preg_match("/\//", $filetag))
                 $filetag = $cfgDfStyle . '/' . $filetag;
         } else {
-            $filetag = common::MfTemplet($this->arctype->temparticle);
+            $filetag = Common::mfTemplet($this->arctype->temparticle);
         }
         $tid = $this->arctype->typeid;
         $filetag = str_replace('{cid}', $cid, $filetag);
@@ -260,7 +260,7 @@ class Archives extends Model
                 $tmpfile = str_replace('.htm', '_m.htm', $tmpfile);
             }
         }
-        if (!preg_match("#.htm$#", $tmpfile)) return FALSE;
+        if (!preg_match("/.htm$/", $tmpfile)) return FALSE;
         return $tmpfile;
     }
 
@@ -304,7 +304,8 @@ class Archives extends Model
     {
         //读取附加表信息，并把附加表的资料经过编译处理后导入到$this->Fields中，以方便在模板中用 {dede:field name='fieldname' /} 标记统一调用
         if ($this->channelType->addtable != '') {
-            $row = $this->addTableRow;
+            $addtable = $this->channelType->addtable;
+            $row = $this->$addtable->toArray();
             if ($this->channelType->issystem == -1) {
 //                $this->Fields['title'] = $row['title'];
 //                $this->Fields['senddate'] = $this->Fields['pubdate'] = $row['senddate'];
@@ -318,17 +319,18 @@ class Archives extends Model
             if (is_array($row)) {
                 foreach ($row as $k => $v) $row[strtolower($k)] = $v;
             }
-            if (is_array($this->channelType) && !empty($this->channelType)) {
-                foreach ($this->channelType as $k => $arr) {
+            $channelFields = $this->channelType->getChannelFields();
+            if (is_array($channelFields) && !empty($channelFields)) {
+                foreach ($channelFields as $k => $arr) {
                     if (isset($row[$k])) {
                         if (!empty($arr['rename'])) {
                             $nk = $arr['rename'];
                         } else {
                             $nk = $k;
                         }
-                        $cobj = $this->getDtp()->GetCurTag($k);
+                        $cobj = $this->getDtp()->getCurTag($k);
                         if (is_object($cobj)) {
-                            foreach ($this->getDtp()->CTags as $ctag) {
+                            foreach ($this->getDtp()->cTags as $ctag) {
                                 if ($ctag->getTagName() == 'field' && $ctag->getAtt('name') == $k) {
                                     //带标识的专题节点
                                     if ($ctag->getAtt('noteid') != '') {

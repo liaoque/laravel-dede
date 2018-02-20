@@ -2,18 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fb5ec994-0d5a-4baa-88da-a4296598c875" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/blade.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/laravel-dede.iml" afterPath="$PROJECT_DIR$/.idea/laravel-dede.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/laravel-plugin.xml" afterPath="$PROJECT_DIR$/.idea/laravel-plugin.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Helpers/TagLib/Channel/ImgLib.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Helpers/TagLib/Channel/img.lib.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Helpers/TagLib/Channel/softlinks.lib.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Helpers/TagLib/Channel/specialtopic.lib.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Helpers/TagLib/Channel/stepselect.lib.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Archives.php" afterPath="$PROJECT_DIR$/app/Archives.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/ChannelType.php" afterPath="$PROJECT_DIR$/app/ChannelType.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Helpers/Common.php" afterPath="$PROJECT_DIR$/app/Helpers/Common.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Helpers/DedeAttribute.php" afterPath="$PROJECT_DIR$/app/Helpers/DedeAttribute.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Helpers/DedeAttributeParse.php" afterPath="$PROJECT_DIR$/app/Helpers/DedeAttributeParse.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Helpers/DedeTag.php" afterPath="$PROJECT_DIR$/app/Helpers/DedeTag.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Helpers/DedeTagParse.php" afterPath="$PROJECT_DIR$/app/Helpers/DedeTagParse.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Helpers/common.php" afterPath="$PROJECT_DIR$/app/Helpers/common.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/TagIndex.php" afterPath="$PROJECT_DIR$/app/TagIndex.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/content/line.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/content/line.blade.php" />
     </list>
     <ignored path="_dede.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,7 +41,7 @@
     <favorites_list name="_dede" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5192802">
+    <splitter split-orientation="horizontal" split-proportion="0.53020567">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="ContentController.php" pinned="false" current-in-tab="false">
@@ -54,34 +57,28 @@
           <file leaf-file-name="Archives.php" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/Archives.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-4.8103447">
-                  <caret line="235" column="40" selection-start-line="235" selection-start-column="40" selection-end-line="235" selection-end-column="40" />
+                <state vertical-scroll-proportion="-6.8103447">
+                  <caret line="342" column="90" selection-start-line="342" selection-start-column="81" selection-end-line="342" selection-end-column="90" />
                   <folding>
-                    <element signature="e#23#52#0#PHP" expanded="true" />
-                    <element signature="e#2550#3597#0#PHP" expanded="false" />
-                    <element signature="e#3603#5093#0#PHP" expanded="false" />
-                    <element signature="e#14767#15854#0#PHP" expanded="false" />
+                    <element signature="e#23#46#0#PHP" expanded="true" />
+                    <element signature="e#2574#3621#0#PHP" expanded="false" />
+                    <element signature="e#3627#5117#0#PHP" expanded="false" />
+                    <element signature="e#6221#7938#0#PHP" expanded="false" />
+                    <element signature="e#14957#16044#0#PHP" expanded="false" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="KeyWord.php" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/KeyWord.php">
+          <file leaf-file-name="ImgLib.php" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/app/Helpers/TagLib/Channel/ImgLib.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-6.107143">
-                  <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="common.php" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/app/Helpers/common.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.328341">
-                  <caret line="20" column="55" selection-start-line="0" selection-start-column="0" selection-end-line="49" selection-end-column="1" />
-                  <folding />
+                <state vertical-scroll-proportion="1.0656682">
+                  <caret line="62" column="35" selection-start-line="62" selection-start-column="24" selection-end-line="62" selection-end-column="35" />
+                  <folding>
+                    <element signature="e#46#63#0#PHP" expanded="true" />
+                    <marker date="1519136385565" expanded="true" signature="2050:2102" placeholder="SELECT title... #@__archives" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -93,12 +90,12 @@
           <file leaf-file-name="Archives.php" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/Archives.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-4.8103447">
-                  <caret line="334" column="121" selection-start-line="334" selection-start-column="121" selection-end-line="334" selection-end-column="121" />
+                <state vertical-scroll-proportion="-3.0689654">
+                  <caret line="199" column="27" selection-start-line="199" selection-start-column="27" selection-end-line="199" selection-end-column="27" />
                   <folding>
-                    <element signature="e#23#52#0#PHP" expanded="true" />
-                    <element signature="e#6198#7868#0#PHP" expanded="false" />
-                    <element signature="e#14767#15854#0#PHP" expanded="false" />
+                    <element signature="e#23#46#0#PHP" expanded="true" />
+                    <element signature="e#6221#7938#0#PHP" expanded="false" />
+                    <element signature="e#14957#16044#0#PHP" expanded="false" />
                   </folding>
                 </state>
               </provider>
@@ -107,23 +104,22 @@
           <file leaf-file-name="ChannelType.php" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/ChannelType.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.6935484">
-                  <caret line="87" column="28" selection-start-line="87" selection-start-column="28" selection-end-line="87" selection-end-column="28" />
+                <state vertical-scroll-proportion="0.6121718">
+                  <caret line="77" column="41" selection-start-line="77" selection-start-column="41" selection-end-line="77" selection-end-column="41" />
                   <folding>
-                    <element signature="e#23#52#0#PHP" expanded="true" />
+                    <element signature="e#23#46#0#PHP" expanded="true" />
+                    <element signature="e#660#2157#0#PHP" expanded="false" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="DedeTag.php" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/Helpers/DedeTag.php">
+          <file leaf-file-name="DedeTagParse.php" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/Helpers/DedeTagParse.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-14.928572">
-                  <caret line="27" column="17" selection-start-line="27" selection-start-column="12" selection-end-line="27" selection-end-column="17" />
-                  <folding>
-                    <element signature="e#636#722#0#PHP" expanded="false" />
-                  </folding>
+                <state vertical-scroll-proportion="-3.3214285">
+                  <caret line="186" column="31" selection-start-line="186" selection-start-column="31" selection-end-line="186" selection-end-column="31" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -190,12 +186,14 @@
         <option value="$PROJECT_DIR$/app/TagIndex.php" />
         <option value="$PROJECT_DIR$/app/TagList.php" />
         <option value="$PROJECT_DIR$/app/Dede/Controllers/ContentController.php" />
-        <option value="$PROJECT_DIR$/app/Helpers/DedeAttributeParse.php" />
-        <option value="$PROJECT_DIR$/app/Helpers/DedeTagParse.php" />
-        <option value="$PROJECT_DIR$/app/Helpers/DedeAttribute.php" />
-        <option value="$PROJECT_DIR$/app/Helpers/DedeTag.php" />
-        <option value="$PROJECT_DIR$/app/Archives.php" />
         <option value="$PROJECT_DIR$/app/Helpers/common.php" />
+        <option value="$PROJECT_DIR$/app/Helpers/Common.php" />
+        <option value="$PROJECT_DIR$/app/Helpers/DedeTagParse.php" />
+        <option value="$PROJECT_DIR$/app/Helpers/DedeTag.php" />
+        <option value="$PROJECT_DIR$/app/Helpers/DedeAttributeParse.php" />
+        <option value="$PROJECT_DIR$/app/Helpers/DedeAttribute.php" />
+        <option value="$PROJECT_DIR$/app/Archives.php" />
+        <option value="$PROJECT_DIR$/app/Helpers/TagLib/Channel/ImgLib.php" />
         <option value="$PROJECT_DIR$/app/ChannelType.php" />
       </list>
     </option>
@@ -547,6 +545,54 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="laravel-dede" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="laravel-dede" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Helpers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TagLib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Channel" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="laravel-dede" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="laravel-dede" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Dede" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
@@ -568,15 +614,15 @@
     <property name="js-jscs-nodeInterpreter" value="E:\Program Files\nodejs\node.exe" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\phpStudy\PHPTutorial\WWW\laravel-dede\app\Helpers\pscws4\etc" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\phpStudy\WWW\laravel-dede\app\Helpers\TagLib\Channel" />
       <recent name="E:\vmShare\zhenghua\dede\laravel-dede\app\Helpers" />
       <recent name="E:\phpStudy\PHPTutorial\WWW\laravel-dede\resources" />
       <recent name="E:\phpStudy\PHPTutorial\WWW\laravel-dede\bootstrap\cache" />
       <recent name="E:\phpStudy\PHPTutorial\WWW\laravel-dede\app\Helpers\pscws4" />
-      <recent name="E:\phpStudy\PHPTutorial\WWW\laravel-dede\resources\pscws4" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\phpStudy\PHPTutorial\WWW\laravel-dede\app\Helpers\pscws4\etc" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -663,9 +709,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1705757" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1705757" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -692,14 +738,14 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28971255" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1705757" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32864866" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24946696" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -707,6 +753,14 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -718,32 +772,17 @@
           <url>file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php</url>
           <line>1693</line>
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/ChannelType.php</url>
+          <line>31</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="1" />
+      <option name="time" value="2" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Archives.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#23#52#0#PHP" expanded="true" />
-            <element signature="e#2550#3597#0#PHP" expanded="false" />
-            <element signature="e#3603#5093#0#PHP" expanded="false" />
-            <element signature="e#14767#15854#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Providers/AuthServiceProvider.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="31" column="23" selection-start-line="31" selection-start-column="23" selection-end-line="31" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Dede/Controllers/UploaderController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -902,13 +941,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Dede/Controllers/CatalogController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Arctiny.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -964,14 +996,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/KeyWord.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.107143">
-          <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Support/Collection.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.50345623">
@@ -1012,44 +1036,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Helpers/DedeAttributeParse.php">
+    <entry file="file://$PROJECT_DIR$/app/KeyWord.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26612905">
-          <caret line="20" column="11" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
+        <state vertical-scroll-proportion="0.1970046">
+          <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Helpers/TagLib/Channel/img.lib.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6347926">
+          <caret line="29" column="26" selection-start-line="29" selection-start-column="26" selection-end-line="29" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Dede/Controllers/CatalogController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.1970046">
+          <caret line="55" column="50" selection-start-line="55" selection-start-column="50" selection-end-line="55" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Helpers/DedeTag.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8639618">
+          <caret line="65" column="32" selection-start-line="65" selection-start-column="22" selection-end-line="65" selection-end-column="32" />
           <folding>
-            <element signature="e#434#1285#0#PHP" expanded="false" />
-            <element signature="e#814#1117#0#PHP" expanded="false" />
-            <element signature="e#1174#1279#0#PHP" expanded="false" />
-            <element signature="e#1621#2320#0#PHP" expanded="false" />
-            <element signature="e#1671#2310#0#PHP" expanded="false" />
-            <element signature="e#1952#2104#0#PHP" expanded="false" />
-            <element signature="e#2224#2310#0#PHP" expanded="false" />
-            <element signature="e#2351#2769#0#PHP" expanded="false" />
-            <element signature="e#2598#2738#0#PHP" expanded="false" />
-            <element signature="e#2838#4645#0#PHP" expanded="false" />
-            <element signature="e#2949#4635#0#PHP" expanded="false" />
-            <element signature="e#2996#3433#0#PHP" expanded="false" />
-            <element signature="e#3097#3433#0#PHP" expanded="false" />
-            <element signature="e#3140#3383#0#PHP" expanded="false" />
-            <element signature="e#3286#3383#0#PHP" expanded="false" />
-            <element signature="e#3490#4635#0#PHP" expanded="false" />
-            <element signature="e#3536#4096#0#PHP" expanded="false" />
-            <element signature="e#3585#3625#0#PHP" expanded="false" />
-            <element signature="e#3646#3762#0#PHP" expanded="false" />
-            <element signature="e#3783#3901#0#PHP" expanded="false" />
-            <element signature="e#3922#4078#0#PHP" expanded="false" />
-            <element signature="e#4128#4635#0#PHP" expanded="false" />
-            <element signature="e#4174#4621#0#PHP" expanded="false" />
-            <element signature="e#4544#4621#0#PHP" expanded="false" />
-            <element signature="e#4680#4824#0#PHP" expanded="false" />
+            <element signature="e#636#722#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Helpers/DedeAttribute.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25834364">
-          <caret line="16" column="23" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
+        <state vertical-scroll-proportion="0.8248848">
+          <caret line="57" column="20" selection-start-line="57" selection-start-column="20" selection-end-line="57" selection-end-column="20" />
           <folding>
             <element signature="e#416#471#0#PHP" expanded="false" />
             <element signature="e#876#950#0#PHP" expanded="false" />
@@ -1057,52 +1081,85 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Helpers/DedeTag.php">
+    <entry file="file://$PROJECT_DIR$/app/Helpers/DedeAttributeParse.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.928572">
-          <caret line="27" column="17" selection-start-line="27" selection-start-column="12" selection-end-line="27" selection-end-column="17" />
+        <state vertical-scroll-proportion="0.7373272">
+          <caret line="133" column="28" selection-start-line="133" selection-start-column="27" selection-end-line="133" selection-end-column="28" />
           <folding>
-            <element signature="e#636#722#0#PHP" expanded="false" />
+            <element signature="e#441#1295#0#PHP" expanded="false" />
+            <element signature="e#829#1132#0#PHP" expanded="false" />
+            <element signature="e#1189#1289#0#PHP" expanded="false" />
+            <element signature="e#1952#2091#0#PHP" expanded="false" />
+            <element signature="e#2199#2273#0#PHP" expanded="false" />
+            <element signature="e#2314#2715#0#PHP" expanded="false" />
+            <element signature="e#2554#2685#0#PHP" expanded="false" />
+            <element signature="e#2890#4364#0#PHP" expanded="false" />
+            <element signature="e#2928#3261#0#PHP" expanded="false" />
+            <element signature="e#2998#3261#0#PHP" expanded="false" />
+            <element signature="e#3025#3209#0#PHP" expanded="false" />
+            <element signature="e#3132#3209#0#PHP" expanded="false" />
+            <element signature="e#3305#4364#0#PHP" expanded="false" />
+            <element signature="e#3342#3887#0#PHP" expanded="false" />
+            <element signature="e#3376#3416#0#PHP" expanded="false" />
+            <element signature="e#3437#3553#0#PHP" expanded="false" />
+            <element signature="e#3574#3692#0#PHP" expanded="false" />
+            <element signature="e#3713#3869#0#PHP" expanded="false" />
+            <element signature="e#3907#4364#0#PHP" expanded="false" />
+            <element signature="e#3944#4350#0#PHP" expanded="false" />
+            <element signature="e#4289#4350#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Helpers/DedeTagParse.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.3721198">
-          <caret line="111" column="5" selection-start-line="111" selection-start-column="5" selection-end-line="111" selection-end-column="5" />
+        <state vertical-scroll-proportion="-3.3214285">
+          <caret line="186" column="31" selection-start-line="186" selection-start-column="31" selection-end-line="186" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Helpers/Common.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.043778803">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Archives.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.8103447">
-          <caret line="235" column="40" selection-start-line="235" selection-start-column="40" selection-end-line="235" selection-end-column="40" />
+        <state vertical-scroll-proportion="-6.8103447">
+          <caret line="342" column="90" selection-start-line="342" selection-start-column="81" selection-end-line="342" selection-end-column="90" />
           <folding>
-            <element signature="e#23#52#0#PHP" expanded="true" />
-            <element signature="e#2550#3597#0#PHP" expanded="false" />
-            <element signature="e#3603#5093#0#PHP" expanded="false" />
-            <element signature="e#14767#15854#0#PHP" expanded="false" />
+            <element signature="e#23#46#0#PHP" expanded="true" />
+            <element signature="e#2574#3621#0#PHP" expanded="false" />
+            <element signature="e#3627#5117#0#PHP" expanded="false" />
+            <element signature="e#6221#7938#0#PHP" expanded="false" />
+            <element signature="e#14957#16044#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/ChannelType.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6935484">
-          <caret line="87" column="28" selection-start-line="87" selection-start-column="28" selection-end-line="87" selection-end-column="28" />
+        <state vertical-scroll-proportion="0.6121718">
+          <caret line="77" column="41" selection-start-line="77" selection-start-column="41" selection-end-line="77" selection-end-column="41" />
           <folding>
-            <element signature="e#23#52#0#PHP" expanded="true" />
+            <element signature="e#23#46#0#PHP" expanded="true" />
+            <element signature="e#660#2157#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Helpers/common.php">
+    <entry file="file://$PROJECT_DIR$/app/Helpers/TagLib/Channel/ImgLib.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.328341">
-          <caret line="20" column="55" selection-start-line="0" selection-start-column="0" selection-end-line="49" selection-end-column="1" />
-          <folding />
+        <state vertical-scroll-proportion="1.0656682">
+          <caret line="62" column="35" selection-start-line="62" selection-start-column="24" selection-end-line="62" selection-end-column="35" />
+          <folding>
+            <element signature="e#46#63#0#PHP" expanded="true" />
+            <marker date="1519136385565" expanded="true" signature="2050:2102" placeholder="SELECT title... #@__archives" />
+          </folding>
         </state>
       </provider>
     </entry>
