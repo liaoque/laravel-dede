@@ -49,9 +49,9 @@ function ch_softlinks_all($fvalue, &$ctag, &$refObj, &$row)
     if(!empty($link_type)) $islinktype = true;
     $dtp = new DedeTagParse();
     $dtp->loadSource($fvalue);
-    if( !is_array($dtp->CTags) )
+    if( !is_array($dtp->cTags) )
     {
-        $dtp->Clear();
+        $dtp->clear();
         return "无链接信息！";
     }
     // 去除链接信息
@@ -70,7 +70,7 @@ function ch_softlinks_all($fvalue, &$ctag, &$refObj, &$row)
 
     $tempStr = GetSysTemplets('channel_downlinks.htm');
     $downlinks = '';
-    foreach($dtp->CTags as $ctag)
+    foreach($dtp->cTags as $ctag)
     {
         if($ctag->getName()=='link')
         {
@@ -100,7 +100,7 @@ function ch_softlinks_all($fvalue, &$ctag, &$refObj, &$row)
             $downlinks .= $temp;
         }
     }
-    $dtp->Clear();
+    $dtp->clear();
     //获取镜像功能的地址
     //必须设置为：[根据本地地址和服务器列表自动生成] 的情况
     $linkCount = 1;

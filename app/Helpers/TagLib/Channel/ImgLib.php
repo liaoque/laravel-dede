@@ -10,7 +10,14 @@ class ImgLib
 {
     public function ch_img($fvalue, $arcTag, $refObj, $fname = '')
     {
-        global $cfg_album_width, $cfg_album_row, $cfg_album_col, $cfg_album_pagesize, $cfg_album_style, $cfg_album_ddwidth, $cfg_basehost, $cfg_multi_site;
+        $cfg_album_width = CfgConfig::sysConfig()->cfg_album_width;
+        $cfg_album_row = CfgConfig::sysConfig()->cfg_album_row;
+        $cfg_album_col = CfgConfig::sysConfig()->cfg_album_col;
+        $cfg_album_pagesize = CfgConfig::sysConfig()->cfg_album_pagesize;
+        $cfg_album_style = CfgConfig::sysConfig()->cfg_album_style;
+        $cfg_album_ddwidth = CfgConfig::sysConfig()->cfg_album_ddwidth;
+        $cfg_basehost = CfgConfig::sysConfig()->cfg_basehost;
+        $cfg_multi_site = CfgConfig::sysConfig()->cfg_multi_site;
         $dtp = new DedeTagParse();
         $dtp->loadSource($fvalue);
         if (!is_array($dtp->cTags)) {
@@ -120,7 +127,8 @@ class ImgLib
                     $fields['text'] = $fields['textlink'] = '';
                     $fields['imgsrc'] = $fields['ddimg'];
                     $fields['imgwidth'] = " width='$ddmaxwidth' ";
-                    $fields['linkurl'] = "{$GLOBALS['cfg_phpurl']}/showphoto.php?aid={$aid}&src=" . urlencode($fields['imgsrctrue']) . "&npos={$GLOBAL['photoid']}";
+                    $fields['linkurl'] = '11111#########################';
+//                    $fields['linkurl'] = "{$GLOBALS['cfg_phpurl']}/showphoto.php?aid={$aid}&src=" . urlencode($fields['imgsrctrue']) . "&npos={$GLOBAL['photoid']}";
                 }
                 if (is_array($dtp2->cTags)) {
                     foreach ($dtp2->cTags as $tagid => $ctag) {

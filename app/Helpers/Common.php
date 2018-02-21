@@ -7,6 +7,8 @@
  */
 namespace App\Helpers;
 
+use App\CfgConfig;
+
 class Common
 {
     public static function mfTemplet($tmpdir, $cfg_df_style = null)

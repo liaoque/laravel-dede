@@ -18,9 +18,9 @@ function ch_specialtopic($noteinfo, $arcTag, $refObj, $fname='')
     $tempStr = GetSysTemplets('channel_spec_note.htm');
     $dtp = new DedeTagParse();
     $dtp->loadSource($noteinfo);
-    if(is_array($dtp->CTags))
+    if(is_array($dtp->cTags))
     {
-        foreach($dtp->CTags as $k=>$ctag)
+        foreach($dtp->cTags as $k=>$ctag)
         {
             $notename = $ctag->getAtt('name');
             //指定名称的专题节点
@@ -57,6 +57,6 @@ function ch_specialtopic($noteinfo, $arcTag, $refObj, $fname='')
             if($noteid != '' && $ctag->getAtt('noteid')==$noteid) break;
         }
     }
-    $dtp->Clear();
+    $dtp->clear();
     return $rvalue;
 }

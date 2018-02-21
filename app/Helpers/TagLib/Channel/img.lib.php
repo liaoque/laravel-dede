@@ -18,9 +18,9 @@ function ch_img($fvalue,&$arcTag,&$refObj,$fname='')
     global $cfg_album_width,$cfg_album_row,$cfg_album_col,$cfg_album_pagesize,$cfg_album_style,$cfg_album_ddwidth,$cfg_basehost,$cfg_multi_site;
     $dtp = new DedeTagParse();
     $dtp->loadSource($fvalue);
-    if(!is_array($dtp->CTags))
+    if(!is_array($dtp->cTags))
     {
-        $dtp->Clear();
+        $dtp->clear();
         return "无图片信息！";
     }
     $pagestyle = $cfg_album_style;
@@ -80,7 +80,7 @@ function ch_img($fvalue,&$arcTag,&$refObj,$fname='')
     $title = $row['title'];
     $revalue = '';
     $GLOBAL['photoid'] = 0;
-    foreach($dtp->CTags as $ctag)
+    foreach($dtp->cTags as $ctag)
     {
         if($ctag->getName()=="img")
         {
@@ -149,9 +149,9 @@ function ch_img($fvalue,&$arcTag,&$refObj,$fname='')
                 $fields['imgwidth'] = " width='$ddmaxwidth' ";
                 $fields['linkurl'] = "{$GLOBALS['cfg_phpurl']}/showphoto.php?aid={$refObj->ArcID}&src=".urlencode($fields['imgsrctrue'])."&npos={$GLOBAL['photoid']}";
             }
-            if(is_array($dtp2->CTags))
+            if(is_array($dtp2->cTags))
             {
-                foreach($dtp2->CTags as $tagid=>$ctag)
+                foreach($dtp2->cTags as $tagid=>$ctag)
                 {
                     if(isset($fields[$ctag->getName()]))
                     {
