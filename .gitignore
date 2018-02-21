@@ -47,3 +47,12 @@ com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
 fabric.properties
+
+
+vendor/
+node_modules/
+npm-debug.log
+
+storage/app/
+storage/framework/
+storage/logs/
