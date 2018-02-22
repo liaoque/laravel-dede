@@ -12,6 +12,7 @@ namespace App\Helpers\TagLib\Channel;
  * @link           http://www.dedecms.com
  */
 
+use App\Download;
 use App\Helpers\Common;
 use App\Helpers\DedeTagParse;
 use App\SoftConfig;
@@ -88,12 +89,13 @@ class SoftlinksLib
                 //支持http,迅雷下载,ftp,flashget
                 if (!preg_match("#^http:\/\/|^thunder:\/\/|^ftp:\/\/|^flashget:\/\/#i", $link)) {
 //                    $link = $GLOBALS['cfg_mainsite'] . $link;
-                    $link = '';
+                    $link = '33333333333333333333########################';
                 }
                 $downloads = getDownloads($link);
                 $uhash = substr(md5($link), 0, 24);
                 if ($row['gotojump'] == 1) {
-                    $link = $phppath . "/download.php?open=2&id={$refObj->ArcID}&uhash={$uhash}";
+//                    $link = $phppath . "/download.php?open=2&id={$refObj->ArcID}&uhash={$uhash}";
+                    $link = "44444444444444444444########################";
                 }
                 $temp = str_replace("~link~", $link, $tempStr);
                 $temp = str_replace("~server~", $serverName, $temp);
@@ -114,10 +116,11 @@ class SoftlinksLib
                 if (!empty($link_type) && $link_type != trim($serverType)) continue;
 
                 $link = trim(preg_replace("#\/$#", "", $link)) . $firstLink;
-                $downloads = getDownloads($link);
+                $downloads = $this->getDownloads($link);
                 $uhash = substr(md5($link), 0, 24);
                 if ($row['gotojump'] == 1) {
-                    $link = $phppath . "/download.php?open=2&id={$refObj->ArcID}&uhash={$uhash}";
+//                    $link = $phppath . "/download.php?open=2&id={$refObj->ArcID}&uhash={$uhash}";
+                    $link = "5555555555555555555########################";
                 }
                 $temp = str_replace("~link~", $link, $tempStr);
                 $temp = str_replace("~server~", $serverName, $temp);
@@ -130,10 +133,8 @@ class SoftlinksLib
 
     public function getDownloads($url)
     {
-        global $dsql;
         $hash = md5($url);
-        $query = "SELECT downloads FROM `#@__downloads` WHERE hash='$hash' ";
-        $row = $dsql->GetOne($query);
+        $row = Download::where('hash', '=', $hash)->first()->toArray();
         if (is_array($row)) {
             $downloads = $row['downloads'];
         } else {

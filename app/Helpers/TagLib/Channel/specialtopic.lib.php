@@ -15,7 +15,7 @@ function ch_specialtopic($noteinfo, $arcTag, $refObj, $fname='')
     if($noteinfo=='') return '';
     $noteid = $arcTag->getAtt('noteid');
     $rvalue = '';
-    $tempStr = GetSysTemplets('channel_spec_note.htm');
+    $tempStr =Common::getSysTemplets('channel_spec_note.htm');
     $dtp = new DedeTagParse();
     $dtp->loadSource($noteinfo);
     if(is_array($dtp->cTags))
@@ -43,7 +43,7 @@ function ch_specialtopic($noteinfo, $arcTag, $refObj, $fname='')
                 $stypeid = $ctag->getAtt('typeid');
             }
 
-            $listTemplet = trim($ctag->getInnerText())!='' ? $ctag->getInnerText() : GetSysTemplets('spec_arclist.htm');
+            $listTemplet = trim($ctag->getInnerText())!='' ? $ctag->getInnerText() :Common::getSysTemplets('spec_arclist.htm');
             
             $idvalue = lib_arclistDone
                       (

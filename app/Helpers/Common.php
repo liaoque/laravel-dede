@@ -21,28 +21,21 @@ class Common
         return $tmpdir;
     }
 
-    public static function  htmlReplace($str,$rptype=0)
+    public static function htmlReplace($str, $rptype = 0)
     {
         $str = stripslashes($str);
         $str = preg_replace("/<[\/]{0,1}style([^>]*)>(.*)<\/style>/i", '', $str);//2011-06-30 禁止会员投稿添加css样式 (by:织梦的鱼)
-        if($rptype==0)
-        {
+        if ($rptype == 0) {
             $str = htmlspecialchars($str);
-        }
-        else if($rptype==1)
-        {
+        } else if ($rptype == 1) {
             $str = htmlspecialchars($str);
             $str = str_replace("　", ' ', $str);
             $str = preg_replace("/[\r\n\t ]{1,}/", ' ', $str);
-        }
-        else if($rptype==2)
-        {
+        } else if ($rptype == 2) {
             $str = htmlspecialchars($str);
             $str = str_replace("　", '', $str);
             $str = preg_replace("/[\r\n\t ]/", '', $str);
-        }
-        else
-        {
+        } else {
             $str = preg_replace("/[\r\n\t ]{1,}/", ' ', $str);
             $str = preg_replace('/script/i', 'ｓｃｒｉｐｔ', $str);
             $str = preg_replace("/<[\/]{0,1}(link|meta|ifr|fra)[^>]*>/i", '', $str);
@@ -52,8 +45,8 @@ class Common
 
     public static function getSysTemplets($filename)
     {
-        $sysConfig=CfgConfig::sysConfig();
-        return getTemplets($sysConfig->cfg_basedir.$sysConfig->cfg_templets_dir.'/system/'.$filename);
+        $sysConfig = CfgConfig::sysConfig();
+        return getTemplets($sysConfig->cfg_basedir . $sysConfig->cfg_templets_dir . '/system/' . $filename);
     }
 
     public static function getTemplets($filename)
@@ -61,5 +54,9 @@ class Common
         return file_exists($filename) ? file_get_contents($filename) : '';
     }
 
+    public static function attDef($oldvar, $nv)
+    {
+        return empty($oldvar) ? $nv : $oldvar;
+    }
 
 }

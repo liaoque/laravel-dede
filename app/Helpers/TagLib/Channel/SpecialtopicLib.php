@@ -1,4 +1,10 @@
 <?php
+namespace App\Helpers\TagLib\Channel;
+
+use App\Helpers\Common;
+use App\Helpers\DedeTagParse;
+use App\Helpers\TagLib\ArclistLib;
+
 /**
  * 专题主题调用标签
  *
@@ -8,56 +14,53 @@
  * @license        http://help.dedecms.com/usersguide/license.html
  * @link           http://www.dedecms.com
  */
- class SpecialtopicLib{
-    public function ch_specialtopic($noteinfo, $arcTag, $refObj, $fname='')
-     {
-         require_once(DEDEINC.'/taglib/arclist.lib.php');
-         if($noteinfo=='') return '';
-         $noteid = $arcTag->getAtt('noteid');
-         $rvalue = '';
-         $tempStr = GetSysTemplets('channel_spec_note.htm');
-         $dtp = new DedeTagParse();
-         $dtp->loadSource($noteinfo);
-         if(is_array($dtp->cTags))
-         {
-             foreach($dtp->cTags as $k=>$ctag)
-             {
-                 $notename = $ctag->getAtt('name');
-                 //指定名称的专题节点
-                 if($noteid != '' && $ctag->getAtt('noteid') != $noteid)
-                 {
-                     continue;
-                 }
-                 $isauto = $ctag->getAtt('isauto');
-                 $idlist = trim($ctag->getAtt('idlist'));
-                 $rownum = trim($ctag->getAtt('rownum'));
-                 $keywords = '';
-                 $stypeid = 0;
-                 if(empty($rownum)) $rownum = 40;
+class SpecialtopicLib
+{
+    public function ch_specialtopic($noteinfo, $arcTag, $refObj, $fname = '')
+    {
 
-                 //通过关键字和栏目ID自动获取模式
-                 if($isauto==1)
-                 {
-                     $idlist = '';
-                     $keywords = trim($ctag->getAtt('keywords'));
-                     $stypeid = $ctag->getAtt('typeid');
-                 }
+        if ($noteinfo == '') return '';
+        $noteid = $arcTag->getAtt('noteid');
+        $rvalue = '';
+        $tempStr = Common::getSysTemplets('channel_spec_note.htm');
+        $dtp = new DedeTagParse();
+        $dtp->loadSource($noteinfo);
+        if (is_array($dtp->cTags)) {
+            foreach ($dtp->cTags as $k => $ctag) {
+                $notename = $ctag->getAtt('name');
+                //指定名称的专题节点
+                if ($noteid != '' && $ctag->getAtt('noteid') != $noteid) {
+                    continue;
+                }
+                $isauto = $ctag->getAtt('isauto');
+                $idlist = trim($ctag->getAtt('idlist'));
+                $rownum = trim($ctag->getAtt('rownum'));
+                $keywords = '';
+                $stypeid = 0;
+                if (empty($rownum)) $rownum = 40;
 
-                 $listTemplet = trim($ctag->getInnerText())!='' ? $ctag->getInnerText() : GetSysTemplets('spec_arclist.htm');
+                //通过关键字和栏目ID自动获取模式
+                if ($isauto == 1) {
+                    $idlist = '';
+                    $keywords = trim($ctag->getAtt('keywords'));
+                    $stypeid = $ctag->getAtt('typeid');
+                }
 
-                 $idvalue = lib_arclistDone
-                 (
-                     $refObj, $ctag, $stypeid, $rownum, $ctag->getAtt('col'), $ctag->getAtt('titlelen'),$ctag->getAtt('infolen'),
-                     $ctag->getAtt('imgwidth'), $ctag->getAtt('imgheight'), 'all', 'default', $keywords, $listTemplet, 0, $idlist,
-                     $ctag->getAtt('channel'), '', $ctag->getAtt('att')
-                 );
-                 $notestr = str_replace('~notename~', $notename, $tempStr);
-                 $notestr = str_replace('~spec_arclist~', $idvalue, $notestr);
-                 $rvalue .= $notestr;
-                 if($noteid != '' && $ctag->getAtt('noteid')==$noteid) break;
-             }
-         }
-         $dtp->clear();
-         return $rvalue;
-     }
- }
+                $listTemplet = trim($ctag->getInnerText()) != '' ? $ctag->getInnerText() :Common::getSysTemplets('spec_arclist.htm');
+
+                $idvalue = ArclistLib::lib_arclistDone
+                (
+                    $refObj, $ctag, $stypeid, $rownum, $ctag->getAtt('col'), $ctag->getAtt('titlelen'), $ctag->getAtt('infolen'),
+                    $ctag->getAtt('imgwidth'), $ctag->getAtt('imgheight'), 'all', 'default', $keywords, $listTemplet, 0, $idlist,
+                    $ctag->getAtt('channel'), '', $ctag->getAtt('att')
+                );
+                $notestr = str_replace('~notename~', $notename, $tempStr);
+                $notestr = str_replace('~spec_arclist~', $idvalue, $notestr);
+                $rvalue .= $notestr;
+                if ($noteid != '' && $ctag->getAtt('noteid') == $noteid) break;
+            }
+        }
+        $dtp->clear();
+        return $rvalue;
+    }
+}
