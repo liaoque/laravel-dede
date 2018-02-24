@@ -14,12 +14,16 @@ namespace App\Helpers\TagLib;
  */
 use App\Archives;
 use App\Arctype;
+use App\CfgConfig;
+use App\ChannelType;
+use App\Helpers\Common;
+use App\Helpers\DedeTagParse;
 
 /**
  *  arclist解析标签
  *
  * @access    public
- * @param     object $ctag 解析标签
+ * @param     object $cTag 解析标签
  * @param     object $refObj 引用对象
  * @return    string  成功后返回解析后的标签内容
  */
@@ -59,24 +63,24 @@ use App\Arctype;
 
 class ArclistLib
 {
-    function lib_arclist(&$ctag, &$refObj)
+    function lib_arclist(&$cTag, &$refObj)
     {
         global $envs;
 
         $autopartid = 0;
         $tagid = '';
-        $tagname = $ctag->GetTagName();
-        $channelid = $ctag->getAtt('channelid');
+        $tagname = $cTag->GetTagName();
+        $channelid = $cTag->getAtt('channelid');
 
         //增加对分页内容的处理
-        $pagesize = $ctag->getAtt('pagesize');
+        $pagesize = $cTag->getAtt('pagesize');
         if ($pagesize == '') {
             $multi = 0;
         } else {
-            $tagid = $ctag->getAtt('tagid');
+            $tagid = $cTag->getAtt('tagid');
         }
         // arclist是否需要weight排序,默认为"N",如果需要排序则设置为"Y"
-        $isweight = $ctag->getAtt('isweight');
+        $isweight = $cTag->getAtt('isweight');
 
         if ($tagname == 'imglist' || $tagname == 'imginfolist') {
             $listtype = 'image';
@@ -86,51 +90,51 @@ class ArclistLib
         } else if ($tagname == 'coolart') {
             $listtype = 'commend';
         } else if ($tagname == 'autolist') {
-            $autopartid = $ctag->getAtt('partsort');
+            $autopartid = $cTag->getAtt('partsort');
         } else {
-            $listtype = $ctag->getAtt('type');
+            $listtype = $cTag->getAtt('type');
         }
 
         //排序
-        if ($ctag->getAtt('sort') != '') $orderby = $ctag->getAtt('sort');
+        if ($cTag->getAtt('sort') != '') $orderby = $cTag->getAtt('sort');
         else if ($tagname == 'hotart') $orderby = 'click';
-        else $orderby = $ctag->getAtt('orderby');
+        else $orderby = $cTag->getAtt('orderby');
 
         //对相应的标记使用不同的默认innertext
-        if (trim($ctag->GetInnerText()) != '') $innertext = $ctag->GetInnerText();
+        if (trim($cTag->GetInnerText()) != '') $innertext = $cTag->GetInnerText();
         else if ($tagname == 'imglist') $innertext = Common::getSysTemplets('part_imglist.htm');
         else if ($tagname == 'imginfolist') $innertext = Common::getSysTemplets('part_imginfolist.htm');
         else $innertext = Common::getSysTemplets("part_arclist.htm");
 
         //兼容titlelength
-        if ($ctag->getAtt('titlelength') != '') $titlelen = $ctag->getAtt('titlelength');
-        else $titlelen = $ctag->getAtt('titlelen');
+        if ($cTag->getAtt('titlelength') != '') $titlelen = $cTag->getAtt('titlelength');
+        else $titlelen = $cTag->getAtt('titlelen');
 
         //兼容infolength
-        if ($ctag->getAtt('infolength') != '') $infolen = $ctag->getAtt('infolength');
-        else $infolen = $ctag->getAtt('infolen');
+        if ($cTag->getAtt('infolength') != '') $infolen = $cTag->getAtt('infolength');
+        else $infolen = $cTag->getAtt('infolen');
 
-        $typeid = trim($ctag->getAtt('typeid'));
+        $typeid = trim($cTag->getAtt('typeid'));
         if (empty($typeid)) {
             $typeid = (isset($refObj->Fields['typeid']) ? $refObj->Fields['typeid'] : $envs['typeid']);
         }
 
         if ($listtype == 'autolist') {
-            $typeid = lib_GetAutoChannelID($ctag->getAtt('partsort'), $typeid);
+            $typeid = lib_GetAutoChannelID($cTag->getAtt('partsort'), $typeid);
         }
 
-        if ($ctag->getAtt('att') == '') {
-            $flag = $ctag->getAtt('flag');
+        if ($cTag->getAtt('att') == '') {
+            $flag = $cTag->getAtt('flag');
         } else {
-            $flag = $ctag->getAtt('att');
+            $flag = $cTag->getAtt('att');
         }
 
         return lib_arclistDone
         (
-            $refObj, $ctag, $typeid, $ctag->getAtt('row'), $ctag->getAtt('col'), $titlelen, $infolen,
-            $ctag->getAtt('imgwidth'), $ctag->getAtt('imgheight'), $listtype, $orderby,
-            $ctag->getAtt('keyword'), $innertext, $envs['aid'], $ctag->getAtt('idlist'), $channelid,
-            $ctag->getAtt('limit'), $flag, $ctag->getAtt('orderway'), $ctag->getAtt('subday'), $ctag->getAtt('noflag'),
+            $refObj, $cTag, $typeid, $cTag->getAtt('row'), $cTag->getAtt('col'), $titlelen, $infolen,
+            $cTag->getAtt('imgwidth'), $cTag->getAtt('imgheight'), $listtype, $orderby,
+            $cTag->getAtt('keyword'), $innertext, $envs['aid'], $cTag->getAtt('idlist'), $channelid,
+            $cTag->getAtt('limit'), $flag, $cTag->getAtt('orderway'), $cTag->getAtt('subday'), $cTag->getAtt('noflag'),
             $tagid, $pagesize, $isweight
         );
     }
@@ -140,7 +144,7 @@ class ArclistLib
      *
      * @access    public
      * @param     object $refObj 引用对象
-     * @param     object $ctag 标签
+     * @param     object $cTag 标签
      * @param     int $typeid 栏目ID
      * @param     int $row 调用行数
      * @param     int $titlelen 字符串长度
@@ -164,11 +168,14 @@ class ArclistLib
      * @param     string $isweight 是否需要对检索出来的内容按照weight排序
      * @return    string
      */
-    public static function lib_arclistDone($refObj, $ctag, $typeid = 0, $row = 10, $col = 1, $titlelen = 30, $infolen = 160,
+    public static function lib_arclistDone($refObj, $cTag, $typeid = 0, $row = 10, $col = 1, $titlelen = 30, $infolen = 160,
                                            $imgwidth = 120, $imgheight = 90, $listtype = 'all', $orderby = 'default', $keyword = '',
                                            $innertext = '', $arcid = 0, $idlist = '', $channelid = 0, $limit = '', $att = '', $order = 'desc', $subday = 0, $noflag = '', $tagid = '', $pagesize = 0, $isweight = 'N')
     {
-        global $dsql, $PubFields, $cfg_keyword_like, $cfg_index_cache, $_arclistEnv, $envs, $cfg_cache_type, $cfg_digg_update;
+        $cfg_keyword_like = CfgConfig::sysConfig()->cfg_keyword_like;
+        $cfg_index_cache = CfgConfig::sysConfig()->cfg_index_cache;
+        $cfg_cache_type = CfgConfig::sysConfig()->cfg_cache_type;
+        $cfg_digg_update = CfgConfig::sysConfig()->cfg_digg_update;
         $row = Common::attDef($row, 10);
         $titlelen = Common::attDef($titlelen, 30);
         $infolen = Common::attDef($infolen, 160);
@@ -186,8 +193,8 @@ class ArclistLib
         $keyword = trim($keyword);
         $innertext = trim($innertext);
 
-        $tablewidth = $ctag->getAtt('tablewidth');
-        $writer = $ctag->getAtt('writer');
+        $tablewidth = $cTag->getAtt('tablewidth');
+        $writer = $cTag->getAtt('writer');
         if ($tablewidth == "") $tablewidth = 100;
         if (empty($col)) $col = 1;
         $colWidth = ceil(100 / $col);
@@ -200,7 +207,7 @@ class ArclistLib
             'orderby', 'keyword', 'tablewidth', 'col', 'colWidth');
 
         if ($innertext == '') $innertext = Common::getSysTemplets('part_arclist.htm');
-        if (@$ctag->getAtt('getall') == 1) $getall = 1;
+        if (@$cTag->getAtt('getall') == 1) $getall = 1;
         else $getall = 0;
 
         if ($att == '0') $att = '';
@@ -208,7 +215,6 @@ class ArclistLib
         if ($att == '1') $att = 'h';
 
         $orwheres = array();
-        $maintable = '#@__archives';
         //按不同情况设定SQL条件 排序方式
         $query = (new Archives)->newQuery();
         if ($idlist == '') {
@@ -261,7 +267,7 @@ class ArclistLib
                     if ($getall == 1 || empty($refObj->Fields['typeid'])) {
                         $typeids = explode(',', $typeid);
                         foreach ($typeids as $ttid) {
-                            $typeidss[] = GetSonIds($ttid);
+                            $typeidss[] = Common::getSonIds($ttid);
                         }
                         $typeidStr = join(',', $typeidss);
                         $typeidss = explode(',', $typeidStr);
@@ -274,12 +280,12 @@ class ArclistLib
                 } else {
                     //处理交叉栏目
                     $CrossID = [];
-                    if ($ctag->getAtt('cross') == '1') {
+                    if ($cTag->getAtt('cross') == '1') {
 //                        $arr = $dsql->GetOne("SELECT `id`,`topid`,`cross`,`crossid`,`ispart`,`typename` FROM `#@__arctype` WHERE id='$typeid' ");
                         $arr = Arctype::find($typeid)->toArray();
                         if ($arr['cross'] == 0 || ($arr['cross'] == 2 && trim($arr['crossid'] == ''))) {
-//                            $orwheres[] = ' arc.typeid IN (' . GetSonIds($typeid) . ')';
-                            $query->whereIn("typeid", GetSonIds($typeid));
+//                            $orwheres[] = ' arc.typeid IN (' . Common::getSonIds($typeid) . ')';
+                            $query->whereIn("typeid", Common::getSonIds($typeid));
                         } else {
                             $selqueryList = [];
                             if ($arr['cross'] == 1) {
@@ -307,11 +313,11 @@ class ArclistLib
                         }
                     }
                     if ($CrossID) {
-//                        $orwheres[] = ' arc.typeid IN (' . GetSonIds($typeid) . ')';
-                        $query->whereIn("typeid", GetSonIds($typeid));
+//                        $orwheres[] = ' arc.typeid IN (' . Common::getSonIds($typeid) . ')';
+                        $query->whereIn("typeid", Common::getSonIds($typeid));
                     } else {
-//                        $orwheres[] = ' arc.typeid IN (' . GetSonIds($typeid) . ',' . $CrossID . ')';
-                        $query->whereIn("typeid", GetSonIds($typeid) . ',' . $CrossID);
+//                        $orwheres[] = ' arc.typeid IN (' . Common::getSonIds($typeid) . ',' . $CrossID . ')';
+                        $query->whereIn("typeid", Common::getSonIds($typeid) . ',' . $CrossID);
                     }
                 }
             }
@@ -319,16 +325,21 @@ class ArclistLib
             //频道ID
             if (preg_match('#spec#i', $listtype)) $channelid == -1;
 
-            if (!empty($channelid)) $orwheres[] = " And arc.channel = '$channelid' ";
+            if (!empty($channelid)) {
+                $query->where("channel", $channelid);
+//                $orwheres[] = " And arc.channel = '$channelid' ";
+            }
 
             if (!empty($noflag)) {
                 if (!preg_match('#,#', $noflag)) {
-                    $orwheres[] = " FIND_IN_SET('$noflag', arc.flag)<1 ";
+//                    $orwheres[] = " FIND_IN_SET('$noflag', arc.flag)<1 ";
+                    $query->whereRaw(" FIND_IN_SET(?, flag)<1 ", $noflag);
                 } else {
                     $noflags = explode(',', $noflag);
                     foreach ($noflags as $noflag) {
                         if (trim($noflag) == '') continue;
-                        $orwheres[] = " FIND_IN_SET('$noflag', arc.flag)<1 ";
+                        $query->whereRaw(" FIND_IN_SET(?, flag)<1 ", $noflag);
+//                        $orwheres[] = " FIND_IN_SET('$noflag', arc.flag)<1 ";
                     }
                 }
             }
@@ -341,40 +352,68 @@ class ArclistLib
 
         //文档排序的方式
         $ordersql = '';
-        if ($orderby == 'hot' || $orderby == 'click') $ordersql = " ORDER BY arc.click $orderWay";
-        else if ($orderby == 'sortrank' || $orderby == 'pubdate') $ordersql = " ORDER BY arc.sortrank $orderWay";
-        else if ($orderby == 'id') $ordersql = "  ORDER BY arc.id $orderWay";
-        else if ($orderby == 'near') $ordersql = " ORDER BY ABS(arc.id - " . $arcid . ")";
-        else if ($orderby == 'lastpost') $ordersql = "  ORDER BY arc.lastpost $orderWay";
-        else if ($orderby == 'scores') $ordersql = "  ORDER BY arc.scores $orderWay";
-        //功能：增加按好评数和差评数调用
-        else if ($orderby == 'goodpost') $ordersql = " order by arc.goodpost $orderWay";
-        else if ($orderby == 'badpost') $ordersql = " order by arc.badpost $orderWay";
-        else if ($orderby == 'rand') $ordersql = "  ORDER BY rand()";
-        else $ordersql = " ORDER BY arc.sortrank $orderWay";
+        if ($orderby == 'hot' || $orderby == 'click') {
+            $query->orderBy('click', $orderWay);
+//            $ordersql = " ORDER BY arc.click $orderWay";
+        } else if ($orderby == 'sortrank' || $orderby == 'pubdate') {
+            $query->orderBy('sortrank', $orderWay);
+//            $ordersql = " ORDER BY arc.sortrank $orderWay";
+        } else if ($orderby == 'id') {
+            $query->orderBy('id', $orderWay);
+//            $ordersql = "  ORDER BY arc.id $orderWay";
+        } else if ($orderby == 'near') {
+            $query->orderByRaw(" ORDER BY ABS(arc.id - " . $arcid . ")");
+//            $ordersql = " ORDER BY ABS(arc.id - " . $arcid . ")";
+        } else if ($orderby == 'lastpost') {
+            $query->orderBy('lastpost', $orderWay);
+//            $ordersql = "  ORDER BY arc.lastpost $orderWay";
+        } else if ($orderby == 'scores') {
+            $query->orderBy('scores', $orderWay);
+//            $ordersql = "  ORDER BY arc.scores $orderWay";
+        } //功能：增加按好评数和差评数调用
+        else if ($orderby == 'goodpost') {
+            $query->orderBy('goodpost', $orderWay);
+//            $ordersql = " order by arc.goodpost $orderWay";
+        } else if ($orderby == 'badpost') {
+            $query->orderBy('badpost', $orderWay);
+//            $ordersql = " order by arc.badpost $orderWay";
+        } else if ($orderby == 'rand') {
+            $query->orderByRaw("  ORDER BY rand()");
+//            $ordersql = "  ORDER BY rand()";
+        } else {
+            $query->orderBy('sortrank', $orderWay);
+//            $ordersql = " ORDER BY arc.sortrank $orderWay";
+        }
 
         //limit条件
         $limit = trim(preg_replace('#limit#is', '', $limit));
         if ($limit != '') {
-            $limitsql = " LIMIT $limit ";
+//            $limitsql = " LIMIT $limit ";
             $limitarr = explode(',', $limit);
             $line = isset($limitarr[1]) ? $limitarr[1] : $line;
-        } else $limitsql = " LIMIT 0,$line ";
+            $query->skip($limitarr[0])->take($line);
 
-        $orwhere = '';
-        if (isset($orwheres[0])) {
-            $orwhere = join(' And ', $orwheres);
-            $orwhere = preg_replace("#^ And#is", '', $orwhere);
-            $orwhere = preg_replace("#And[ ]{1,}And#is", 'And ', $orwhere);
+
+        } else {
+            $query->skip(0)->take($line);
+//            $limitsql = " LIMIT 0,$line ";
         }
-        if ($orwhere != '') $orwhere = " WHERE $orwhere ";
+
+//        $orwhere = '';
+//        if (isset($orwheres[0])) {
+//            $orwhere = join(' And ', $orwheres);
+//            $orwhere = preg_replace("#^ And#is", '', $orwhere);
+//            $orwhere = preg_replace("#And[ ]{1,}And#is", 'And ', $orwhere);
+//        }
+//        if ($orwhere != '') $orwhere = " WHERE $orwhere ";
 
         //获取附加表信息
-        $addfield = trim($ctag->getAtt('addfields'));
+        $addfield = trim($cTag->getAtt('addfields'));
         $addfieldsSql = '';
         $addfieldsSqlJoin = '';
         if ($addfield != '' && !empty($channelid)) {
-            $row = $dsql->GetOne("SELECT addtable FROM `#@__channeltype` WHERE id='$channelid' ");
+//            $row = $dsql->GetOne("SELECT addtable FROM `#@__channeltype` WHERE id='$channelid' ");
+            $row = ChannelType::find($channelid)->toArray();
             if (isset($row['addtable']) && trim($row['addtable']) != '') {
                 $addtable = trim($row['addtable']);
                 $addfields = explode(',', $addfield);
@@ -383,16 +422,16 @@ class ArclistLib
                 $addfieldsSqlJoin = " LEFT JOIN `$addtable` addf ON addf.aid = arc.id ";
             }
         }
-
-        $query = "SELECT arc.*,tp.typedir,tp.typename,tp.corank,tp.isdefault,tp.defaultname,tp.namerule,
-        tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath
-        $addfieldsSql
-        FROM `$maintable` arc LEFT JOIN `#@__arctype` tp on arc.typeid=tp.id
-        $addfieldsSqlJoin
-        $orwhere $ordersql $limitsql";
+//
+//        $query = "SELECT arc.*,tp.typedir,tp.typename,tp.corank,tp.isdefault,tp.defaultname,tp.namerule,
+//        tp.namerule2,tp.ispart,tp.moresite,tp.siteurl,tp.sitepath
+//        $addfieldsSql
+//        FROM `$maintable` arc LEFT JOIN `#@__arctype` tp on arc.typeid=tp.id
+//        $addfieldsSqlJoin
+//        $orwhere $ordersql $limitsql";
 
         //统一hash
-        $taghash = md5(serialize($ctag) . $typeid);
+        $taghash = md5(serialize($cTag) . $typeid);
         $needSaveCache = true;
         //进行tagid的默认处理
         if ($pagesize > 0) $tagid = Common::attDef($tagid, 'tag' . $taghash);
@@ -413,62 +452,92 @@ class ArclistLib
 
         //指定了id或使用缓存中的id
         if ($idlist != '') {
-            $query = "SELECT arc.*,tp.typedir,tp.typename,tp.corank,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,
-            tp.moresite,tp.siteurl,tp.sitepath
-            $addfieldsSql
-             FROM `$maintable` arc left join `#@__arctype` tp on arc.typeid=tp.id
-             $addfieldsSqlJoin
-          WHERE arc.id in($idlist) $ordersql ";
+            $query->whereIn('id', $idlist);
+//            $query = "SELECT arc.*,tp.typedir,tp.typename,tp.corank,tp.isdefault,tp.defaultname,tp.namerule,tp.namerule2,tp.ispart,
+//            tp.moresite,tp.siteurl,tp.sitepath
+//            $addfieldsSql
+//             FROM `$maintable` arc left join `#@__arctype` tp on arc.typeid=tp.id
+//             $addfieldsSqlJoin
+//          WHERE arc.id in($idlist) $ordersql ";
         }
 
         // 好评差评缓存更新
         if ($cfg_digg_update > 0) {
             if ($orderby == 'goodpost' || $orderby == 'badpost') {
-                $t1 = ExecTime();
-                $postsql = "SELECT arc.id,arc.goodpost,arc.badpost,arc.scores
-				FROM `$maintable` arc
-				$orwhere $ordersql $limitsql";
+//                $t1 = Common::execTime();
+//                $postsql = "SELECT arc.id,arc.goodpost,arc.badpost,arc.scores
+//				FROM `$maintable` arc
+//				$orwhere $ordersql $limitsql";
 
-                if ($idlist != '') {
-                    $postsql = "SELECT arc.id,arc.goodpost,arc.badpost,arc.scores
-					 FROM `$maintable` arc
-				  WHERE arc.id in($idlist) $ordersql ";
-                }
-                $dsql->SetQuery($query);
-                $dsql->Execute('lit');
-                while ($row = $dsql->GetArray('lit')) {
+//                if ($idlist != '') {
+//                    $postsql = "SELECT arc.id,arc.goodpost,arc.badpost,arc.scores
+//					 FROM `$maintable` arc
+//				  WHERE arc.id in($idlist) $ordersql ";
+//                }
+//                $dsql->SetQuery($query);
+//                $dsql->Execute('lit');
+                $rowList = $query->all()->toArray();
+                foreach ($rowList as $row) {
                     $prefix = 'diggCache';
                     $key = 'aid-' . $row['id'];
-                    $cacherow = GetCache($prefix, $key);
+//                    $cacherow = GetCache($prefix, $key);
                     $setsql = array();
+                    $archives = Archives::find($row['id']);
                     if (!empty($cacherow['scores']) && $cacherow['scores'] != $row['scores']) {
-                        $setsql[] = "scores = {$cacherow['scores']}";
+                        $archives->scores = $cacherow['scores'];
+//                        $setsql[] = "scores = {$cacherow['scores']}";
                     }
                     if (!empty($cacherow['goodpost']) && $cacherow['goodpost'] != $row['goodpost']) {
-                        $setsql[] = "goodpost = {$cacherow['goodpost']}";
+                        $archives->goodpost = $cacherow['goodpost'];
+//                        $setsql[] = "goodpost = {$cacherow['goodpost']}";
                     }
                     if (!empty($cacherow['badpost']) && $cacherow['badpost'] != $row['badpost']) {
-                        $setsql[] = "badpost = {$cacherow['badpost']}";
+                        $archives->badpost = $cacherow['badpost'];
+//                        $setsql[] = "badpost = {$cacherow['badpost']}";
                     }
-                    $setsql = implode(',', $setsql);
-                    $sql = "UPDATE `$maintable` SET {$setsql} WHERE id='{$row['id']}'";
-                    if (!empty($setsql)) {
-                        $dsql->ExecuteNoneQuery($sql);
-                    }
+                    $archives->save();
+//                    $setsql = implode(',', $setsql);
+//                    $sql = "UPDATE `$maintable` SET {$setsql} WHERE id='{$row['id']}'";
+//                    if (!empty($setsql)) {
+//                        $dsql->ExecuteNoneQuery($sql);
+//                    }
                 }
-                //echo ExecTime()-$t1;
+
+//                while ($row = $dsql->GetArray('lit')) {
+//                    $prefix = 'diggCache';
+//                    $key = 'aid-' . $row['id'];
+//                    $cacherow = GetCache($prefix, $key);
+//                    $setsql = array();
+//                    if (!empty($cacherow['scores']) && $cacherow['scores'] != $row['scores']) {
+//                        $setsql[] = "scores = {$cacherow['scores']}";
+//                    }
+//                    if (!empty($cacherow['goodpost']) && $cacherow['goodpost'] != $row['goodpost']) {
+//                        $setsql[] = "goodpost = {$cacherow['goodpost']}";
+//                    }
+//                    if (!empty($cacherow['badpost']) && $cacherow['badpost'] != $row['badpost']) {
+//                        $setsql[] = "badpost = {$cacherow['badpost']}";
+//                    }
+//                    $setsql = implode(',', $setsql);
+//                    $sql = "UPDATE `$maintable` SET {$setsql} WHERE id='{$row['id']}'";
+//                    if (!empty($setsql)) {
+//                        $dsql->ExecuteNoneQuery($sql);
+//                    }
+//                }
+                //echo Common::execTime()-$t1;
             }
         }
 
-        $dsql->SetQuery($query);
-        $dsql->Execute('al');
+//        $dsql->SetQuery($query);
+//        $dsql->Execute('al');
         //$row = $dsql->GetArray("al");
         $artlist = '';
         if ($pagesize > 0) $artlist .= "    <div id='{$tagid}'>\r\n";
         if ($col > 1) $artlist = "<table width='$tablewidth' border='0' cellspacing='0' cellpadding='0'>\r\n";
+
+
         $dtp2 = new DedeTagParse();
-        $dtp2->SetNameSpace('field', '[', ']');
-        $dtp2->LoadString($innertext);
+        $dtp2->setNameSpace('field', '[', ']');
+        $dtp2->loadString($innertext);
         $GLOBALS['autoindex'] = 0;
         $ids = array();
         $orderWeight = array();
@@ -477,59 +546,60 @@ class ArclistLib
             if ($col > 1) $artlist .= "<tr>\r\n";
             for ($j = 0; $j < $col; $j++) {
                 if ($col > 1) $artlist .= "    <td width='$colWidth'>\r\n";
-                if ($row = $dsql->GetArray("al")) {
+//                if ($row = $dsql->GetArray("al")) {
+                if ($row = $query->cursor()) {
                     $ids[] = $row['id'];
                     //处理一些特殊字段
-                    $row['info'] = $row['infos'] = cn_substr($row['description'], $infolen);
+                    $row['info'] = $row['infos'] = mb_substr($row['description'], 0, $infolen);
                     $row['id'] = $row['id'];
 
                     if ($row['corank'] > 0 && $row['arcrank'] == 0) {
                         $row['arcrank'] = $row['corank'];
                     }
 
-                    $row['filename'] = $row['arcurl'] = GetFileUrl($row['id'], $row['typeid'], $row['senddate'], $row['title'], $row['ismake'],
+                    $row['filename'] = $row['arcurl'] = Common::getFileUrl($row['id'], $row['typeid'], $row['senddate'], $row['title'], $row['ismake'],
                         $row['arcrank'], $row['namerule'], $row['typedir'], $row['money'], $row['filename'], $row['moresite'], $row['siteurl'], $row['sitepath']);
 
-                    $row['typeurl'] = GetTypeUrl($row['typeid'], $row['typedir'], $row['isdefault'], $row['defaultname'], $row['ispart'],
+                    $row['typeurl'] = Common::getTypeUrl($row['typeid'], $row['typedir'], $row['isdefault'], $row['defaultname'], $row['ispart'],
                         $row['namerule2'], $row['moresite'], $row['siteurl'], $row['sitepath']);
 
                     if ($row['litpic'] == '-' || $row['litpic'] == '') {
-                        $row['litpic'] = $GLOBALS['cfg_cmspath'] . '/images/defaultpic.gif';
+                        $row['litpic'] = CfgConfig::sysConfig()->cfg_cmspath . '/images/defaultpic.gif';
                     }
-                    if (!preg_match("#^http:\/\/#i", $row['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y') {
-                        $row['litpic'] = $GLOBALS['cfg_mainsite'] . $row['litpic'];
+                    if (!preg_match("#^http:\/\/#i", $row['litpic']) && CfgConfig::sysConfig()->cfg_multi_site == 'Y') {
+                        $row['litpic'] = CfgConfig::sysConfig()->cfg_mainsite . $row['litpic'];
                     }
                     $row['picname'] = $row['litpic'];
-                    $row['stime'] = GetDateMK($row['pubdate']);
+                    $row['stime'] = Common::getDateMK($row['pubdate']);
                     $row['typelink'] = "<a href='" . $row['typeurl'] . "'>" . $row['typename'] . "</a>";
                     $row['image'] = "<img src='" . $row['picname'] . "' border='0' width='$imgwidth' height='$imgheight' alt='" . preg_replace("#['><]#", "", $row['title']) . "'>";
                     $row['imglink'] = "<a href='" . $row['filename'] . "'>" . $row['image'] . "</a>";
                     $row['fulltitle'] = $row['title'];
-                    $row['title'] = cn_substr($row['title'], $titlelen);
+                    $row['title'] = mb_substr($row['title'], $titlelen);
                     if ($row['color'] != '') $row['title'] = "<font color='" . $row['color'] . "'>" . $row['title'] . "</font>";
                     if (preg_match('#b#', $row['flag'])) $row['title'] = "<strong>" . $row['title'] . "</strong>";
                     //$row['title'] = "<b>".$row['title']."</b>";
                     $row['textlink'] = "<a href='" . $row['filename'] . "'>" . $row['title'] . "</a>";
 
-                    $row['plusurl'] = $row['phpurl'] = $GLOBALS['cfg_phpurl'];
-                    $row['memberurl'] = $GLOBALS['cfg_memberurl'];
+                    $row['plusurl'] = $row['phpurl'] = CfgConfig::sysConfig()->cfg_phpurl;
+                    $row['memberurl'] = CfgConfig::sysConfig()->cfg_memberurl;
                     $row['templeturl'] = $GLOBALS['cfg_templeturl'];
 
-                    if (is_array($dtp2->CTags)) {
-                        foreach ($dtp2->CTags as $k => $ctag) {
-                            if ($ctag->GetName() == 'array') {
+                    if (is_array($dtp2->cTags)) {
+                        foreach ($dtp2->cTags as $k => $cTag) {
+                            if ($cTag->getName() == 'array') {
                                 //传递整个数组，在runphp模式中有特殊作用
-                                $dtp2->Assign($k, $row);
+                                $dtp2->assign($k, $row);
                             } else {
-                                if (isset($row[$ctag->GetName()])) $dtp2->Assign($k, $row[$ctag->GetName()]);
-                                else $dtp2->Assign($k, '');
+                                if (isset($row[$cTag->getName()])) $dtp2->assign($k, $row[$cTag->getName()]);
+                                else $dtp2->assign($k, '');
                             }
                         }
                         $GLOBALS['autoindex']++;
                     }
                     if ($pagesize > 0) {
                         if ($GLOBALS['autoindex'] <= $pagesize) {
-                            $liststr = $dtp2->GetResult();
+                            $liststr = $dtp2->getResult();
                             $artlist .= $liststr . "\r\n";
                         } else {
                             $artlist .= "";
@@ -539,15 +609,14 @@ class ArclistLib
                             );
                         }
                     } else {
-                        $liststr = $dtp2->GetResult();
+                        $liststr = $dtp2->getResult();
                         $artlist .= $liststr . "\r\n";
                     }
                     $orderWeight[] = array(
                         'weight' => $row['weight'],
                         'arclist' => $liststr
                     );
-                }//if hasRow
-                else {
+                } else {
                     $artlist .= '';
                 }
 
@@ -568,7 +637,7 @@ class ArclistLib
             if ($col > 1) $artlist .= "    </tr>\r\n";
         }//loop line
         if ($col > 1) $artlist .= "    </table>\r\n";
-        $dsql->FreeResult("al");
+//        $dsql->FreeResult("al");
         $idsstr = join(',', $ids);
 
         //分页特殊处理

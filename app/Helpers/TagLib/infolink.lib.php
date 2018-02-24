@@ -25,15 +25,15 @@ require_once(DEDEINC.'/enums.func.php');
 require_once(DEDEDATA.'/enums/nativeplace.php');
 require_once(DEDEDATA.'/enums/infotype.php');
 
-function lib_infolink(&$ctag,&$refObj)
+function lib_infolink(&$cTag,&$refObj)
 {
     global $dsql,$nativeplace,$infotype,$hasSetEnumJs,$cfg_cmspath,$cfg_mainsite;
     global $em_nativeplaces,$em_infotypes;
     
     //属性处理
     //$attlist="row|12,titlelen|24";
-    //FillAttsDefault($ctag->CAttribute->Items,$attlist);
-    //extract($ctag->CAttribute->Items, EXTR_SKIP);
+    //FillAttsDefault($cTag->CAttribute->Items,$attlist);
+    //extract($cTag->CAttribute->Items, EXTR_SKIP);
     
     $cmspath = ( (empty($cfg_cmspath) || !preg_match("#\/$#", $cfg_cmspath)) ? $cfg_cmspath.'/' : $cfg_cmspath );
     $baseurl = preg_replace("#\/$#", '', $cfg_mainsite).$cmspath;
@@ -51,10 +51,10 @@ function lib_infolink(&$ctag,&$refObj)
         $typeid = $refObj->Fields['typeid'];
     }
     
-    $innerText = trim($ctag->GetInnerText());
+    $innerText = trim($cTag->GetInnerText());
     if(empty($innerText)) $innerText =Common::getSysTemplets("info_link.htm");
     $ctp = new DedeTagParse();
-    $ctp->SetNameSpace('field','[',']');
+    $ctp->setNameSpace('field','[',']');
     $ctp->LoadSource($innerText);
 
     $revalue = $seli = '';
@@ -129,15 +129,15 @@ function lib_infolink(&$ctag,&$refObj)
     }
     
     
-    if(is_array($ctp->CTags))
+    if(is_array($ctp->cTags))
     {
-        foreach($ctp->CTags as $tagid=>$ctag)
+        foreach($ctp->cTags as $tagid=>$cTag)
         {
-            if(isset($fields[$ctag->GetName()])) {
-                $ctp->Assign($tagid,$fields[$ctag->GetName()]);
+            if(isset($fields[$cTag->getName()])) {
+                $ctp->assign($tagid,$fields[$cTag->getName()]);
             }
         }
-        $revalue .= $ctp->GetResult();
+        $revalue .= $ctp->getResult();
     }
     
     return $revalue;

@@ -24,14 +24,14 @@
 </attributes> 
 >>dede>>*/
  
-function lib_type(&$ctag,&$refObj)
+function lib_type(&$cTag,&$refObj)
 {
     global $dsql,$envs;
 
     $attlist='typeid|0';
-    FillAttsDefault($ctag->CAttribute->Items,$attlist);
-    extract($ctag->CAttribute->Items, EXTR_SKIP);
-    $innertext = trim($ctag->GetInnerText());
+    FillAttsDefault($cTag->CAttribute->Items,$attlist);
+    extract($cTag->CAttribute->Items, EXTR_SKIP);
+    $innertext = trim($cTag->GetInnerText());
 
     if($typeid==0) {
         $typeid = ( isset($refObj->TypeLink->TypeInfos['id']) ? $refObj->TypeLink->TypeInfos['id'] : $envs['typeid'] );
@@ -45,9 +45,9 @@ function lib_type(&$ctag,&$refObj)
     if(trim($innertext)=='') $innertext =Common::getSysTemplets("part_type_list.htm");
     
     $dtp = new DedeTagParse();
-    $dtp->SetNameSpace('field','[',']');
+    $dtp->setNameSpace('field','[',']');
     $dtp->LoadSource($innertext);
-    if(!is_array($dtp->CTags))
+    if(!is_array($dtp->cTags))
     {
         unset($dtp);
         return '';
@@ -55,11 +55,11 @@ function lib_type(&$ctag,&$refObj)
     else
     {
         $row['typelink'] = $row['typeurl'] = GetOneTypeUrlA($row);
-        foreach($dtp->CTags as $tagid=>$ctag)
+        foreach($dtp->cTags as $tagid=>$cTag)
         {
-            if(isset($row[$ctag->GetName()])) $dtp->Assign($tagid,$row[$ctag->GetName()]);
+            if(isset($row[$cTag->getName()])) $dtp->assign($tagid,$row[$cTag->getName()]);
         }
-        $revalue = $dtp->GetResult();
+        $revalue = $dtp->getResult();
         unset($dtp);
         return $revalue;
     }

@@ -28,24 +28,24 @@ require_once(DEDEINC."/taglib/flink.lib.php");
 </attributes> 
 >>dede>>*/
  
-function lib_flinktype(&$ctag,&$refObj)
+function lib_flinktype(&$cTag,&$refObj)
 {
     global $dsql;
     $attlist="row|24,titlelen|24";
-    FillAttsDefault($ctag->CAttribute->Items,$attlist);
-    extract($ctag->CAttribute->Items, EXTR_SKIP);
+    FillAttsDefault($cTag->CAttribute->Items,$attlist);
+    extract($cTag->CAttribute->Items, EXTR_SKIP);
 
     $totalrow = $row;
     $revalue = '';
   
     $equery = "SELECT * FROM #@__flinktype order by id asc limit 0,$totalrow";
 
-    if(trim($ctag->GetInnerText())=='') $innertext = "<li>[field:typename /]</li>";
-    else $innertext = $ctag->GetInnerText();
+    if(trim($cTag->GetInnerText())=='') $innertext = "<li>[field:typename /]</li>";
+    else $innertext = $cTag->GetInnerText();
 	if(!isset($type)) $type = '';
     $dtp = new DedeTagParse();
-    $dtp->SetNameSpace("dede","{","}");
-    $dtp->LoadString($innertext);
+    $dtp->setNameSpace("dede","{","}");
+    $dtp->loadString($innertext);
     
     $dsql->SetQuery($equery);
     $dsql->Execute();
@@ -61,16 +61,16 @@ function lib_flinktype(&$ctag,&$refObj)
 	if($type == 'dedecms') $row[] = $dedecms;
 	
     foreach ($row as $key => $value) {
-        if (is_array($dtp->CTags))
+        if (is_array($dtp->cTags))
         {
             $GLOBALS['envs']['flinkid'] = $value->id;
-            foreach($dtp->CTags as $tagid=>$ctag)
+            foreach($dtp->cTags as $tagid=>$cTag)
             {
-                $tagname = $ctag->GetName();
-                if($tagname=="flink") $dtp->Assign($tagid, lib_flink($ctag, $refObj));
+                $tagname = $cTag->getName();
+                if($tagname=="flink") $dtp->assign($tagid, lib_flink($cTag, $refObj));
             }
         }
-        $rs = $dtp->GetResult();
+        $rs = $dtp->getResult();
     	$rs = preg_replace("/\[field:id([\/\s]{0,})\]/isU", $value->id, $rs);
         $rs = preg_replace("/\[field:typename([\/\s]{0,})\]/isU", $value->typename, $rs);
         $revalue .= $rs;

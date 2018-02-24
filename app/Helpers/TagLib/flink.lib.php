@@ -30,13 +30,13 @@ if(!defined('DEDEINC'))
 </attributes> 
 >>dede>>*/
 helper('cache');
-function lib_flink(&$ctag,&$refObj)
+function lib_flink(&$cTag,&$refObj)
 {
 	
     global $dsql,$cfg_soft_lang;
     $attlist="type|textall,row|24,titlelen|24,linktype|1,typeid|0";
-    FillAttsDefault($ctag->CAttribute->Items,$attlist);
-    extract($ctag->CAttribute->Items, EXTR_SKIP);
+    FillAttsDefault($cTag->CAttribute->Items,$attlist);
+    extract($cTag->CAttribute->Items, EXTR_SKIP);
     $totalrow = $row;
     $revalue = '';
     if (isset($GLOBALS['envs']['flinkid']))
@@ -109,8 +109,8 @@ EOT;
 
     $equery = "SELECT * FROM #@__flink $wsql order by sortrank asc limit 0,$totalrow";
 
-    if(trim($ctag->GetInnerText())=='') $innertext = "<li>[field:link /]</li>";
-    else $innertext = $ctag->GetInnerText();
+    if(trim($cTag->GetInnerText())=='') $innertext = "<li>[field:link /]</li>";
+    else $innertext = $cTag->GetInnerText();
     
     $dsql->SetQuery($equery);
     $dsql->Execute();

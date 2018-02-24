@@ -37,8 +37,8 @@ class ChannelType extends Model
             $dtp->loadSource($this->fieldset);
             if (is_array($dtp->cTags)) {
                 $tnames = Array();
-                foreach ($dtp->cTags as $ctag) {
-                    $tname = $ctag->getName();
+                foreach ($dtp->cTags as $cTag) {
+                    $tname = $cTag->getName();
                     if (isset($tnames[$tname])) {
                         break;
                     }
@@ -48,15 +48,15 @@ class ChannelType extends Model
                     } else {
                         $this->allFieldNames .= $tname;
                     }
-                    if (is_array($ctag->cAttribute->items)) {
-                        $this->channelFields[$tname] = $ctag->cAttribute->items;
+                    if (is_array($cTag->cAttribute->items)) {
+                        $this->channelFields[$tname] = $cTag->cAttribute->items;
                     }
                     $this->channelFields[$tname]['value'] = '';
-                    $this->channelFields[$tname]['innertext'] = $ctag->getInnerText();
+                    $this->channelFields[$tname]['innertext'] = $cTag->getInnerText();
                     if (empty($this->channelFields[$tname]['itemname'])) {
                         $this->channelFields[$tname]['itemname'] = $tname;
                     }
-                    if ($ctag->getAtt('page') == 'split') {
+                    if ($cTag->getAtt('page') == 'split') {
                         $this->splitPageField = $tname;
                     }
                 }

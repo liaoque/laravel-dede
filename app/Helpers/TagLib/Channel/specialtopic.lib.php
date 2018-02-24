@@ -20,17 +20,17 @@ function ch_specialtopic($noteinfo, $arcTag, $refObj, $fname='')
     $dtp->loadSource($noteinfo);
     if(is_array($dtp->cTags))
     {
-        foreach($dtp->cTags as $k=>$ctag)
+        foreach($dtp->cTags as $k=>$cTag)
         {
-            $notename = $ctag->getAtt('name');
+            $notename = $cTag->getAtt('name');
             //指定名称的专题节点
-            if($noteid != '' && $ctag->getAtt('noteid') != $noteid)
+            if($noteid != '' && $cTag->getAtt('noteid') != $noteid)
             {
                 continue;
             }
-            $isauto = $ctag->getAtt('isauto');
-            $idlist = trim($ctag->getAtt('idlist'));
-            $rownum = trim($ctag->getAtt('rownum'));
+            $isauto = $cTag->getAtt('isauto');
+            $idlist = trim($cTag->getAtt('idlist'));
+            $rownum = trim($cTag->getAtt('rownum'));
             $keywords = '';
             $stypeid = 0;
             if(empty($rownum)) $rownum = 40;
@@ -39,22 +39,22 @@ function ch_specialtopic($noteinfo, $arcTag, $refObj, $fname='')
             if($isauto==1)
             {
                 $idlist = '';
-                $keywords = trim($ctag->getAtt('keywords'));
-                $stypeid = $ctag->getAtt('typeid');
+                $keywords = trim($cTag->getAtt('keywords'));
+                $stypeid = $cTag->getAtt('typeid');
             }
 
-            $listTemplet = trim($ctag->getInnerText())!='' ? $ctag->getInnerText() :Common::getSysTemplets('spec_arclist.htm');
+            $listTemplet = trim($cTag->getInnerText())!='' ? $cTag->getInnerText() :Common::getSysTemplets('spec_arclist.htm');
             
             $idvalue = lib_arclistDone
                       (
-                        $refObj, $ctag, $stypeid, $rownum, $ctag->getAtt('col'), $ctag->getAtt('titlelen'),$ctag->getAtt('infolen'),
-                        $ctag->getAtt('imgwidth'), $ctag->getAtt('imgheight'), 'all', 'default', $keywords, $listTemplet, 0, $idlist,
-                        $ctag->getAtt('channel'), '', $ctag->getAtt('att')
+                        $refObj, $cTag, $stypeid, $rownum, $cTag->getAtt('col'), $cTag->getAtt('titlelen'),$cTag->getAtt('infolen'),
+                        $cTag->getAtt('imgwidth'), $cTag->getAtt('imgheight'), 'all', 'default', $keywords, $listTemplet, 0, $idlist,
+                        $cTag->getAtt('channel'), '', $cTag->getAtt('att')
                       );
             $notestr = str_replace('~notename~', $notename, $tempStr);
             $notestr = str_replace('~spec_arclist~', $idvalue, $notestr);
             $rvalue .= $notestr;
-            if($noteid != '' && $ctag->getAtt('noteid')==$noteid) break;
+            if($noteid != '' && $cTag->getAtt('noteid')==$noteid) break;
         }
     }
     $dtp->clear();

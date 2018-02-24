@@ -26,12 +26,12 @@ if(!defined('DEDEINC'))
 </attributes> 
 >>dede>>*/
  
-function lib_memberinfos(&$ctag,&$refObj)
+function lib_memberinfos(&$cTag,&$refObj)
 {
     global $dsql,$sqlCt;
     $attlist="mid|0";
-    FillAttsDefault($ctag->CAttribute->Items,$attlist);
-    extract($ctag->CAttribute->Items, EXTR_SKIP);
+    FillAttsDefault($cTag->CAttribute->Items,$attlist);
+    extract($cTag->CAttribute->Items, EXTR_SKIP);
     
     if(empty($mid))
     {
@@ -44,7 +44,7 @@ function lib_memberinfos(&$ctag,&$refObj)
     }
 
     $revalue = '';
-    $innerText = trim($ctag->GetInnerText());
+    $innerText = trim($cTag->GetInnerText());
     if(empty($innerText)) $innerText =Common::getSysTemplets('memberinfos.htm');
 
     $sql = "SELECT mb.*,ms.spacename,ms.sign,ar.membername as rankname FROM `#@__member` mb
@@ -53,7 +53,7 @@ function lib_memberinfos(&$ctag,&$refObj)
         WHERE mb.mid='{$mid}' LIMIT 0,1 ";
 
     $ctp = new DedeTagParse();
-    $ctp->SetNameSpace('field','[',']');
+    $ctp->setNameSpace('field','[',']');
     $ctp->LoadSource($innerText);
 
     $dsql->Execute('mb',$sql);
@@ -62,13 +62,13 @@ function lib_memberinfos(&$ctag,&$refObj)
         if($row['matt']==10) return '';
         $row['spaceurl'] = $GLOBALS['cfg_basehost'].'/member/index.php?uid='.$row['userid'];
         if(empty($row['face'])) {
-            $row['face']=($row['sex']=='女')?  $GLOBALS['cfg_memberurl'].'/templets/images/dfgirl.png' : $GLOBALS['cfg_memberurl'].'/templets/images/dfboy.png';
+            $row['face']=($row['sex']=='女')?  CfgConfig::sysConfig()->cfg_memberurl.'/templets/images/dfgirl.png' : CfgConfig::sysConfig()->cfg_memberurl.'/templets/images/dfboy.png';
         }
-        foreach($ctp->CTags as $tagid=>$ctag)
+        foreach($ctp->cTags as $tagid=>$cTag)
         {
-            if(isset($row[$ctag->GetName()])){ $ctp->Assign($tagid,$row[$ctag->GetName()]); }
+            if(isset($row[$cTag->getName()])){ $ctp->assign($tagid,$row[$cTag->getName()]); }
         }
-        $revalue .= $ctp->GetResult();
+        $revalue .= $ctp->getResult();
     }
     return $revalue;
 }

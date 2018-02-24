@@ -29,12 +29,12 @@ if(!defined('DEDEINC'))
 </attributes>
 >>dede>>*/
 
-function lib_sql(&$ctag,&$refObj)
+function lib_sql(&$cTag,&$refObj)
 {
     global $dsql,$sqlCt,$cfg_soft_lang;
     $attlist="sql|appname";
-    FillAttsDefault($ctag->CAttribute->Items,$attlist);
-    extract($ctag->CAttribute->Items, EXTR_SKIP);
+    FillAttsDefault($cTag->CAttribute->Items,$attlist);
+    extract($cTag->CAttribute->Items, EXTR_SKIP);
 
     //传递环境参数
     preg_match_all("/~([A-Za-z0-9]+)~/s", $sql, $conditions);
@@ -51,13 +51,13 @@ function lib_sql(&$ctag,&$refObj)
     }
     
     $revalue = '';
-    $Innertext = trim($ctag->GetInnerText());
+    $Innertext = trim($cTag->GetInnerText());
 
     if($sql=='' || $Innertext=='') return '';
     if(empty($sqlCt)) $sqlCt = 0;
 
     $ctp = new DedeTagParse();
-    $ctp->SetNameSpace('field','[',']');
+    $ctp->setNameSpace('field','[',']');
     $ctp->LoadSource($Innertext);
     $thisrs = 'sq'.$sqlCt;
     $GLOBALS['autoindex'] = 0;
@@ -100,23 +100,23 @@ function lib_sql(&$ctag,&$refObj)
                 $row = AutoCharset($row, $config['dblanguage'], $cfg_soft_lang);
             }
 
-            foreach($ctp->CTags as $tagid=>$ctag)
+            foreach($ctp->cTags as $tagid=>$cTag)
             {
-                if($ctag->GetName()=='array')
+                if($cTag->getName()=='array')
                 {
-                    $ctp->Assign($tagid, $row);
+                    $ctp->assign($tagid, $row);
                 }
                 else
                 {
-                    if( !empty($row[$ctag->GetName()])) 
+                    if( !empty($row[$cTag->getName()]))
                     { 
-                        $ctp->Assign($tagid, $row[$ctag->GetName()]); 
+                        $ctp->assign($tagid, $row[$cTag->getName()]);
                     } else { 
-                      $ctp->Assign($tagid, ""); 
+                      $ctp->assign($tagid, "");
                     }
                 }
             }
-            $revalue .= $ctp->GetResult();
+            $revalue .= $ctp->getResult();
         }
         @mysql_free_result($rs);
         
@@ -126,23 +126,23 @@ function lib_sql(&$ctag,&$refObj)
         {
             $sqlCt++;
             $GLOBALS['autoindex']++;
-            foreach($ctp->CTags as $tagid=>$ctag)
+            foreach($ctp->cTags as $tagid=>$cTag)
             {
-                if($ctag->GetName()=='array')
+                if($cTag->getName()=='array')
                 {
-                    $ctp->Assign($tagid,$row);
+                    $ctp->assign($tagid,$row);
                 }
                 else
                 {
-                    if( !empty($row[$ctag->GetName()])) 
+                    if( !empty($row[$cTag->getName()]))
                     { 
-                        $ctp->Assign($tagid,$row[$ctag->GetName()]); 
+                        $ctp->assign($tagid,$row[$cTag->getName()]);
                     } else { 
-                      $ctp->Assign($tagid,""); 
+                      $ctp->assign($tagid,"");
                     }
                 }
             }
-            $revalue .= $ctp->GetResult();
+            $revalue .= $ctp->getResult();
         }
     }
     return $revalue;

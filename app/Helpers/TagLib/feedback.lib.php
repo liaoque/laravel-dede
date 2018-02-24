@@ -33,13 +33,13 @@ if(!defined('DEDEINC'))
 </attributes> 
 >>dede>>*/
  
-function lib_feedback(&$ctag,&$refObj)
+function lib_feedback(&$cTag,&$refObj)
 {
     global $dsql;
     $attlist="row|12,titlelen|24,infolen|100";
-    FillAttsDefault($ctag->CAttribute->Items,$attlist);
-    extract($ctag->CAttribute->Items, EXTR_SKIP);
-    $innertext = trim($ctag->GetInnerText());
+    FillAttsDefault($cTag->CAttribute->Items,$attlist);
+    extract($cTag->CAttribute->Items, EXTR_SKIP);
+    $innertext = trim($cTag->GetInnerText());
     $totalrow = $row;
     $revalue = '';
     if(empty($innertext))
@@ -49,7 +49,7 @@ function lib_feedback(&$ctag,&$refObj)
     $wsql = " where ischeck=1 ";
     $equery = "SELECT * FROM `#@__feedback` $wsql ORDER BY id DESC LIMIT 0 , $totalrow";
     $ctp = new DedeTagParse();
-    $ctp->SetNameSpace('field','[',']');
+    $ctp->setNameSpace('field','[',']');
     $ctp->LoadSource($innertext);
 
     $dsql->Execute('fb',$equery);
@@ -57,14 +57,14 @@ function lib_feedback(&$ctag,&$refObj)
     {
         $arr['title'] = cn_substr($arr['arctitle'],$titlelen);
         $arr['msg'] = jsTrim(Html2Text($arr['msg']),$infolen);
-        foreach($ctp->CTags as $tagid=>$ctag)
+        foreach($ctp->cTags as $tagid=>$cTag)
         {
-            if(!empty($arr[$ctag->GetName()]))
+            if(!empty($arr[$cTag->getName()]))
             {
-                $ctp->Assign($tagid,$arr[$ctag->GetName()]);
+                $ctp->assign($tagid,$arr[$cTag->getName()]);
             }
         }
-        $revalue .= $ctp->GetResult();
+        $revalue .= $ctp->getResult();
     }
     return $revalue;
 }

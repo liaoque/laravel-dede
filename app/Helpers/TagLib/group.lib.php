@@ -29,40 +29,40 @@
 </attributes> 
 >>dede>>*/
  
-function lib_group(&$ctag,&$refObj)
+function lib_group(&$cTag,&$refObj)
 {
     global $dsql, $envs, $cfg_dbprefix, $cfg_cmsurl;
     //属性处理
     $attlist="row|6,orderby|threads,titlelen|30";
-    FillAttsDefault($ctag->CAttribute->Items,$attlist);
-    extract($ctag->CAttribute->Items, EXTR_SKIP);
+    FillAttsDefault($cTag->CAttribute->Items,$attlist);
+    extract($cTag->CAttribute->Items, EXTR_SKIP);
 
     if( !$dsql->IsTable("{$cfg_dbprefix}groups") ) return '没安装圈子模块';
     
     if(!preg("#\/$#", $cfg_cmsurl)) $cfg_group_url = $cfg_cmsurl.'/group';
     else $cfg_group_url = $cfg_cmsurl.'group';
     
-    $innertext = $ctag->GetInnerText();
+    $innertext = $cTag->GetInnerText();
     if(trim($innertext)=='') $innertext =Common::getSysTemplets("groups.htm");
     
     $list = '';
     $dsql->SetQuery("SELECT groupimg,groupid,groupname FROM `#@__groups` WHERE ishidden=0 ORDER BY $orderby DESC LIMIT 0,{$row}");
     $dsql->Execute();
     $ctp = new DedeTagParse();
-    $ctp->SetNameSpace('field', '[', ']');
+    $ctp->setNameSpace('field', '[', ']');
     while($rs = $dsql->GetArray())
     {
         $ctp->LoadSource($innertext);
         $rs['groupname'] = cn_substr($rs['groupname'], $titlelen);
         $rs['url'] = $cfg_group_url."/group.php?id={$rs['groupid']}";
         $rs['icon']  = $rs['groupimg'];
-        foreach($ctp->CTags as $tagid=>$ctag)
+        foreach($ctp->cTags as $tagid=>$cTag)
         {
-            if( !empty($rs[strtolower($ctag->GetName())]) ) {
-                $ctp->Assign($tagid,$rs[$ctag->GetName()]);
+            if( !empty($rs[strtolower($cTag->getName())]) ) {
+                $ctp->assign($tagid,$rs[$cTag->getName()]);
             }
           }
-          $list .= $ctp->GetResult();
+          $list .= $ctp->getResult();
     }
     return $list;
 }

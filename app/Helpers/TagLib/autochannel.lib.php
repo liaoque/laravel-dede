@@ -23,15 +23,15 @@
 </attributes> 
 >>dede>>*/
  
-function lib_autochannel(&$ctag,&$refObj)
+function lib_autochannel(&$cTag,&$refObj)
 {
     global $dsql;
 
     $attlist='partsort|0,typeid=-1';
-    FillAttsDefault($ctag->CAttribute->Items,$attlist);
-    extract($ctag->CAttribute->Items, EXTR_SKIP);
+    FillAttsDefault($cTag->CAttribute->Items,$attlist);
+    extract($cTag->CAttribute->Items, EXTR_SKIP);
 
-    $innertext = trim($ctag->GetInnerText());
+    $innertext = trim($cTag->GetInnerText());
     $topid = $typeid;
     $sortid = $partsort;
 
@@ -56,9 +56,9 @@ function lib_autochannel(&$ctag,&$refObj)
     if(!is_array($row)) return '';
 
     $dtp = new DedeTagParse();
-    $dtp->SetNameSpace('field','[',']');
+    $dtp->setNameSpace('field','[',']');
     $dtp->LoadSource($innertext);
-    if(!is_array($dtp->CTags))
+    if(!is_array($dtp->cTags))
     {
         unset($dtp);
         return '';
@@ -67,11 +67,11 @@ function lib_autochannel(&$ctag,&$refObj)
     {
         $row['typelink'] = GetTypeUrl($row['id'],MfTypedir($row['typedir']),$row['isdefault'],
                            $row['defaultname'],$row['ispart'],$row['namerule2'],$row['siteurl'],$row['sitepath']);
-        foreach($dtp->CTags as $tagid=>$ctag)
+        foreach($dtp->cTags as $tagid=>$cTag)
         {
-            if(isset($row[$ctag->GetName()])) $dtp->Assign($tagid,$row[$ctag->GetName()]);
+            if(isset($row[$cTag->getName()])) $dtp->assign($tagid,$row[$cTag->getName()]);
         }
-        $revalue = $dtp->GetResult();
+        $revalue = $dtp->getResult();
         unset($dtp);
         return $revalue;
     }

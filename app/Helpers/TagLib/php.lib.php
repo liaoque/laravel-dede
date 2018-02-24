@@ -26,11 +26,11 @@ echo $a;
 </attributes> 
 >>dede>>*/
  
-function lib_php(&$ctag, &$refObj)
+function lib_php(&$cTag, &$refObj)
 {
     global $dsql;
     global $db;
-    $phpcode = trim($ctag->GetInnerText());
+    $phpcode = trim($cTag->GetInnerText());
     if ($phpcode == '')
         return '';
     ob_start();

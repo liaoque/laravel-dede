@@ -22,15 +22,15 @@
 </attributes> 
 >>dede>>*/
 
-function lib_likesgpage(&$ctag, &$refObj)
+function lib_likesgpage(&$cTag, &$refObj)
 {
     global $dsql;
 
-    //把属性转为变量，如果不想进行此步骤，也可以直接从 $ctag->CAttribute->Items 获得，这样也可以支持中文名
+    //把属性转为变量，如果不想进行此步骤，也可以直接从 $cTag->CAttribute->Items 获得，这样也可以支持中文名
     $attlist = "row|8";
-    FillAttsDefault($ctag->CAttribute->Items, $attlist);
-    extract($ctag->CAttribute->Items, EXTR_SKIP);
-    $innertext = trim($ctag->GetInnerText());
+    FillAttsDefault($cTag->CAttribute->Items, $attlist);
+    extract($cTag->CAttribute->Items, EXTR_SKIP);
+    $innertext = trim($cTag->GetInnerText());
 
     $aid = (isset($refObj->Fields['aid']) ? $refObj->Fields['aid'] : 0);
 
@@ -42,15 +42,15 @@ function lib_likesgpage(&$ctag, &$refObj)
     $dsql->SetQuery("SELECT aid,title,filename FROM `#@__sgpage` WHERE likeid LIKE '$likeid' LIMIT 0,$row");
     $dsql->Execute();
     $ctp = new DedeTagParse();
-    $ctp->SetNameSpace('field', '[', ']');
+    $ctp->setNameSpace('field', '[', ']');
     $ctp->LoadSource($innertext);
     while ($row = $dsql->GetArray()) {
         if ($aid != $row['aid']) {
             $row['url'] = $GLOBALS['cfg_cmsurl'] . '/' . $row['filename'];
-            foreach ($ctp->CTags as $tagid => $ctag) {
-                if (!empty($row[$ctag->GetName()])) $ctp->Assign($tagid, $row[$ctag->GetName()]);
+            foreach ($ctp->cTags as $tagid => $cTag) {
+                if (!empty($row[$cTag->getName()])) $ctp->assign($tagid, $row[$cTag->getName()]);
             }
-            $revalue .= $ctp->GetResult();
+            $revalue .= $ctp->getResult();
         } else {
             $revalue .= '<dd class="cur"><span>' . $row['title'] . '</span></dd>';
         }

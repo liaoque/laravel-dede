@@ -59,4 +59,246 @@ class Common
         return empty($oldvar) ? $nv : $oldvar;
     }
 
+    /**
+     *  获得文章网址
+     *  如果要获得文件的路径，直接用
+     *  GetFileUrl($aid,$typeid,$timetag,$title,$ismake,$rank,$namerule,$typedir,$money)
+     *  即是不指定站点参数则返回相当对根目录的真实路径
+     *
+     * @param     int $aid 文档ID
+     * @param     int $typeid 栏目ID
+     * @param     int $timetag 时间戳
+     * @param     string $title 标题
+     * @param     int $ismake 是否生成
+     * @param     int $rank 阅读权限
+     * @param     string $namerule 名称规则
+     * @param     string $typedir 栏目dir
+     * @param     string $money 需要金币
+     * @param     string $filename 文件名称
+     * @param     string $moresite 多站点
+     * @param     string $siteurl 站点地址
+     * @param     string $sitepath 站点路径
+     * @return    string
+     */
+    public static function getFileUrl($aid, $typeid, $timetag, $title, $ismake = 0, $rank = 0, $namerule = '', $typedir = '',
+                                      $money = 0, $filename = '', $moresite = 0, $siteurl = '', $sitepath = '')
+    {
+        $articleUrl = self::getFileName($aid, $typeid, $timetag, $title, $ismake, $rank, $namerule, $typedir, $money, $filename);
+        $sitepath = self::mfTypedir($sitepath);
+
+        //是否强制使用绝对网址
+        if (CfgConfig::sysConfig()->cfg_multi_site == 'Y') {
+            if ($siteurl == '') {
+                $siteurl = $GLOBALS['cfg_basehost'];
+            }
+            if ($moresite == 1) {
+                $articleUrl = preg_replace("#^" . $sitepath . '#', '', $articleUrl);
+            }
+            if (!preg_match("/http:/", $articleUrl)) {
+                $articleUrl = $siteurl . $articleUrl;
+            }
+        }
+
+        return $articleUrl;
+    }
+
+
+    /**
+     *  获得文件相对于主站点根目录的物理文件名(动态网址返回url)
+     * @param     int $aid 文档ID
+     * @param     int $typeid 栏目ID
+     * @param     int $timetag 时间戳
+     * @param     string $title 标题
+     * @param     int $ismake 是否生成
+     * @param     int $rank 阅读权限
+     * @param     string $namerule 名称规则
+     * @param     string $typedir 栏目dir
+     * @param     string $money 需要金币
+     * @param     string $filename 文件名称
+     * @return    string
+     */
+
+    public static function getFileName($aid, $typeid, $timetag, $title, $ismake = 0, $rank = 0, $namerule = '', $typedir = '', $money = 0, $filename = '')
+    {
+        $sysConfig = CfgConfig::sysConfig();
+        $cfg_rewrite = $sysConfig->cfg_rewrite;
+        $cfg_cmspath = $sysConfig->cfg_cmspath;
+        $cfg_arcdir = $sysConfig->cfg_arcdir;
+        $cfg_special = $sysConfig->cfg_special;
+        $cfg_arc_dirname = $sysConfig->cfg_arc_dirname;
+
+        //没指定栏目时用固定规则（专题）
+        if (empty($namerule)) {
+            $namerule = $cfg_special . '/arc-{aid}.html';
+            $typeid = -1;
+        }
+        if ($rank != 0 || $ismake == -1 || $typeid == 0 || $money > 0) {
+            //动态文章
+            if ($cfg_rewrite == 'Y') {
+                return $GLOBALS["cfg_plus_dir"] . "/view-" . $aid . '-1.html';
+            } else {
+                return CfgConfig::sysConfig()->cfg_phpurl . "/view.php?aid=$aid";
+            }
+        } else {
+            $articleDir = self::mfTypedir($typedir);
+            $articleRule = strtolower($namerule);
+            if ($articleRule == '') {
+                $articleRule = strtolower($GLOBALS['cfg_df_namerule']);
+            }
+            if ($typedir == '') {
+                $articleDir = $cfg_cmspath . $cfg_arcdir;
+            }
+            $dtime = self::getDateMk($timetag);
+            list($y, $m, $d) = explode('-', $dtime);
+            $arr_rpsource = array('{typedir}', '{y}', '{m}', '{d}', '{timestamp}', '{aid}', '{cc}');
+            $arr_rpvalues = array($articleDir, $y, $m, $d, $timetag, $aid, dd2char($m . $d . $aid . $y));
+            if ($filename != '') {
+                $articleRule = dirname($articleRule) . '/' . $filename . $GLOBALS['cfg_df_ext'];
+            }
+            $articleRule = str_replace($arr_rpsource, $arr_rpvalues, $articleRule);
+            if (preg_match("/\{p/", $articleRule)) {
+                $articleRule = str_replace('{pinyin}', GetPinyin($title) . '_' . $aid, $articleRule);
+                $articleRule = str_replace('{py}', GetPinyin($title, 1) . '_' . $aid, $articleRule);
+            }
+            $articleUrl = '/' . preg_replace("/^\//", '', $articleRule);
+            if (preg_match("/index\.html/", $articleUrl) && $cfg_arc_dirname == 'Y') {
+                $articleUrl = str_replace('index.html', '', $articleUrl);
+            }
+            return $articleUrl;
+        }
+    }
+
+    /**
+     *  返回格式化(Y-m-d)的日期
+     *
+     * @param     int $mktime 时间戳
+     * @return    string
+     */
+    public static function getDateMk($mktime)
+    {
+        if ($mktime == "0") return "暂无";
+        else return date("Y-m-d", $mktime);
+    }
+
+    /**
+     *  栏目目录规则
+     * @param     string $typedir 栏目目录
+     * @return    string
+     */
+    public static function mfTypedir($typedir)
+    {
+        if (preg_match("/^http:|^ftp:/i", $typedir)) return $typedir;
+        $typedir = str_replace("{cmspath}", CfgConfig::sysConfig()->cfg_cmspath, $typedir);
+        $typedir = preg_replace("/\/{1,}/", "/", $typedir);
+        return $typedir;
+    }
+
+    /**
+     *  获得指定类目的URL链接
+     *  对于使用封面文件和单独页面的情况，强制使用默认页名称
+     *
+     * @param     int $typeid 栏目ID
+     * @param     string $typedir 栏目目录
+     * @param     int $isdefault 是否默认
+     * @param     string $defaultname 默认名称
+     * @param     int $ispart 栏目属性
+     * @param     string $namerule2 名称规则
+     * @param     string $moresite 多站点
+     * @param     string $siteurl 站点地址
+     * @param     string $sitepath 站点目录
+     * @return    string
+     */
+    public static function getTypeUrl($typeid, $typedir, $isdefault, $defaultname, $ispart, $namerule2, $moresite = 0, $siteurl = '', $sitepath = '')
+    {
+        global $cfg_typedir_df;
+        $typedir = self::mfTypedir($typedir);
+        $sitepath = self::mfTypedir($sitepath);
+        if ($isdefault == -1) {
+            //动态
+            $reurl = CfgConfig::sysConfig()->cfg_phpurl . "/list.php?tid=" . $typeid;
+        } else if ($ispart == 2) {
+            //跳转网址
+            $reurl = $typedir;
+            return $reurl;
+        } else {
+            if ($isdefault == 0 && $ispart == 0) {
+                $reurl = str_replace("{page}", "1", $namerule2);
+                $reurl = str_replace("{tid}", $typeid, $reurl);
+                $reurl = str_replace("{typedir}", $typedir, $reurl);
+            } else {
+                if ($cfg_typedir_df == 'N' || $isdefault == 0) $reurl = $typedir . '/' . $defaultname;
+                else $reurl = $typedir . '/';
+            }
+        }
+
+        if (!preg_match("/^http:\/\//", $reurl)) {
+            $reurl = preg_replace("/\/{1,}/i", '/', $reurl);
+        }
+
+        if (CfgConfig::sysConfig()->cfg_multi_site == 'Y') {
+            if ($siteurl == '') {
+                $siteurl = $GLOBALS['cfg_basehost'];
+            }
+            if ($moresite == 1) {
+                $reurl = preg_replace("#^" . $sitepath . "#", '', $reurl);
+            }
+            if (!preg_match("/^http:\/\//", $reurl)) {
+                $reurl = $siteurl . $reurl;
+            }
+        }
+        return $reurl;
+    }
+
+    /**
+     *  获得某id的所有下级id
+     *
+     * @param     string $id 栏目id
+     * @param     string $channel 模型ID
+     * @param     string $addthis 是否包含本身
+     * @return    string
+     */
+    public static function getSonIds($id, $channel = 0, $addthis = true)
+    {
+        $cfg_Cs = CfgConfig::getCfgCs();
+        $idArray = self::getSonIdsLogic($id, $cfg_Cs, $channel, $addthis);
+        $rquery = join(',', $idArray);
+//        $rquery = preg_replace("/,$/", '', $rquery);
+        return $rquery;
+    }
+
+    //递归逻辑
+    public static function getSonIdsLogic($id, $sArr, $channel = 0, $addthis = false)
+    {
+        $idArray = [];
+        if ($id != 0 && $addthis) {
+            $idArray[$id] = $id;
+        }
+        if (is_array($sArr)) {
+            foreach ($sArr as $k => $v) {
+                if ($v[0] == $id && ($channel == 0 || $v[1] == $channel)) {
+                    $idArray = array_merge($idArray, self::getSonIdsLogic($k, $sArr, $channel, true));
+                }
+            }
+        }
+        return $idArray;
+
+    }
+
+    /**
+     *  获取执行时间
+     *  例如:$t1 = Common::execTime();
+     *       在一段内容处理之后:
+     *       $t2 = Common::execTime();
+     *  我们可以将2个时间的差值输出:echo $t2-$t1;
+     *
+     *  @return    int
+     */
+    public static function execTime()
+    {
+        $time = explode(" ", microtime());
+        $usec = (double)$time[0];
+        $sec = (double)$time[1];
+        return $sec + $usec;
+    }
+
 }

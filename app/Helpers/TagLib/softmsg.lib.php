@@ -25,12 +25,12 @@ if(!defined('DEDEINC'))
 </attributes> 
 >>dede>>*/
  
-function lib_softmsg(&$ctag,&$refObj)
+function lib_softmsg(&$cTag,&$refObj)
 {
     global $dsql;
     //$attlist="type|textall,row|24,titlelen|24,linktype|1";
-    //FillAttsDefault($ctag->CAttribute->Items,$attlist);
-    //extract($ctag->CAttribute->Items, EXTR_SKIP);
+    //FillAttsDefault($cTag->CAttribute->Items,$attlist);
+    //extract($cTag->CAttribute->Items, EXTR_SKIP);
     $revalue = '';
     $row = $dsql->GetOne(" SELECT * FROM `#@__softconfig` ");
     if(is_array($row)) $revalue = $row['downmsg'];

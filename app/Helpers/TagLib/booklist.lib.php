@@ -13,7 +13,7 @@
  *  图书列表调用
  *
  * @access    public
- * @param     object  $ctag  解析标签
+ * @param     object  $cTag  解析标签
  * @param     object  $refObj  引用对象
  * @param     int  $getcontent  是否调用内容
  * @return    string
@@ -38,14 +38,14 @@
 </attributes> 
 >>dede>>*/
 
-function lib_booklist(&$ctag, &$refObj, $getcontent=0)
+function lib_booklist(&$cTag, &$refObj, $getcontent=0)
 {
     global $dsql, $envs, $cfg_dbprefix, $cfg_cmsurl;
     
     //属性处理
     $attlist="row|12,booktype|-1,titlelen|30,orderby|lastpost,author|,keyword|";
-    FillAttsDefault($ctag->CAttribute->Items,$attlist);
-    extract($ctag->CAttribute->Items, EXTR_SKIP);
+    FillAttsDefault($cTag->CAttribute->Items,$attlist);
+    extract($cTag->CAttribute->Items, EXTR_SKIP);
 
     if( !$dsql->IsTable("{$cfg_dbprefix}story_books") ) return '没安装连载模块';
     $addquery = '';
@@ -98,13 +98,13 @@ function lib_booklist(&$ctag, &$refObj, $getcontent=0)
     $dsql->Execute();
 
     $ndtp = new DedeTagParse();
-    $ndtp->SetNameSpace('field', '[', ']');
+    $ndtp->setNameSpace('field', '[', ']');
     $GLOBALS['autoindex'] = 0;
     while($row = $dsql->GetArray())
     {
         $GLOBALS['autoindex']++;
         $row['title'] = $row['bookname'];
-        $ndtp->LoadString($innertext);
+        $ndtp->loadString($innertext);
 
         //获得图书最新的一个更新章节
         $row['contenttitle'] = '';
@@ -138,16 +138,16 @@ function lib_booklist(&$ctag, &$refObj, $getcontent=0)
         if($row['booktype']==0) $row['booktypename']='小说';
         else $row['booktypename']='漫画';
 
-        if(is_array($ndtp->CTags))
+        if(is_array($ndtp->cTags))
         {
-            foreach($ndtp->CTags as $tagid=>$ctag)
+            foreach($ndtp->cTags as $tagid=>$cTag)
             {
-                $tagname = $ctag->GetTagName();
-                if(isset($row[$tagname])) $ndtp->Assign($tagid,$row[$tagname]);
-                else $ndtp->Assign($tagid,'');
+                $tagname = $cTag->GetTagName();
+                if(isset($row[$tagname])) $ndtp->assign($tagid,$row[$tagname]);
+                else $ndtp->assign($tagid,'');
             }
         }
-        $clist .= $ndtp->GetResult();
+        $clist .= $ndtp->getResult();
     }
     
     return $clist;

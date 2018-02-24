@@ -330,17 +330,17 @@ class Archives extends Model
                         }
                         $cobj = $this->getDtp()->getCurTag($k);
                         if (is_object($cobj)) {
-                            foreach ($this->getDtp()->cTags as $ctag) {
-                                if ($ctag->getTagName() == 'field' && $ctag->getAtt('name') == $k) {
+                            foreach ($this->getDtp()->cTags as $cTag) {
+                                if ($cTag->getTagName() == 'field' && $cTag->getAtt('name') == $k) {
                                     //带标识的专题节点
-                                    if ($ctag->getAtt('noteid') != '') {
-                                        $this->Fields[$k . '_' . $ctag->getAtt('noteid')] = $this->channelType->makeField($k, $row[$k], $ctag);
+                                    if ($cTag->getAtt('noteid') != '') {
+                                        $this->Fields[$k . '_' . $cTag->getAtt('noteid')] = $this->channelType->makeField($k, $row[$k], $cTag);
                                     } //带类型的字段节点
-                                    else if ($ctag->getAtt('type') != '') {
-                                        $this->Fields[$k . '_' . $ctag->getAtt('type')] = $this->channelType->makeField($k, $row[$k], $ctag);
+                                    else if ($cTag->getAtt('type') != '') {
+                                        $this->Fields[$k . '_' . $cTag->getAtt('type')] = $this->channelType->makeField($k, $row[$k], $cTag);
                                     } //其它字段
                                     else {
-                                        $this->Fields[$nk] = $this->channelType->makeField($k, $row[$k], $ctag);
+                                        $this->Fields[$nk] = $this->channelType->makeField($k, $row[$k], $cTag);
                                     }
                                 }
                             }
@@ -362,8 +362,8 @@ class Archives extends Model
 
         //处理要分页显示的字段
         $this->SplitTitles = Array();
-        if ($this->SplitPageField != '' && $GLOBALS['cfg_arcsptitle'] = 'Y'
-                && isset($this->Fields[$this->SplitPageField])
+        if ($this->SplitPageField != '' && CfgConfig::sysConfig()->cfg_arcsptitle == 'Y'
+            && isset($this->Fields[$this->SplitPageField])
         ) {
             $this->SplitFields = explode("#p#", $this->Fields[$this->SplitPageField]);
             $i = 1;
@@ -391,10 +391,10 @@ class Archives extends Model
         //处理默认缩略图等
         if (isset($this->Fields['litpic'])) {
             if ($this->Fields['litpic'] == '-' || $this->Fields['litpic'] == '') {
-                $this->Fields['litpic'] = $GLOBALS['cfg_cmspath'] . '/images/defaultpic.gif';
+                $this->Fields['litpic'] = CfgConfig::sysConfig()->cfg_cmspath . '/images/defaultpic.gif';
             }
-            if (!preg_match("#^http:\/\/#i", $this->Fields['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y') {
-                $this->Fields['litpic'] = $GLOBALS['cfg_mainsite'] . $this->Fields['litpic'];
+            if (!preg_match("#^http:\/\/#i", $this->Fields['litpic']) && CfgConfig::sysConfig()->cfg_multi_site == 'Y') {
+                $this->Fields['litpic'] = CfgConfig::sysConfig()->cfg_mainsite . $this->Fields['litpic'];
             }
             $this->Fields['picname'] = $this->Fields['litpic'];
 
@@ -405,9 +405,9 @@ class Archives extends Model
         if (isset($this->Fields['voteid']) && !empty($this->Fields['voteid'])) {
             $this->Fields['vote'] = '';
             $voteid = $this->Fields['voteid'];
-            $this->Fields['vote'] = "<script language='javascript' src='{$GLOBALS['cfg_cmspath']}/data/vote/vote_{$voteid}.js'></script>";
-            if ($GLOBALS['cfg_multi_site'] == 'Y') {
-                $this->Fields['vote'] = "<script language='javascript' src='{$GLOBALS['cfg_mainsite']}/data/vote/vote_{$voteid}.js'></script>";
+            $this->Fields['vote'] = "<script language='javascript' src='{CfgConfig::sysConfig()->cfg_cmspath}/data/vote/vote_{$voteid}.js'></script>";
+            if (CfgConfig::sysConfig()->cfg_multi_site == 'Y') {
+                $this->Fields['vote'] = "<script language='javascript' src='{CfgConfig::sysConfig()->cfg_mainsite}/data/vote/vote_{$voteid}.js'></script>";
             }
         }
 

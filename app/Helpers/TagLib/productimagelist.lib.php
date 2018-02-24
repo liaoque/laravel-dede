@@ -10,32 +10,32 @@
  * @link           http://www.dedecms.com
  */
  
-function lib_productimagelist(&$ctag, &$refObj)
+function lib_productimagelist(&$cTag, &$refObj)
 {
     global $dsql,$sqlCt;
     $attlist="desclen|80";
-    FillAttsDefault($ctag->CAttribute->Items,$attlist);
-    extract($ctag->CAttribute->Items, EXTR_SKIP);
+    FillAttsDefault($cTag->CAttribute->Items,$attlist);
+    extract($cTag->CAttribute->Items, EXTR_SKIP);
 
     if(!isset($refObj->addTableRow['imgurls'])) return ;
     
     $revalue = '';
-    $innerText = trim($ctag->GetInnerText());
+    $innerText = trim($cTag->GetInnerText());
     if(empty($innerText)) $innerText =Common::getSysTemplets('productimagelist.htm');
     
     $dtp = new DedeTagParse();
     $dtp->LoadSource($refObj->addTableRow['imgurls']);
     
     $images = array();
-    if(is_array($dtp->CTags))
+    if(is_array($dtp->cTags))
     {
-        foreach($dtp->CTags as $ctag)
+        foreach($dtp->cTags as $cTag)
         {
-            if($ctag->GetName()=="img")
+            if($cTag->getName()=="img")
             {
                 $row = array();
-                $row['imgsrc'] = trim($ctag->GetInnerText());
-                $row['text'] = $ctag->getAtt('text');
+                $row['imgsrc'] = trim($cTag->GetInnerText());
+                $row['text'] = $cTag->getAtt('text');
                 $images[] = $row;
             }
         }
@@ -44,16 +44,16 @@ function lib_productimagelist(&$ctag, &$refObj)
 
     $revalue = '';
     $ctp = new DedeTagParse();
-    $ctp->SetNameSpace('field','[',']');
+    $ctp->setNameSpace('field','[',']');
     $ctp->LoadSource($innerText);
 
     foreach($images as $row)
     {
-        foreach($ctp->CTags as $tagid=>$ctag)
+        foreach($ctp->cTags as $tagid=>$cTag)
         {
-            if(isset($row[$ctag->GetName()])){ $ctp->Assign($tagid,$row[$ctag->GetName()]); }
+            if(isset($row[$cTag->getName()])){ $ctp->assign($tagid,$row[$cTag->getName()]); }
         }
-        $revalue .= $ctp->GetResult();
+        $revalue .= $ctp->getResult();
     }
     return $revalue;
 }

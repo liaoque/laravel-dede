@@ -23,15 +23,15 @@
 </attributes> 
 >>dede>>*/
  
-function lib_mynews(&$ctag,&$refObj)
+function lib_mynews(&$cTag,&$refObj)
 {
     global $dsql,$envs;
     //属性处理
     $attlist="row|1,titlelen|24";
-    FillAttsDefault($ctag->CAttribute->Items,$attlist);
-    extract($ctag->CAttribute->Items, EXTR_SKIP);
+    FillAttsDefault($cTag->CAttribute->Items,$attlist);
+    extract($cTag->CAttribute->Items, EXTR_SKIP);
 
-    $innertext = trim($ctag->GetInnerText());
+    $innertext = trim($cTag->GetInnerText());
     if(empty($row)) $row=1;
     if(empty($titlelen)) $titlelen=30;
     if(empty($innertext)) $innertext =Common::getSysTemplets('mynews.htm');
@@ -41,15 +41,15 @@ function lib_mynews(&$ctag,&$refObj)
     $dsql->SetQuery("SELECT * FROM #@__mynews $idsql ORDER BY senddate DESC LIMIT 0,$row");
     $dsql->Execute();
     $ctp = new DedeTagParse();
-    $ctp->SetNameSpace('field','[',']');
+    $ctp->setNameSpace('field','[',']');
     $ctp->LoadSource($innertext);
     $revalue = '';
     while($row = $dsql->GetArray())
     {
-        foreach($ctp->CTags as $tagid=>$ctag){
-            @$ctp->Assign($tagid,$row[$ctag->GetName()]);
+        foreach($ctp->cTags as $tagid=>$cTag){
+            @$ctp->assign($tagid,$row[$cTag->getName()]);
         }
-        $revalue .= $ctp->GetResult();
+        $revalue .= $ctp->getResult();
     }
     return $revalue;
 }

@@ -73,12 +73,12 @@ class ImgLib
         $title = $row['title'];
         $revalue = '';
         $GLOBAL['photoid'] = 0;
-        foreach ($dtp->cTags as $ctag) {
-            if ($ctag->getName() == "img") {
-                $fields = $ctag->cAttribute->items;
-                $fields['text'] = str_replace("'", "", $ctag->getAtt('text'));
+        foreach ($dtp->cTags as $cTag) {
+            if ($cTag->getName() == "img") {
+                $fields = $cTag->cAttribute->items;
+                $fields['text'] = str_replace("'", "", $cTag->getAtt('text'));
                 $fields['title'] = $title;
-                $fields['imgsrc'] = trim($ctag->getInnerText());
+                $fields['imgsrc'] = trim($cTag->getInnerText());
                 $fields['imgsrctrue'] = $fields['imgsrc'];
                 if (empty($fields['ddimg'])) {
                     $fields['ddimg'] = $fields['imgsrc'];
@@ -128,12 +128,12 @@ class ImgLib
                     $fields['imgsrc'] = $fields['ddimg'];
                     $fields['imgwidth'] = " width='$ddmaxwidth' ";
                     $fields['linkurl'] = '11111#########################';
-//                    $fields['linkurl'] = "{$GLOBALS['cfg_phpurl']}/showphoto.php?aid={$aid}&src=" . urlencode($fields['imgsrctrue']) . "&npos={$GLOBAL['photoid']}";
+//                    $fields['linkurl'] = "{CfgConfig::sysConfig()->cfg_phpurl}/showphoto.php?aid={$aid}&src=" . urlencode($fields['imgsrctrue']) . "&npos={$GLOBAL['photoid']}";
                 }
                 if (is_array($dtp2->cTags)) {
-                    foreach ($dtp2->cTags as $tagid => $ctag) {
-                        if (isset($fields[$ctag->getName()])) {
-                            $dtp2->assign($tagid, $fields[$ctag->getName()]);
+                    foreach ($dtp2->cTags as $tagid => $cTag) {
+                        if (isset($fields[$cTag->getName()])) {
+                            $dtp2->assign($tagid, $fields[$cTag->getName()]);
                         }
                     }
                     $revalue .= $dtp2->getResult();

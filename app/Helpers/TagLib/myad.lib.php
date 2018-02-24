@@ -25,11 +25,11 @@
  
 require_once(DEDEINC.'/taglib/mytag.lib.php');
 
-function lib_myad(&$ctag, &$refObj)
+function lib_myad(&$cTag, &$refObj)
 {
     $attlist = "typeid|0,name|";
-    FillAttsDefault($ctag->CAttribute->Items,$attlist);
-    extract($ctag->CAttribute->Items, EXTR_SKIP);
+    FillAttsDefault($cTag->CAttribute->Items,$attlist);
+    extract($cTag->CAttribute->Items, EXTR_SKIP);
 
     $body = lib_GetMyTagT($refObj, $typeid, $name, '#@__myad');
     

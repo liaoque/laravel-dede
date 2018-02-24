@@ -29,14 +29,14 @@
 </attributes> 
 >>dede>>*/
  
-function lib_channel(&$ctag,&$refObj)
+function lib_channel(&$cTag,&$refObj)
 {
     global $dsql;
 
     $attlist = "typeid|0,reid|0,row|100,col|1,type|son,currentstyle|,cacheid|";
-    FillAttsDefault($ctag->CAttribute->Items,$attlist);
-    extract($ctag->CAttribute->Items, EXTR_SKIP);
-    $innertext = $ctag->GetInnerText();
+    FillAttsDefault($cTag->CAttribute->Items,$attlist);
+    extract($cTag->CAttribute->Items, EXTR_SKIP);
+    $innertext = $cTag->GetInnerText();
     $line = empty($row) ? 100 : $row;
     
     $likeType = '';
@@ -95,7 +95,7 @@ function lib_channel(&$ctag,&$refObj)
     //And id<>'$typeid'
     $needRel = false;
     $dtp2 = new DedeTagParse();
-    $dtp2->SetNameSpace('field','[',']');
+    $dtp2->setNameSpace('field','[',']');
     $dtp2->LoadSource($innertext);
     //检查是否有子栏目，并返回rel提示（用于二级菜单）
     if(preg_match('#:rel#', $innertext)) $needRel = true;
@@ -125,7 +125,7 @@ function lib_channel(&$ctag,&$refObj)
                 $row['sonids'] = $row['rel'] = '';
                 if($needRel)
                 {
-                    $row['sonids'] = GetSonIds($row['id'], 0, false);
+                    $row['sonids'] = Common::getSonIds($row['id'], 0, false);
                     if($row['sonids']=='') $row['rel'] = '';
                     else $row['rel'] = " rel='dropmenu{$row['id']}'";
                 }
@@ -143,14 +143,14 @@ function lib_channel(&$ctag,&$refObj)
                 else
                 {
                     $row['typelink'] = $row['typeurl'] = GetOneTypeUrlA($row);
-                    if(is_array($dtp2->CTags))
+                    if(is_array($dtp2->cTags))
                     {
-                        foreach($dtp2->CTags as $tagid=>$ctag)
+                        foreach($dtp2->cTags as $tagid=>$cTag)
                         {
-                            if(isset($row[$ctag->GetName()])) $dtp2->Assign($tagid,$row[$ctag->GetName()]);
+                            if(isset($row[$cTag->getName()])) $dtp2->assign($tagid,$row[$cTag->getName()]);
                         }
                     }
-                    $likeType .= $dtp2->GetResult();
+                    $likeType .= $dtp2->getResult();
                 }
             }
             if($col>1) $likeType .= "</dd>\r\n";

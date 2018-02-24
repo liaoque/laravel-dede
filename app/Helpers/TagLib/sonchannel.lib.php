@@ -26,19 +26,19 @@
 </attributes> 
 >>dede>>*/
  
-function lib_sonchannel(&$ctag,&$refObj)
+function lib_sonchannel(&$cTag,&$refObj)
 {
     global $_sys_globals,$dsql;
 
     $attlist = "row|100,nosonmsg|,col|1";
-    FillAttsDefault($ctag->CAttribute->Items,$attlist);
-    extract($ctag->CAttribute->Items, EXTR_SKIP);
-    $innertext = $ctag->GetInnerText();
+    FillAttsDefault($cTag->CAttribute->Items,$attlist);
+    extract($cTag->CAttribute->Items, EXTR_SKIP);
+    $innertext = $cTag->GetInnerText();
 
     $typeid = $_sys_globals['typeid'];
     if(empty($typeid))
     {
-        return $ctag->getAtt('nosonmsg');
+        return $cTag->getAtt('nosonmsg');
     }
 
     $sql = "SELECT id,typename,typedir,isdefault,ispart,defaultname,namerule2,moresite,siteurl,sitepath
@@ -46,7 +46,7 @@ function lib_sonchannel(&$ctag,&$refObj)
 
     //And id<>'$typeid'
     $dtp2 = new DedeTagParse();
-    $dtp2->SetNameSpace("field","[","]");
+    $dtp2->setNameSpace("field","[","]");
     $dtp2->LoadSource($innertext);
     $dsql->SetQuery($sql);
     $dsql->Execute();
@@ -62,13 +62,13 @@ function lib_sonchannel(&$ctag,&$refObj)
             if($row=$dsql->GetArray())
             {
                 $row['typelink'] = $row['typeurl'] = GetOneTypeUrlA($row);
-                if(is_array($dtp2->CTags))
+                if(is_array($dtp2->cTags))
                 {
-                    foreach($dtp2->CTags as $tagid=>$ctag){
-                        if(isset($row[$ctag->GetName()])) $dtp2->Assign($tagid,$row[$ctag->GetName()]);
+                    foreach($dtp2->cTags as $tagid=>$cTag){
+                        if(isset($row[$cTag->getName()])) $dtp2->assign($tagid,$row[$cTag->getName()]);
                     }
                 }
-                $likeType .= $dtp2->GetResult();
+                $likeType .= $dtp2->getResult();
             }
             if($col>1) $likeType .= "</dd>\r\n";
             $GLOBALS['autoindex']++;

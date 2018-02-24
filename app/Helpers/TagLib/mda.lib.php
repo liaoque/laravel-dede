@@ -3,7 +3,7 @@
 helper('mda');
 helper('cache');
 
-function lib_mda(&$ctag,&$refObj)
+function lib_mda(&$cTag,&$refObj)
 {
     global $dsql, $envs, $cfg_soft_lang;
     //属性处理
@@ -11,8 +11,8 @@ function lib_mda(&$ctag,&$refObj)
     $class = empty($class)? '_DEDECY' : $class;
     $version = MDA_VER;
     $attlist="uuid|,name|";
-    FillAttsDefault($ctag->CAttribute->Items,$attlist);
-    extract($ctag->CAttribute->Items, EXTR_SKIP);
+    FillAttsDefault($cTag->CAttribute->Items,$attlist);
+    extract($cTag->CAttribute->Items, EXTR_SKIP);
 
     if ( empty($uuid) AND empty($name) ) return '填写正确的uuid 或 name';
     

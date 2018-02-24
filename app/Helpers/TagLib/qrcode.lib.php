@@ -1,12 +1,12 @@
 <?php   if(!defined('DEDEINC')) exit('Request Error!');
 $GLOBALS['qrcode_id'] = isset($GLOBALS['qrcode_id'])? $GLOBALS['qrcode_id'] : 1;
-function lib_qrcode(&$ctag,&$refObj)
+function lib_qrcode(&$cTag,&$refObj)
 {
     global $dsql, $envs;
     //属性处理
     $attlist="type|,id|";
-    FillAttsDefault($ctag->CAttribute->Items,$attlist);
-    extract($ctag->CAttribute->Items, EXTR_SKIP);
+    FillAttsDefault($cTag->CAttribute->Items,$attlist);
+    extract($cTag->CAttribute->Items, EXTR_SKIP);
 
     //var_dump($refObj->Fields['id']);
 

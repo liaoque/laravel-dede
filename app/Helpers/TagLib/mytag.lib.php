@@ -24,11 +24,11 @@
 </attributes> 
 >>dede>>*/
  
-function lib_mytag(&$ctag, &$refObj)
+function lib_mytag(&$cTag, &$refObj)
 {
     $attlist = "typeid|0,name|,ismake|no";
-    FillAttsDefault($ctag->CAttribute->Items,$attlist);
-    extract($ctag->CAttribute->Items, EXTR_SKIP);
+    FillAttsDefault($cTag->CAttribute->Items,$attlist);
+    extract($cTag->CAttribute->Items, EXTR_SKIP);
 
     if(trim($ismake)=='') $ismake = 'no';
     $body = lib_GetMyTagT($refObj, $typeid, $name, '#@__mytag');
@@ -38,7 +38,7 @@ function lib_mytag(&$ctag, &$refObj)
         require_once(DEDEINC.'/arc.partview.class.php');
         $pvCopy = new PartView($typeid);
         $pvCopy->SetTemplet($body,"string");
-        $body = $pvCopy->GetResult();
+        $body = $pvCopy->getResult();
     }
     return $body;
 }

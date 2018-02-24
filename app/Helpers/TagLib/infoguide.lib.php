@@ -21,14 +21,14 @@
 </attributes> 
 >>dede>>*/
  
-function lib_infoguide(&$ctag,&$refObj)
+function lib_infoguide(&$cTag,&$refObj)
 {
     global $dsql,$nativeplace,$infotype,$hasSetEnumJs,$cfg_cmspath,$cfg_mainsite;
     
     //属性处理
     //$attlist="row|12,titlelen|24";
-    //FillAttsDefault($ctag->CAttribute->Items,$attlist);
-    //extract($ctag->CAttribute->Items, EXTR_SKIP);
+    //FillAttsDefault($cTag->CAttribute->Items,$attlist);
+    //extract($cTag->CAttribute->Items, EXTR_SKIP);
     
     $cmspath = ( (empty($cfg_cmspath) || preg_match('#[/$]#', $cfg_cmspath)) ? $cfg_cmspath.'/' : $cfg_cmspath );
     
@@ -46,10 +46,10 @@ function lib_infoguide(&$ctag,&$refObj)
         $typeid = $refObj->Fields['typeid'];
     }
     
-    $innerText = trim($ctag->GetInnerText());
+    $innerText = trim($cTag->GetInnerText());
     if(empty($innerText)) $innerText =Common::getSysTemplets("info_guide.htm");
     $ctp = new DedeTagParse();
-    $ctp->SetNameSpace('field','[',']');
+    $ctp->setNameSpace('field','[',']');
     $ctp->LoadSource($innerText);
 
     $revalue = $seli = '';
@@ -79,15 +79,15 @@ function lib_infoguide(&$ctag,&$refObj)
     $fields['infotype'] .= "<script language='javascript' type='text/javascript' src='{$cfg_mainsite}{$cmspath}data/enums/infotype.js'></script>\r\n";
     $fields['infotype'] .= '<script language="javascript">MakeTopSelect("infotype", '.$infotype.');</script>'."\r\n";
     
-    if(is_array($ctp->CTags))
+    if(is_array($ctp->cTags))
     {
-        foreach($ctp->CTags as $tagid=>$ctag)
+        foreach($ctp->cTags as $tagid=>$cTag)
         {
-            if(isset($fields[$ctag->GetName()])) {
-                $ctp->Assign($tagid,$fields[$ctag->GetName()]);
+            if(isset($fields[$cTag->getName()])) {
+                $ctp->assign($tagid,$fields[$cTag->getName()]);
             }
         }
-        $revalue .= $ctp->GetResult();
+        $revalue .= $ctp->getResult();
     }
     
     return $revalue;

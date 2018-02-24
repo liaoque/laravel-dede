@@ -26,7 +26,7 @@
 if(!defined('DEDEINC')) exit('Request Error!');
 require_once(dirname(__FILE__).'/likesgpage.lib.php');
 
-function lib_likepage(&$ctag,&$refObj)
+function lib_likepage(&$cTag,&$refObj)
 {
-    return lib_likesgpage($ctag, $refObj);
+    return lib_likesgpage($cTag, $refObj);
 }

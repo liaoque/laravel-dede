@@ -33,12 +33,12 @@ if(!defined('DEDEINC'))
 >>dede>>*/
  
 require_once(DEDEINC.'/dedevote.class.php');
-function lib_vote(&$ctag,&$refObj)
+function lib_vote(&$cTag,&$refObj)
 {
     global $dsql;
     $attlist="id|0,lineheight|24,tablewidth|100%,titlebgcolor|#EDEDE2,titlebackgroup|,tablebg|#FFFFFF";
-    FillAttsDefault($ctag->CAttribute->Items,$attlist);
-    extract($ctag->CAttribute->Items, EXTR_SKIP);
+    FillAttsDefault($cTag->CAttribute->Items,$attlist);
+    extract($cTag->CAttribute->Items, EXTR_SKIP);
 
     if(empty($id)) $id=0;
     if($id==0)

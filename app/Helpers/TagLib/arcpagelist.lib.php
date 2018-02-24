@@ -9,12 +9,12 @@
  * @link           http://www.dedecms.com
  */
  
-function lib_arcpagelist(&$ctag, &$refObj)
+function lib_arcpagelist(&$cTag, &$refObj)
 {
     global $dsql;
     $attlist = "tagid|,style|1";
-    FillAttsDefault($ctag->CAttribute->Items,$attlist);
-    extract($ctag->CAttribute->Items, EXTR_SKIP);
+    FillAttsDefault($cTag->CAttribute->Items,$attlist);
+    extract($cTag->CAttribute->Items, EXTR_SKIP);
     
     $row = $dsql->GetOne("SELECT * FROM #@__arcmulti WHERE tagid='$tagid'");
     if(is_array($row))

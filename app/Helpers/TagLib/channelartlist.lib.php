@@ -35,15 +35,15 @@
  
 require_once(DEDEINC.'/arc.partview.class.php');
 
-function lib_channelartlist(&$ctag,&$refObj)
+function lib_channelartlist(&$cTag,&$refObj)
 {
     global $dsql,$envs,$_sys_globals;
 
     //处理标记属性、innertext
     $attlist = 'typeid|0,row|20,cacheid|';
-    FillAttsDefault($ctag->CAttribute->Items,$attlist);
-    extract($ctag->CAttribute->Items, EXTR_SKIP);
-    $innertext = trim($ctag->GetInnerText());
+    FillAttsDefault($cTag->CAttribute->Items,$attlist);
+    extract($cTag->CAttribute->Items, EXTR_SKIP);
+    $innertext = trim($cTag->GetInnerText());
     $artlist = '';
     //读取固定的缓存块
     $cacheid = trim($cacheid);
@@ -92,7 +92,7 @@ function lib_channelartlist(&$ctag,&$refObj)
         $pv = new PartView($typeids[$i]['id']);
         $pv->Fields['typeurl'] = GetOneTypeUrlA($typeids[$i]);
         $pv->SetTemplet($innertext,'string');
-        $artlist .= $pv->GetResult();
+        $artlist .= $pv->getResult();
         $GLOBALS['itemparity'] = ($GLOBALS['itemparity']==1 ? 2 : 1);
     }
     //注销环境变量，以防止后续调用中被使用

@@ -22,18 +22,18 @@ use App\SoftConfig;
  *
  * @access    public
  * @param     string $fvalue 默认值
- * @param     object $ctag 解析标签
+ * @param     object $cTag 解析标签
  * @param     object $refObj 引用对象
  * @param     bool $downloadpage 下载页面
  * @return    string
  */
 class SoftlinksLib
 {
-    public function ch_softlinks($fvalue, $ctag, $refObj, $fname = '', $downloadpage = false)
+    public function ch_softlinks($fvalue, $cTag, $refObj, $fname = '', $downloadpage = false)
     {
         global $dsql;
         $row = SoftConfig::first()->toArray();
-        $phppath = $GLOBALS['cfg_phpurl'];
+        $phppath = CfgConfig::sysConfig()->cfg_phpurl;
         $downlinks = '';
         if ($row['downtype'] != '0' && !$downloadpage) {
             $tempStr = Common::getSysTemplets("channel_downlinkpage.htm");
@@ -42,17 +42,17 @@ class SoftlinksLib
             $downlinks = str_replace("~link~", $links, $tempStr);
             return $downlinks;
         } else {
-            return ch_softlinks_all($fvalue, $ctag, $refObj, $row);
+            return ch_softlinks_all($fvalue, $cTag, $refObj, $row);
         }
     }
 
 //读取所有链接地址
-    public function ch_softlinks_all($fvalue, $ctag, $refObj, &$row)
+    public function ch_softlinks_all($fvalue, $cTag, $refObj, &$row)
     {
         global $dsql, $cfg_phpurl;
         $phppath = $cfg_phpurl;
         $islinktype = false;
-        //$link_type = trim($ctag->getAtt('type')); (2011.6.29 修正下载链接列表 by：织梦的鱼)
+        //$link_type = trim($cTag->getAtt('type')); (2011.6.29 修正下载链接列表 by：织梦的鱼)
         if (!empty($link_type)) $islinktype = true;
 
         $dtp = new DedeTagParse();
@@ -75,11 +75,11 @@ class SoftlinksLib
 
         $tempStr = Common::getSysTemplets('channel_downlinks.htm');
         $downlinks = '';
-        foreach ($dtp->cTags as $ctag) {
-            if ($ctag->getName() == 'link') {
-                $link = trim($ctag->getInnerText());
-                $serverName = trim($ctag->getAtt('text'));
-                $islocal = trim($ctag->getAtt('islocal'));
+        foreach ($dtp->cTags as $cTag) {
+            if ($cTag->getName() == 'link') {
+                $link = trim($cTag->getInnerText());
+                $serverName = trim($cTag->getAtt('text'));
+                $islocal = trim($cTag->getAtt('islocal'));
                 if (isset($sertype_arr[$serverName]) && $islinktype && $sertype_arr[$serverName] != $link_type) continue;
 
                 //分析本地链接
@@ -88,7 +88,7 @@ class SoftlinksLib
 
                 //支持http,迅雷下载,ftp,flashget
                 if (!preg_match("#^http:\/\/|^thunder:\/\/|^ftp:\/\/|^flashget:\/\/#i", $link)) {
-//                    $link = $GLOBALS['cfg_mainsite'] . $link;
+//                    $link = CfgConfig::sysConfig()->cfg_mainsite . $link;
                     $link = '33333333333333333333########################';
                 }
                 $downloads = getDownloads($link);

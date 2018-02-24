@@ -32,15 +32,15 @@ if(!defined('DEDEINC'))
 >>dede>>*/
  
 //orderby = logintime(login new) or mid(register new)
-function lib_memberlist(&$ctag, &$refObj)
+function lib_memberlist(&$cTag, &$refObj)
 {
     global $dsql,$sqlCt;
     $attlist="row|6,iscommend|0,orderby|logintime,signlen|50";
-    FillAttsDefault($ctag->CAttribute->Items,$attlist);
-    extract($ctag->CAttribute->Items, EXTR_SKIP);
+    FillAttsDefault($cTag->CAttribute->Items,$attlist);
+    extract($cTag->CAttribute->Items, EXTR_SKIP);
 
     $revalue = '';
-    $innerText = trim($ctag->GetInnerText());
+    $innerText = trim($cTag->GetInnerText());
     if(empty($innerText)) $innerText =Common::getSysTemplets('memberlist.htm');
 
     $wheresql = ' WHERE mb.spacesta>-1 AND mb.matt<10 ';
@@ -52,7 +52,7 @@ function lib_memberlist(&$ctag, &$refObj)
         $wheresql order by mb.{$orderby} DESC LIMIT 0,$row ";
     
     $ctp = new DedeTagParse();
-    $ctp->SetNameSpace('field','[',']');
+    $ctp->setNameSpace('field','[',']');
     $ctp->LoadSource($innerText);
 
     $dsql->Execute('mb',$sql);
@@ -60,12 +60,12 @@ function lib_memberlist(&$ctag, &$refObj)
     {
         $row['spaceurl'] = $GLOBALS['cfg_basehost'].'/member/index.php?uid='.$row['userid'];
         if(empty($row['face'])){
-            $row['face']=($row['sex']=='女')? $GLOBALS['cfg_memberurl'].'/templets/images/dfgirl.png' : $GLOBALS['cfg_memberurl'].'/templets/images/dfboy.png';
+            $row['face']=($row['sex']=='女')? CfgConfig::sysConfig()->cfg_memberurl.'/templets/images/dfgirl.png' : CfgConfig::sysConfig()->cfg_memberurl.'/templets/images/dfboy.png';
         }
-        foreach($ctp->CTags as $tagid=>$ctag){
-            if(isset($row[$ctag->GetName()])){ $ctp->Assign($tagid,$row[$ctag->GetName()]); }
+        foreach($ctp->cTags as $tagid=>$cTag){
+            if(isset($row[$cTag->getName()])){ $ctp->assign($tagid,$row[$cTag->getName()]); }
         }
-        $revalue .= $ctp->GetResult();
+        $revalue .= $ctp->getResult();
     }
     
     return $revalue;

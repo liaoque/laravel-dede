@@ -21,19 +21,19 @@ require_once(dirname(__file__).'/../json.class.php');
 </attributes> 
 >>dede>>*/
 
-function lib_json(&$ctag,&$refObj)
+function lib_json(&$cTag,&$refObj)
 {
     global $dsql,$sqlCt,$cfg_soft_lang;
     $attlist="url|";
-    FillAttsDefault($ctag->CAttribute->Items,$attlist);
-    extract($ctag->CAttribute->Items, EXTR_SKIP);
+    FillAttsDefault($cTag->CAttribute->Items,$attlist);
+    extract($cTag->CAttribute->Items, EXTR_SKIP);
 
-    $Innertext = trim($ctag->GetInnerText());
+    $Innertext = trim($cTag->GetInnerText());
 
     if($url=='' || $Innertext=='') return '';
 
     $ctp = new DedeTagParse();
-    $ctp->SetNameSpace('field','[',']');
+    $ctp->setNameSpace('field','[',']');
     $ctp->LoadSource($Innertext);
     
     $mcache = new MiniCache;
@@ -60,23 +60,23 @@ function lib_json(&$ctag,&$refObj)
     foreach($row as $key => $value)
     {
         $GLOBALS['autoindex']++;
-        foreach($ctp->CTags as $tagid=>$ctag)
+        foreach($ctp->cTags as $tagid=>$cTag)
         {
-            if($ctag->GetName()=='array')
+            if($cTag->getName()=='array')
             {
-                $ctp->Assign($tagid,$value);
+                $ctp->assign($tagid,$value);
             }
             else
             {
-                if( !empty($value[$ctag->GetName()])) 
+                if( !empty($value[$cTag->getName()]))
                 { 
-                    $ctp->Assign($tagid,$value[$ctag->GetName()]); 
+                    $ctp->assign($tagid,$value[$cTag->getName()]);
                 } else { 
-                  $ctp->Assign($tagid,""); 
+                  $ctp->assign($tagid,"");
                 }
             }
         }
-        $revalue .= $ctp->GetResult();
+        $revalue .= $ctp->getResult();
     }
     
     return $revalue;

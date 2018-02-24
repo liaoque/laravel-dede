@@ -31,20 +31,20 @@
 </attributes> 
 >>dede>>*/
  
-function lib_groupthread(&$ctag,&$refObj)
+function lib_groupthread(&$cTag,&$refObj)
 {
     global $dsql, $envs, $cfg_dbprefix, $cfg_cmsurl;
     //属性处理
     $attlist="gid|0,orderby|dateline,orderway|desc,row|12,titlelen|30";
-    FillAttsDefault($ctag->CAttribute->Items,$attlist);
-    extract($ctag->CAttribute->Items, EXTR_SKIP);
+    FillAttsDefault($cTag->CAttribute->Items,$attlist);
+    extract($cTag->CAttribute->Items, EXTR_SKIP);
     
     if( !$dsql->IsTable("{$cfg_dbprefix}groups") ) return '没安装圈子模块';
 
     if(!preg_match("#\/$#", $cfg_cmsurl)) $cfg_group_url = $cfg_cmsurl."/group";
     else $cfg_group_url = $cfg_cmsurl."group";
     
-    $innertext = $ctag->GetInnerText();
+    $innertext = $cTag->GetInnerText();
     if(trim($innertext)=='') $innertext =Common::getSysTemplets('groupthreads.htm');
     
     $WhereSql = " WHERE t.closed=0 ";
@@ -58,7 +58,7 @@ function lib_groupthread(&$ctag,&$refObj)
     $dsql->SetQuery($query);
     $dsql->Execute();
     $ctp = new DedeTagParse();
-    $ctp->SetNameSpace('field', '[', ']');
+    $ctp->setNameSpace('field', '[', ']');
     if(!isset($list)) $list = '';
     while($rs = $dsql->GetArray())
     {
@@ -66,13 +66,13 @@ function lib_groupthread(&$ctag,&$refObj)
         $rs['subject'] = cn_substr($rs['subject'], $titlelen);
         $rs['url'] = $cfg_group_url."/viewthread.php?id={$rs['gid']}&tid={$rs['tid']}";
         $rs['groupurl'] = $cfg_group_url."/group.php?id={$rs['gid']}";
-        foreach($ctp->CTags as $tagid=>$ctag) {
-            if(!empty($rs[strtolower($ctag->GetName())]))
+        foreach($ctp->cTags as $tagid=>$cTag) {
+            if(!empty($rs[strtolower($cTag->getName())]))
             {
-              $ctp->Assign($tagid, $rs[$ctag->GetName()]); 
+              $ctp->assign($tagid, $rs[$cTag->getName()]);
             }
           }
-          $list .= $ctp->GetResult();
+          $list .= $ctp->getResult();
     }
     return $list;
 }

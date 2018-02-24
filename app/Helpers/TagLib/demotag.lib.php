@@ -24,14 +24,14 @@ if(!defined('DEDEINC')){
 </attributes> 
 >>dede>>*/
  
-function lib_demotag(&$ctag,&$refObj)
+function lib_demotag(&$cTag,&$refObj)
 {
     global $dsql,$envs;
     
     //属性处理
     $attlist="row|12,titlelen|24";
-    FillAttsDefault($ctag->CAttribute->Items,$attlist);
-    extract($ctag->CAttribute->Items, EXTR_SKIP);
+    FillAttsDefault($cTag->CAttribute->Items,$attlist);
+    extract($cTag->CAttribute->Items, EXTR_SKIP);
     $revalue = '';
     
     //你需编写的代码，不能用echo之类语法，把最终返回值传给$revalue

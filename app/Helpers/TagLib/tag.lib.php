@@ -27,15 +27,15 @@
 </attributes> 
 >>dede>>*/
  
-function lib_tag(&$ctag,&$refObj)
+function lib_tag(&$cTag,&$refObj)
 {
     global $dsql,$envs,$cfg_cmsurl;
     //属性处理
     $attlist="row|30,sort|new,getall|0,typeid|0";
-    FillAttsDefault($ctag->CAttribute->Items,$attlist);
-    extract($ctag->CAttribute->Items, EXTR_SKIP);
+    FillAttsDefault($cTag->CAttribute->Items,$attlist);
+    extract($cTag->CAttribute->Items, EXTR_SKIP);
 
-    $InnerText = $ctag->GetInnerText();
+    $InnerText = $cTag->GetInnerText();
     if(trim($InnerText)=='') $InnerText =Common::getSysTemplets('tag_one.htm');
     $revalue = '';
 
@@ -78,7 +78,7 @@ function lib_tag(&$ctag,&$refObj)
     $dsql->Execute();
 
     $ctp = new DedeTagParse();
-    $ctp->SetNameSpace('field','[',']');
+    $ctp->setNameSpace('field','[',']');
     $ctp->LoadSource($InnerText);
     while($row = $dsql->GetArray())
     {
@@ -98,14 +98,14 @@ function lib_tag(&$ctag,&$refObj)
         {
             $row['highlight'] = mt_rand(1,2);
         }
-        foreach($ctp->CTags as $tagid=>$ctag)
+        foreach($ctp->cTags as $tagid=>$cTag)
         {
-            if(isset($row[$ctag->GetName()]))
+            if(isset($row[$cTag->getName()]))
             {
-                $ctp->Assign($tagid,$row[$ctag->GetName()]);
+                $ctp->assign($tagid,$row[$cTag->getName()]);
             }
         }
-        $revalue .= $ctp->GetResult();
+        $revalue .= $ctp->getResult();
     }
     return $revalue;
 }

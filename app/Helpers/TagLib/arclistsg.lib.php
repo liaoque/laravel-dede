@@ -13,7 +13,7 @@
  *  arclistsg解析标签
  *
  * @access    public
- * @param     object  $ctag  解析标签
+ * @param     object  $cTag  解析标签
  * @param     object  $refObj  引用对象
  * @return    string  成功后返回解析后的标签内容
  */
@@ -44,21 +44,21 @@
 </attributes> 
 >>dede>>*/
 
-function lib_arclistsg(&$ctag,&$refObj)
+function lib_arclistsg(&$cTag,&$refObj)
 {
     global $dsql,$PubFields,$cfg_keyword_like,$cfg_index_cache,$_arclistEnv,$envs,$_sys_globals;
 
     //属性处理
     $attlist="typeid|0,row|10,col|1,flag|,titlelen|30,sort|default,keyword|,innertext|,arcid|0,idlist|,channelid|0,limit|,orderway|desc,subday|0";
-    FillAttsDefault($ctag->CAttribute->Items,$attlist);
-    extract($ctag->CAttribute->Items, EXTR_SKIP);
+    FillAttsDefault($cTag->CAttribute->Items,$attlist);
+    extract($cTag->CAttribute->Items, EXTR_SKIP);
 
     $line = $row;
     $orderby=strtolower($sort);
     if($col=='') $col = 1;
 	if(empty($imgwidth)) $imgwidth = "";
 	if(empty($imgheight)) $imgheight = "";
-    $innertext = trim($ctag->GetInnerText());
+    $innertext = trim($cTag->GetInnerText());
     if($innertext=='') $innertext =Common::getSysTemplets("part_arclistsg.htm");
 
     if(empty($channelid) && isset($GLOBALS['envs']['channelid'])) {
@@ -127,11 +127,11 @@ function lib_arclistsg(&$ctag,&$refObj)
             {
                 //处理交叉栏目
                 $CrossID = '';
-                if((isset($envs['cross']) || $ctag->getAtt('cross')=='1' ) && $ctag->getAtt('nocross')!='1')
+                if((isset($envs['cross']) || $cTag->getAtt('cross')=='1' ) && $cTag->getAtt('nocross')!='1')
                 {
                     $arr = $dsql->GetOne("SELECT `id`,`topid`,`cross`,`crossid`,`ispart`,`typename` FROM `#@__arctype` WHERE id='$typeid' ");
                     if($arr['cross']==0 || ($arr['cross']==2 && trim($arr['crossid']=='')))
-                    $orwheres[] = ' typeid IN ('.GetSonIds($typeid).')';
+                    $orwheres[] = ' typeid IN ('.Common::getSonIds($typeid).')';
                     else
                     {
                         $selquery = '';
@@ -153,8 +153,8 @@ function lib_arclistsg(&$ctag,&$refObj)
                         }
                     }
                 }
-                if($CrossID=='') $orwheres[] = ' typeid IN ('.GetSonIds($typeid).')';
-                else $orwheres[] = ' typeid IN ('.GetSonIds($typeid).','.$CrossID.')';
+                if($CrossID=='') $orwheres[] = ' typeid IN ('.Common::getSonIds($typeid).')';
+                else $orwheres[] = ' typeid IN ('.Common::getSonIds($typeid).','.$CrossID.')';
             }
         }
         //频道ID
@@ -207,8 +207,8 @@ function lib_arclistsg(&$ctag,&$refObj)
     $dsql->Execute("al");
     $artlist = "";
     $dtp2 = new DedeTagParse();
-    $dtp2->SetNameSpace("field","[","]");
-    $dtp2->LoadString($innertext);
+    $dtp2->setNameSpace("field","[","]");
+    $dtp2->loadString($innertext);
     $GLOBALS['autoindex'] = 0;
     $ids = array();
     for($i=0;$i<$line;$i++)
@@ -228,11 +228,11 @@ function lib_arclistsg(&$ctag,&$refObj)
 
                 if($row['litpic'] == '-' || $row['litpic'] == '')
                 {
-                    $row['litpic'] = $GLOBALS['cfg_cmspath'].'/images/defaultpic.gif';
+                    $row['litpic'] = CfgConfig::sysConfig()->cfg_cmspath.'/images/defaultpic.gif';
                 }
-                if(!preg_match("#^http:\/\/#i", $row['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y')
+                if(!preg_match("#^http:\/\/#i", $row['litpic']) && CfgConfig::sysConfig()->cfg_multi_site == 'Y')
                 {
-                    $row['litpic'] = $GLOBALS['cfg_mainsite'].$row['litpic'];
+                    $row['litpic'] = CfgConfig::sysConfig()->cfg_mainsite.$row['litpic'];
                 }
                 $row['picname'] = $row['litpic'];
                 
@@ -245,29 +245,29 @@ function lib_arclistsg(&$ctag,&$refObj)
                 $row['fulltitle'] = $row['title'];
                 $row['title'] = cn_substr($row['title'],$titlelen);
                 $row['textlink'] = "<a href='".$row['filename']."'>".$row['title']."</a>";
-                $row['plusurl'] = $row['phpurl'] = $GLOBALS['cfg_phpurl'];
-                $row['memberurl'] = $GLOBALS['cfg_memberurl'];
+                $row['plusurl'] = $row['phpurl'] = CfgConfig::sysConfig()->cfg_phpurl;
+                $row['memberurl'] = CfgConfig::sysConfig()->cfg_memberurl;
                 $row['templeturl'] = $GLOBALS['cfg_templeturl'];
 
-                if(is_array($dtp2->CTags))
+                if(is_array($dtp2->cTags))
                 {
-                    foreach($dtp2->CTags as $k=>$ctag)
+                    foreach($dtp2->cTags as $k=>$cTag)
                     {
-                        if($ctag->GetName()=='array')
+                        if($cTag->getName()=='array')
                         {
                             //传递整个数组，在runphp模式中有特殊作用
-                            $dtp2->Assign($k,$row);
+                            $dtp2->assign($k,$row);
                         }
                         else
                         {
-                            if(isset($row[$ctag->GetName()])) $dtp2->Assign($k,$row[$ctag->GetName()]);
-                            else $dtp2->Assign($k,'');
+                            if(isset($row[$cTag->getName()])) $dtp2->assign($k,$row[$cTag->getName()]);
+                            else $dtp2->assign($k,'');
                         }
                     }
                     $GLOBALS['autoindex']++;
                 }
 
-                $artlist .= $dtp2->GetResult()."\r\n";
+                $artlist .= $dtp2->getResult()."\r\n";
             }//if hasRow
             else{
                 $artlist .= '';

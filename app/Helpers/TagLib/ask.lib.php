@@ -8,13 +8,13 @@
  * @license        http://help.dedecms.com/usersguide/license.html
  * @link           http://www.dedecms.com
  */
-function lib_ask(&$ctag,&$refObj)
+function lib_ask(&$cTag,&$refObj)
 {
     global $dsql, $envs, $cfg_dbprefix, $cfg_cmsurl,$cfg_ask_directory,$cfg_ask_isdomain,$cfg_ask_domain;
     //属性处理
     $attlist="row|6,qtype|new,tid|0,titlelen|24";
-    FillAttsDefault($ctag->CAttribute->Items,$attlist);
-    extract($ctag->CAttribute->Items, EXTR_SKIP);
+    FillAttsDefault($cTag->CAttribute->Items,$attlist);
+    extract($cTag->CAttribute->Items, EXTR_SKIP);
     
     if( !$dsql->IsTable("{$cfg_dbprefix}ask") ) return '没安装问答模块';
     
@@ -26,7 +26,7 @@ function lib_ask(&$ctag,&$refObj)
         $weburl = $cfg_ask_directory.'/'; 
     }
     
-    $innertext = $ctag->GetInnerText();
+    $innertext = $cTag->GetInnerText();
     if(trim($innertext)=='') $innertext =Common::getSysTemplets("asks.htm");
     
     $qtypeQuery = '';
@@ -42,7 +42,7 @@ function lib_ask(&$ctag,&$refObj)
     else $qtypeQuery = " $tid status=0 ORDER BY disorder DESC, dateline DESC ";
 
     $ctp = new DedeTagParse();
-    $ctp->SetNameSpace('field', '[', ']');
+    $ctp->setNameSpace('field', '[', ']');
 
     $solvingask = '';
     $query = "SELECT id, tid, tidname, tid2, tid2name, title,dateline FROM `#@__ask` WHERE $qtypeQuery  limit 0, $row";
@@ -58,12 +58,12 @@ function lib_ask(&$ctag,&$refObj)
             $rs['tidname'] = $rs['tid2name'];
         }
         $rs['url'] = $weburl."?ct=question&askaid=".$rs['id'];
-        foreach($ctp->CTags as $tagid=>$ctag) {
-            if(!empty($rs[strtolower($ctag->GetName())])) {
-                $ctp->Assign($tagid,$rs[$ctag->GetName()]);
+        foreach($ctp->cTags as $tagid=>$cTag) {
+            if(!empty($rs[strtolower($cTag->getName())])) {
+                $ctp->assign($tagid,$rs[$cTag->getName()]);
             }
         }
-        $solvingask .= $ctp->GetResult();
+        $solvingask .= $ctp->getResult();
     }
     return $solvingask;
 }

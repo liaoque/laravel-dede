@@ -13,7 +13,7 @@
  *  获得责任编辑名称
  *
  * @access    public
- * @param     object  $ctag  解析标签
+ * @param     object  $cTag  解析标签
  * @param     object  $refObj  引用对象
  * @return    string  成功后返回解析后的标签内容
  */
@@ -30,7 +30,7 @@
 </attributes> 
 >>dede>>*/
 
-function lib_adminname(&$ctag, &$refObj)
+function lib_adminname(&$cTag, &$refObj)
 {
     global $dsql;
     if(empty($refObj->Fields['dutyadmin']))
