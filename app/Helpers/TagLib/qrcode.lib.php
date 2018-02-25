@@ -8,23 +8,23 @@ function lib_qrcode(&$cTag,&$refObj)
     FillAttsDefault($cTag->CAttribute->Items,$attlist);
     extract($cTag->CAttribute->Items, EXTR_SKIP);
 
-    //var_dump($refObj->Fields['id']);
+    //var_dump($refObj->fields['id']);
 
     if ( empty($type) AND empty($id) )
     {
         if ( get_class ($refObj) == 'Archives' )
         {
             $type = 'arc';
-            $id = $refObj->Fields['id'];
+            $id = $refObj->fields['id'];
         } elseif ( get_class($refObj)=='ListView' OR get_class($refObj)=='SgListView')
         {
             $type = 'list';
-            $id = $refObj->Fields['id'];
-        } elseif ( get_class($refObj) =='PartView' AND !empty($refObj->Fields['id']) )
+            $id = $refObj->fields['id'];
+        } elseif ( get_class($refObj) =='PartView' AND !empty($refObj->fields['id']) )
         {
             $type = 'list';
-            $id = $refObj->Fields['id'];
-        } elseif ( get_class($refObj) =='PartView' AND empty($refObj->Fields['id']) )
+            $id = $refObj->fields['id'];
+        } elseif ( get_class($refObj) =='PartView' AND empty($refObj->fields['id']) )
         {
             $type = 'index';
             $id = 0;

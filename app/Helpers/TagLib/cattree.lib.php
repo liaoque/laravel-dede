@@ -39,7 +39,7 @@ function lib_cattree(&$cTag, &$refObj)
     {
         if( isset($refObj->TypeLink->TypeInfos['id']) ) {
             $typeid = $refObj->TypeLink->TypeInfos['id'];
-            $reid = $refObj->TypeLink->TypeInfos['reid'];
+            $reid = $refObj->arctype->reid;
             $topid = $refObj->TypeLink->TypeInfos['topid'];
             $channeltype = $refObj->TypeLink->TypeInfos['channeltype'];
             $ispart = $refObj->TypeLink->TypeInfos['ispart'];

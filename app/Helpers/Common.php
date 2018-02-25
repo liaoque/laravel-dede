@@ -5,6 +5,7 @@
  * Date: 2018/2/10
  * Time: 10:57
  */
+
 namespace App\Helpers;
 
 use App\CfgConfig;
@@ -62,7 +63,7 @@ class Common
     /**
      *  获得文章网址
      *  如果要获得文件的路径，直接用
-     *  GetFileUrl($aid,$typeid,$timetag,$title,$ismake,$rank,$namerule,$typedir,$money)
+     *  getFileUrl($aid,$typeid,$timetag,$title,$ismake,$rank,$namerule,$typedir,$money)
      *  即是不指定站点参数则返回相当对根目录的真实路径
      *
      * @param     int $aid 文档ID
@@ -89,7 +90,7 @@ class Common
         //是否强制使用绝对网址
         if (CfgConfig::sysConfig()->cfg_multi_site == 'Y') {
             if ($siteurl == '') {
-                $siteurl = $GLOBALS['cfg_basehost'];
+                $siteurl = CfgConfig::sysConfig()->cfg_basehost;
             }
             if ($moresite == 1) {
                 $articleUrl = preg_replace("#^" . $sitepath . '#', '', $articleUrl);
@@ -135,7 +136,7 @@ class Common
         if ($rank != 0 || $ismake == -1 || $typeid == 0 || $money > 0) {
             //动态文章
             if ($cfg_rewrite == 'Y') {
-                return $GLOBALS["cfg_plus_dir"] . "/view-" . $aid . '-1.html';
+                return CfgConfig::sysConfig()->cfg_plus_dir . "/view-" . $aid . '-1.html';
             } else {
                 return CfgConfig::sysConfig()->cfg_phpurl . "/view.php?aid=$aid";
             }
@@ -143,7 +144,7 @@ class Common
             $articleDir = self::mfTypedir($typedir);
             $articleRule = strtolower($namerule);
             if ($articleRule == '') {
-                $articleRule = strtolower($GLOBALS['cfg_df_namerule']);
+                $articleRule = strtolower(CfgConfig::sysConfig()->cfg_df_namerule);
             }
             if ($typedir == '') {
                 $articleDir = $cfg_cmspath . $cfg_arcdir;
@@ -237,7 +238,7 @@ class Common
 
         if (CfgConfig::sysConfig()->cfg_multi_site == 'Y') {
             if ($siteurl == '') {
-                $siteurl = $GLOBALS['cfg_basehost'];
+                $siteurl = CfgConfig::sysConfig()->cfg_basehost;
             }
             if ($moresite == 1) {
                 $reurl = preg_replace("#^" . $sitepath . "#", '', $reurl);
@@ -291,7 +292,7 @@ class Common
      *       $t2 = Common::execTime();
      *  我们可以将2个时间的差值输出:echo $t2-$t1;
      *
-     *  @return    int
+     * @return    int
      */
     public static function execTime()
     {
@@ -300,5 +301,141 @@ class Common
         $sec = (double)$time[1];
         return $sec + $usec;
     }
+
+    public static function makeOneTag($dtp, $refObj, $parfield = 'Y')
+    {
+        $cfg_disable_tags = CfgConfig::sysConfig()->cfg_disable_tags;
+        $disable_tags = explode(',', $cfg_disable_tags);
+        $alltags = array();
+        $dtp->setRefObj($refObj);
+        //读取自由调用tag列表
+        $dh = dir(app_path() . '/Helpers/TagLib');
+        while ($filename = $dh->read()) {
+            if (preg_match("/\w+Lib\./", $filename)) {
+                $alltags[] = str_replace('.php', '', $filename);
+            }
+        }
+        $dh->close();
+
+        //遍历tag元素
+        if (!is_array($dtp->cTags)) {
+            return '';
+        }
+        foreach ($dtp->cTags as $tagid => $ctag) {
+            $tagname = $ctag->getName();
+            if ($tagname == 'field' && $parfield == 'Y') {
+                $vname = $ctag->getAtt('name');
+                if ($vname == 'array' && isset($refObj->fields)) {
+                    $dtp->assign($tagid, $refObj->fields);
+                } else if (isset($refObj->fields[$vname])) {
+                    $dtp->assign($tagid, $refObj->fields[$vname]);
+                } else if ($ctag->getAtt('noteid') != '') {
+                    if (isset($refObj->fields[$vname . '_' . $ctag->getAtt('noteid')])) {
+                        $dtp->assign($tagid, $refObj->fields[$vname . '_' . $ctag->getAtt('noteid')]);
+                    }
+                }
+                continue;
+            }
+
+            //由于考虑兼容性，原来文章调用使用的标记别名统一保留，这些标记实际调用的解析文件为inc_arclist.php
+            if (preg_match("/^(artlist|likeart|hotart|imglist|imginfolist|coolart|specart|autolist)$/", $tagname)) {
+                $tagname = 'arclist';
+            }
+            if ($tagname == 'friendlink') {
+                $tagname = 'flink';
+            }
+            if (in_array($tagname, $alltags)) {
+                if (in_array($tagname, $disable_tags)) {
+                    continue;
+                }
+                $className = '\App\Helpers\TagLib\\' . ucfirst($tagname) . 'Lib';
+                $funcname = 'lib_' . lcfirst($tagname);
+                $dtp->assign($tagid, $className::$funcname($ctag, $refObj));
+            }
+        }
+    }
+
+
+    /**
+     *  获得新文件名(本函数会自动创建目录)
+     *
+     * @param     int $aid 文档ID
+     * @param     int $typeid 栏目ID
+     * @param     int $timetag 时间戳
+     * @param     string $title 标题
+     * @param     int $ismake 是否生成
+     * @param     int $rank 阅读权限
+     * @param     string $namerule 名称规则
+     * @param     string $typedir 栏目dir
+     * @param     string $money 需要金币
+     * @param     string $filename 文件名称
+     * @return    string
+     */
+    public static function getFileNewName($aid, $typeid, $timetag, $title, $ismake = 0, $rank = 0, $namerule = '', $typedir = '', $money = 0,
+                                          $filename = '')
+    {
+        $cfg_arc_dirname = CfgConfig::sysConfig()->cfg_arc_dirname;
+        $articlename = self::getFileName($aid, $typeid, $timetag, $title, $ismake, $rank, $namerule, $typedir, $money,
+            $filename);
+
+        if (preg_match("/\?/", $articlename)) {
+            return $articlename;
+        }
+
+        if ($cfg_arc_dirname == 'Y' && preg_match("/\/$/", $articlename)) {
+            $articlename = $articlename . "index.html";
+        }
+
+        $slen = strlen($articlename) - 1;
+        for ($i = $slen; $i >= 0; $i--) {
+            if ($articlename[$i] == '/') {
+                $subpos = $i;
+                break;
+            }
+        }
+        $okdir = substr($articlename, 0, $subpos);
+        createDir($okdir);
+        return $articlename;
+    }
+
+
+    /**
+     *  清理附件，如果关连的文档ID，先把上一批附件传给这个文档ID
+     *
+     * @access    public
+     * @param     string  $aid  文档ID
+     * @param     string  $title  文档标题
+     * @return    empty
+     */
+    function ClearMyAddon($aid=0, $title='')
+    {
+        global $dsql;
+        $cacheFile = DEDEDATA.'/cache/addon-'.session_id().'.inc';
+        $_SESSION['bigfile_info'] = array();
+        $_SESSION['file_info'] = array();
+        if(!file_exists($cacheFile))
+        {
+            return ;
+        }
+
+        //把附件与文档关连
+        if(!empty($aid))
+        {
+            include($cacheFile);
+            foreach($myaddons as $addons)
+            {
+                if(!empty($title)) {
+                    $dsql->ExecuteNoneQuery("Update `#@__uploads` set arcid='$aid',title='$title' where aid='{$addons[0]}'");
+                }
+                else {
+                    $dsql->ExecuteNoneQuery("Update `#@__uploads` set arcid='$aid' where aid='{$addons[0]}' ");
+                }
+            }
+        }
+        @unlink($cacheFile);
+    }
+
+
+
 
 }

@@ -43,9 +43,9 @@ function lib_sql(&$cTag,&$refObj)
     {
         foreach ($conditions[1] as $key => $value)
         {
-            if(isset($refObj->Fields[$value]))
+            if(isset($refObj->fields[$value]))
             {
-                $sql = str_replace($conditions[0][$key], "'".addslashes($refObj->Fields[$value])."'", $sql);
+                $sql = str_replace($conditions[0][$key], "'".addslashes($refObj->fields[$value])."'", $sql);
             }
         }
     }
@@ -60,7 +60,7 @@ function lib_sql(&$cTag,&$refObj)
     $ctp->setNameSpace('field','[',']');
     $ctp->LoadSource($Innertext);
     $thisrs = 'sq'.$sqlCt;
-    $GLOBALS['autoindex'] = 0;
+    CfgConfig::sysConfig()->autoindex = 0;
     
     // 引入配置文件
     if ($appname != 'default')
@@ -92,7 +92,7 @@ function lib_sql(&$cTag,&$refObj)
         while($row = mysql_fetch_array($rs,MYSQL_ASSOC))
         {
             $sqlCt++;
-            $GLOBALS['autoindex']++;
+            CfgConfig::sysConfig()->autoindex++;
             
             // 根据程序判断编码类型,并进行转码,这里主要就是gbk和utf-8
             if (substr($cfg_soft_lang, 0, 2) != substr($config['dblanguage'], 0, 2))
@@ -125,7 +125,7 @@ function lib_sql(&$cTag,&$refObj)
         while($row = $dsql->GetArray($thisrs))
         {
             $sqlCt++;
-            $GLOBALS['autoindex']++;
+            CfgConfig::sysConfig()->autoindex++;
             foreach($ctp->cTags as $tagid=>$cTag)
             {
                 if($cTag->getName()=='array')

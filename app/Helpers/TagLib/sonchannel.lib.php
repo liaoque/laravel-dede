@@ -51,7 +51,7 @@ function lib_sonchannel(&$cTag,&$refObj)
     $dsql->SetQuery($sql);
     $dsql->Execute();
     $line = $row;
-    $GLOBALS['autoindex'] = 0;
+    CfgConfig::sysConfig()->autoindex = 0;
     $likeType = '';
     for($i=0;$i < $line;$i++)
     {
@@ -71,7 +71,7 @@ function lib_sonchannel(&$cTag,&$refObj)
                 $likeType .= $dtp2->getResult();
             }
             if($col>1) $likeType .= "</dd>\r\n";
-            $GLOBALS['autoindex']++;
+            CfgConfig::sysConfig()->autoindex++;
         }//Loop Col
         if($col>1)
         {

@@ -44,9 +44,9 @@ function lib_tag(&$cTag,&$refObj)
 
     $addsql = '';
 
-    if($getall==0 && isset($refObj->Fields['tags']) && !empty($refObj->Fields['aid']))
+    if($getall==0 && isset($refObj->fields['tags']) && !empty($refObj->fields['aid']))
     {
-        $dsql->SetQuery("SELECT tid FROM `#@__taglist` WHERE aid = '{$refObj->Fields['aid']}' ");
+        $dsql->SetQuery("SELECT tid FROM `#@__taglist` WHERE aid = '{$refObj->fields['aid']}' ");
         $dsql->Execute();
         $ids = '';
         while($row = $dsql->GetArray())

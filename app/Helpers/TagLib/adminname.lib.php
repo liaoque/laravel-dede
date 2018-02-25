@@ -33,13 +33,13 @@
 function lib_adminname(&$cTag, &$refObj)
 {
     global $dsql;
-    if(empty($refObj->Fields['dutyadmin']))
+    if(empty($refObj->fields['dutyadmin']))
     {
         $dutyadmin = $GLOBALS['cfg_df_dutyadmin'];
     }
     else
     {
-        $row = $dsql->GetOne("SELECT uname FROM `#@__admin` WHERE id='{$refObj->Fields['dutyadmin']}' ");
+        $row = $dsql->GetOne("SELECT uname FROM `#@__admin` WHERE id='{$refObj->fields['dutyadmin']}' ");
         $dutyadmin = isset($row['uname']) ? $row['uname'] : $GLOBALS['cfg_df_dutyadmin'];
     }
     return $dutyadmin;

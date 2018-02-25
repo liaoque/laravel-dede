@@ -99,10 +99,10 @@ function lib_booklist(&$cTag, &$refObj, $getcontent=0)
 
     $ndtp = new DedeTagParse();
     $ndtp->setNameSpace('field', '[', ']');
-    $GLOBALS['autoindex'] = 0;
+    CfgConfig::sysConfig()->autoindex = 0;
     while($row = $dsql->GetArray())
     {
-        $GLOBALS['autoindex']++;
+        CfgConfig::sysConfig()->autoindex++;
         $row['title'] = $row['bookname'];
         $ndtp->loadString($innertext);
 
@@ -142,7 +142,7 @@ function lib_booklist(&$cTag, &$refObj, $getcontent=0)
         {
             foreach($ndtp->cTags as $tagid=>$cTag)
             {
-                $tagname = $cTag->GetTagName();
+                $tagname = $cTag->getTagName();
                 if(isset($row[$tagname])) $ndtp->assign($tagid,$row[$tagname]);
                 else $ndtp->assign($tagid,'');
             }

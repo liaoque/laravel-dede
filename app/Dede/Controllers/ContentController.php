@@ -160,9 +160,12 @@ class ContentController extends Controller
 
             TagList::createTagList($tagIndex->id, $arctiny->id, $tag, $typeid, $request->post('arcrank'));
 
-            $archives->makeHtml();
-
-
+            $artUrl =$archives->makeHtml();
+            if($artUrl=='')
+            {
+                $artUrl = "#166166166166";
+            }
+            ClearMyAddon($arcID, $title);
             return redirect(route('admin.content'));
         }
 

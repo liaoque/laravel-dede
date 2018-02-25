@@ -32,12 +32,12 @@ function lib_likesgpage(&$cTag, &$refObj)
     extract($cTag->CAttribute->Items, EXTR_SKIP);
     $innertext = trim($cTag->GetInnerText());
 
-    $aid = (isset($refObj->Fields['aid']) ? $refObj->Fields['aid'] : 0);
+    $aid = (isset($refObj->fields['aid']) ? $refObj->fields['aid'] : 0);
 
     $revalue = '';
     if ($innertext == '') $innertext = Common::getSysTemplets("part_likesgpage.htm");
 
-    $likeid = (empty($refObj->Fields['likeid']) ? 'all' : $refObj->Fields['likeid']);
+    $likeid = (empty($refObj->fields['likeid']) ? 'all' : $refObj->fields['likeid']);
 
     $dsql->SetQuery("SELECT aid,title,filename FROM `#@__sgpage` WHERE likeid LIKE '$likeid' LIMIT 0,$row");
     $dsql->Execute();

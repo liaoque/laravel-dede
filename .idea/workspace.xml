@@ -2,57 +2,35 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fb5ec994-0d5a-4baa-88da-a4296598c875" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Helpers/Functions/helpers.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Archives.php" afterPath="$PROJECT_DIR$/app/Archives.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Arctype.php" afterPath="$PROJECT_DIR$/app/Arctype.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/CfgConfig.php" afterPath="$PROJECT_DIR$/app/CfgConfig.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/ChannelType.php" afterPath="$PROJECT_DIR$/app/ChannelType.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Dede/Controllers/ContentController.php" afterPath="$PROJECT_DIR$/app/Dede/Controllers/ContentController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Helpers/Common.php" afterPath="$PROJECT_DIR$/app/Helpers/Common.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Helpers/DedeTagParse.php" afterPath="$PROJECT_DIR$/app/Helpers/DedeTagParse.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Helpers/TagLib/ArclistLib.php" afterPath="$PROJECT_DIR$/app/Helpers/TagLib/ArclistLib.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Helpers/TagLib/Channel/ImgLib.php" afterPath="$PROJECT_DIR$/app/Helpers/TagLib/Channel/ImgLib.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Helpers/TagLib/Channel/SoftlinksLib.php" afterPath="$PROJECT_DIR$/app/Helpers/TagLib/Channel/SoftlinksLib.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Helpers/TagLib/Channel/SpecialtopicLib.php" afterPath="$PROJECT_DIR$/app/Helpers/TagLib/Channel/SpecialtopicLib.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Helpers/TagLib/Channel/specialtopic.lib.php" afterPath="$PROJECT_DIR$/app/Helpers/TagLib/Channel/specialtopic.lib.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Helpers/TagLib/adminname.lib.php" afterPath="$PROJECT_DIR$/app/Helpers/TagLib/adminname.lib.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Helpers/TagLib/arclistsg.lib.php" afterPath="$PROJECT_DIR$/app/Helpers/TagLib/arclistsg.lib.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Helpers/TagLib/arcpagelist.lib.php" afterPath="$PROJECT_DIR$/app/Helpers/TagLib/arcpagelist.lib.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Helpers/TagLib/ask.lib.php" afterPath="$PROJECT_DIR$/app/Helpers/TagLib/ask.lib.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Helpers/TagLib/asktype.lib.php" afterPath="$PROJECT_DIR$/app/Helpers/TagLib/asktype.lib.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Helpers/TagLib/autochannel.lib.php" afterPath="$PROJECT_DIR$/app/Helpers/TagLib/autochannel.lib.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Helpers/TagLib/bookcontentlist.lib.php" afterPath="$PROJECT_DIR$/app/Helpers/TagLib/bookcontentlist.lib.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Helpers/TagLib/booklist.lib.php" afterPath="$PROJECT_DIR$/app/Helpers/TagLib/booklist.lib.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Helpers/TagLib/cattree.lib.php" afterPath="$PROJECT_DIR$/app/Helpers/TagLib/cattree.lib.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Helpers/TagLib/channel.lib.php" afterPath="$PROJECT_DIR$/app/Helpers/TagLib/channel.lib.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Helpers/TagLib/channelartlist.lib.php" afterPath="$PROJECT_DIR$/app/Helpers/TagLib/channelartlist.lib.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Helpers/TagLib/demotag.lib.php" afterPath="$PROJECT_DIR$/app/Helpers/TagLib/demotag.lib.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Helpers/TagLib/feedback.lib.php" afterPath="$PROJECT_DIR$/app/Helpers/TagLib/feedback.lib.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Helpers/TagLib/flink.lib.php" afterPath="$PROJECT_DIR$/app/Helpers/TagLib/flink.lib.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Helpers/TagLib/flinktype.lib.php" afterPath="$PROJECT_DIR$/app/Helpers/TagLib/flinktype.lib.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Helpers/TagLib/group.lib.php" afterPath="$PROJECT_DIR$/app/Helpers/TagLib/group.lib.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Helpers/TagLib/groupthread.lib.php" afterPath="$PROJECT_DIR$/app/Helpers/TagLib/groupthread.lib.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Helpers/TagLib/hotwords.lib.php" afterPath="$PROJECT_DIR$/app/Helpers/TagLib/hotwords.lib.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Helpers/TagLib/infoguide.lib.php" afterPath="$PROJECT_DIR$/app/Helpers/TagLib/infoguide.lib.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Helpers/TagLib/infolink.lib.php" afterPath="$PROJECT_DIR$/app/Helpers/TagLib/infolink.lib.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Helpers/TagLib/json.lib.php" afterPath="$PROJECT_DIR$/app/Helpers/TagLib/json.lib.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Helpers/TagLib/likearticle.lib.php" afterPath="$PROJECT_DIR$/app/Helpers/TagLib/likearticle.lib.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Helpers/TagLib/likepage.lib.php" afterPath="$PROJECT_DIR$/app/Helpers/TagLib/likepage.lib.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Helpers/TagLib/likesgpage.lib.php" afterPath="$PROJECT_DIR$/app/Helpers/TagLib/likesgpage.lib.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Helpers/TagLib/loop.lib.php" afterPath="$PROJECT_DIR$/app/Helpers/TagLib/loop.lib.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Helpers/TagLib/mda.lib.php" afterPath="$PROJECT_DIR$/app/Helpers/TagLib/mda.lib.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Helpers/TagLib/memberinfos.lib.php" afterPath="$PROJECT_DIR$/app/Helpers/TagLib/memberinfos.lib.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Helpers/TagLib/memberlist.lib.php" afterPath="$PROJECT_DIR$/app/Helpers/TagLib/memberlist.lib.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Helpers/TagLib/myad.lib.php" afterPath="$PROJECT_DIR$/app/Helpers/TagLib/myad.lib.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Helpers/TagLib/mynews.lib.php" afterPath="$PROJECT_DIR$/app/Helpers/TagLib/mynews.lib.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Helpers/TagLib/mytag.lib.php" afterPath="$PROJECT_DIR$/app/Helpers/TagLib/mytag.lib.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Helpers/TagLib/php.lib.php" afterPath="$PROJECT_DIR$/app/Helpers/TagLib/php.lib.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Helpers/TagLib/productimagelist.lib.php" afterPath="$PROJECT_DIR$/app/Helpers/TagLib/productimagelist.lib.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Helpers/TagLib/qrcode.lib.php" afterPath="$PROJECT_DIR$/app/Helpers/TagLib/qrcode.lib.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Helpers/TagLib/softmsg.lib.php" afterPath="$PROJECT_DIR$/app/Helpers/TagLib/softmsg.lib.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Helpers/TagLib/sonchannel.lib.php" afterPath="$PROJECT_DIR$/app/Helpers/TagLib/sonchannel.lib.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Helpers/TagLib/sql.lib.php" afterPath="$PROJECT_DIR$/app/Helpers/TagLib/sql.lib.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Helpers/TagLib/tag.lib.php" afterPath="$PROJECT_DIR$/app/Helpers/TagLib/tag.lib.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Helpers/TagLib/type.lib.php" afterPath="$PROJECT_DIR$/app/Helpers/TagLib/type.lib.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Helpers/TagLib/vote.lib.php" afterPath="$PROJECT_DIR$/app/Helpers/TagLib/vote.lib.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/templets/plus/view_msg_catalog.htm" afterPath="$PROJECT_DIR$/resources/templets/plus/view_msg_catalog.htm" />
     </list>
     <ignored path="_dede.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -64,93 +42,39 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="ComposerSettings">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="_dede" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.59364873">
+    <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="Archives.php" pinned="false" current-in-tab="false">
+          <file leaf-file-name="Archives.php" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/Archives.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-40.785713">
-                  <caret line="364" column="83" selection-start-line="364" selection-start-column="83" selection-end-line="364" selection-end-column="83" />
+                <state relative-caret-position="142">
+                  <caret line="344" column="43" lean-forward="false" selection-start-line="344" selection-start-column="43" selection-end-line="344" selection-end-column="43" />
                   <folding>
                     <element signature="e#23#46#0#PHP" expanded="true" />
-                    <element signature="e#3627#5117#0#PHP" expanded="false" />
-                    <element signature="e#6221#7938#0#PHP" expanded="false" />
-                    <element signature="e#15038#16125#0#PHP" expanded="false" />
+                    <marker date="1519564552709" expanded="true" signature="30403:30516" ph="Select id Fr... ##@__arctiny" />
+                    <marker date="1519564552709" expanded="true" signature="30562:30674" ph="Select id Fr... ##@__arctiny" />
+                    <marker date="1519564552709" expanded="true" signature="30877:31197" ph="Select arc.i... ##@__archives" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="ArclistLib.php" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/app/Helpers/TagLib/ArclistLib.php">
+          <file leaf-file-name="ContentController.php" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/Dede/Controllers/ContentController.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.3018648">
-                  <caret line="614" column="43" selection-start-line="614" selection-start-column="43" selection-end-line="614" selection-end-column="43" />
-                  <folding>
-                    <element signature="e#369#386#0#PHP" expanded="true" />
-                    <element signature="e#2297#2415#0#PHP" expanded="false" />
-                    <element signature="e#2354#2415#0#PHP" expanded="false" />
-                    <element signature="e#2524#2966#0#PHP" expanded="false" />
-                    <element signature="e#2630#2966#0#PHP" expanded="false" />
-                    <element signature="e#2731#2966#0#PHP" expanded="false" />
-                    <element signature="e#2810#2966#0#PHP" expanded="false" />
-                    <element signature="e#2903#2966#0#PHP" expanded="false" />
-                    <element signature="e#4085#4205#0#PHP" expanded="false" />
-                    <element signature="e#4215#4360#0#PHP" expanded="false" />
-                    <element signature="e#4302#4360#0#PHP" expanded="false" />
-                    <element signature="e#4877#5834#0#PHP" expanded="false" />
-                    <element signature="e#7668#7888#0#PHP" expanded="false" />
-                    <element signature="e#15710#16631#0#PHP" expanded="false" />
-                    <marker date="1519465824955" expanded="true" signature="11172:11267" placeholder="SELECT `id`,... #@__arctype" />
-                    <marker date="1519465824955" expanded="true" signature="11986:12104" placeholder="SELECT id,to... #@__arctype" />
-                    <marker date="1519465824955" expanded="true" signature="12362:12472" placeholder="SELECT id,to... #@__arctype" />
-                    <marker date="1519465824955" expanded="true" signature="17617:17677" placeholder="SELECT addta... #@__channeltype" />
-                    <marker date="1519465824955" expanded="true" signature="18190:18505" placeholder="SELECT arc.*... ${$maintable}" />
-                    <marker date="1519465824955" expanded="true" signature="19334:19675" placeholder="SELECT arc.*... ${$maintable}" />
-                    <marker date="1519465824955" expanded="true" signature="19896:19999" placeholder="SELECT arc.i... ${$maintable}" />
-                    <marker date="1519465824955" expanded="true" signature="20085:20198" placeholder="SELECT arc.i... ${$maintable}" />
-                    <marker date="1519465824955" expanded="true" signature="21572:21629" placeholder="UPDATE `${$m... " />
-                    <marker date="1519465824955" expanded="true" signature="22712:22769" placeholder="UPDATE `${$m... " />
-                    <marker date="1519465824955" expanded="true" signature="28961:29012" placeholder="SELECT tagid... #@_" />
-                    <marker date="1519465824955" expanded="true" signature="29223:29463" placeholder="INSERT INTO #@_... " />
-                    <marker date="1519465824955" expanded="true" signature="29572:29917" placeholder="UPDATE `#@__... " />
-                    <marker date="1519465824955" expanded="true" signature="30248:30362" placeholder="INSERT INTO `#@__arccache`... " />
-                    <marker date="1519465824955" expanded="true" signature="30404:30463" placeholder="DELETE FROM " />
-                    <marker date="1519465824955" expanded="true" signature="31017:31087" placeholder="SELECT cache... #@__arccache" />
-                    <marker date="1519465824955" expanded="true" signature="31627:31755" placeholder="SELECT id,ty... #@_" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="DedeTagParse.php" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/Helpers/DedeTagParse.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-9.178572">
-                  <caret line="578" column="22" selection-start-line="578" selection-start-column="13" selection-end-line="578" selection-end-column="22" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="DedeAttribute.php" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/Helpers/DedeAttribute.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-0.0">
-                  <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                <state relative-caret-position="551">
+                  <caret line="167" column="24" lean-forward="false" selection-start-line="167" selection-start-column="12" selection-end-line="167" selection-end-column="24" />
                   <folding />
                 </state>
               </provider>
@@ -159,9 +83,12 @@
           <file leaf-file-name="Common.php" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/Helpers/Common.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-2.9285715">
-                  <caret line="139" column="23" selection-start-line="139" selection-start-column="23" selection-end-line="139" selection-end-column="23" />
-                  <folding />
+                <state relative-caret-position="373">
+                  <caret line="424" column="29" lean-forward="false" selection-start-line="424" selection-start-column="20" selection-end-line="424" selection-end-column="29" />
+                  <folding>
+                    <marker date="1519563644313" expanded="true" signature="14728:14805" ph="Update `##@__... " />
+                    <marker date="1519563644313" expanded="true" signature="14895:14957" ph="Update `##@__... " />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -170,11 +97,28 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="CfgConfig.php" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/app/CfgConfig.php">
+          <file leaf-file-name="Archives.php" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/Archives.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.506772">
-                  <caret line="90" column="31" selection-start-line="90" selection-start-column="31" selection-end-line="90" selection-end-column="31" />
+                <state relative-caret-position="99">
+                  <caret line="787" column="41" lean-forward="true" selection-start-line="787" selection-start-column="41" selection-end-line="787" selection-end-column="41" />
+                  <folding>
+                    <element signature="e#23#46#0#PHP" expanded="true" />
+                    <element signature="e#28174#28366#0#PHP" expanded="false" />
+                    <element signature="e#30231#33707#0#PHP" expanded="false" />
+                    <marker date="1519564552709" expanded="true" signature="30403:30516" ph="Select id Fr... ##@__arctiny" />
+                    <marker date="1519564552709" expanded="true" signature="30562:30674" ph="Select id Fr... ##@__arctiny" />
+                    <marker date="1519564552709" expanded="true" signature="30877:31197" ph="Select arc.i... ##@__archives" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="ChannelType.php" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/app/ChannelType.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="648">
+                  <caret line="86" column="24" lean-forward="true" selection-start-line="86" selection-start-column="24" selection-end-line="86" selection-end-column="24" />
                   <folding />
                 </state>
               </provider>
@@ -186,47 +130,76 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>writeManifest</find>
-      <find>writeManifest`</find>
-      <find>handle(</find>
-      <find>scws</find>
-      <find>isDeferred</find>
-      <find>Artisan</find>
-      <find>createProvider</find>
-      <find>$providers</find>
-      <find>ProviderRepository</find>
-      <find>compileManifest</find>
-      <find>registerConfiguredProviders</find>
-      <find>register</find>
-      <find>when</find>
-      <find>load</find>
-      <find>arcrank</find>
-      <find>HttpRequest</find>
-      <find>App\Helpers\HttpRequest</find>
-      <find>$sysConfig</find>
-      <find>$refObj</find>
-      <find>first</find>
-      <find>find</find>
-      <find>find()</find>
-      <find>Builder</find>
-      <find>BuildsQueries</find>
-      <find>$phppath</find>
-      <find>Builds</find>
-      <find>-&gt;CTags</find>
-      <find>-&gt;Clear</find>
-      <find>cfg_mainsite</find>
-      <find>$row</find>
+      <find>lib_arclistDone</find>
+      <find>-&gt;GetTagName</find>
+      <find>UPDATED_AT</find>
+      <find>lib_arclist</find>
+      <find>parAddTable</find>
+      <find>box</find>
+      <find>CreateDir</find>
+      <find>GetFileName</find>
+      <find>ShortName</find>
+      <find>getFileName</find>
+      <find>getFileUrl</find>
+      <find>getFileNewName</find>
+      <find>NameFirst</find>
+      <find>Fields</find>
+      <find>['']</find>
+      <find>$this-&gt;GetTruePath()</find>
+      <find>GetTruePath</find>
+      <find>makeHtml</find>
+      <find>pdate</find>
+      <find>GetFileUrl</find>
+      <find>uploads</find>
+      <find>ParseDMfields</find>
+      <find>-&gt;dtp-&gt;</find>
+      <find>-&gt;GetName()</find>
+      <find>$this-&gt;ArcID</find>
+      <find>GetPreNext</find>
+      <find>sourceString</find>
+      <find>GetPageTitlesDM</find>
+      <find>ChannelUnit</find>
+      <find>Channelfields</find>
     </findStrings>
     <replaceStrings>
+      <replace>CfgConfig::sysConfig()-&gt;cfg_plus_dir</replace>
+      <replace>CfgConfig::sysConfig()-&gt;cfg_df_namerule</replace>
+      <replace>-&gt;fields</replace>
+      <replace>parAddTable</replace>
+      <replace>-&gt;splitTitles</replace>
+      <replace>-&gt;splitPageField</replace>
+      <replace>-&gt;splitFields</replace>
+      <replace>-&gt;totalPage</replace>
+      <replace>parseTempletsFirst</replace>
+      <replace>arctype-&gt;reid</replace>
+      <replace>replaceKeyword</replace>
+      <replace>Arctype::getTopIdWithCache</replace>
       <replace>-&gt;cTags</replace>
-      <replace>-&gt;clear</replace>
+      <replace>-&gt;getName</replace>
+      <replace>-&gt;getTagName</replace>
+      <replace>assign</replace>
+      <replace>createDir</replace>
+      <replace>shortName</replace>
+      <replace>nameFirst</replace>
+      <replace>totalPage</replace>
+      <replace>fields</replace>
+      <replace>getTruePath</replace>
+      <replace>getFileUrl</replace>
+      <replace>parseDMfields</replace>
+      <replace>-&gt;getDtp()-&gt;</replace>
+      <replace>$this-&gt;id</replace>
+      <replace>-&gt;getName()</replace>
+      <replace>getPagebreakDM</replace>
+      <replace>channelType</replace>
+      <replace>getPreNext</replace>
     </replaceStrings>
     <dirStrings>
-      <dir>E:\vmShare\zhenghua\dede\laravel-dede\app</dir>
       <dir>E:\vmShare\zhenghua\dede\laravel-dede\config\</dir>
       <dir>E:\vmShare\zhenghua\dede\laravel-dede\config</dir>
       <dir>E:\vmShare\zhenghua\dede\laravel-dede\vendor</dir>
       <dir>E:\vmShare\zhenghua\dede\laravel-dede\</dir>
+      <dir>E:\vmShare\zhenghua\dede\laravel-dede\app\Dede\Controllers</dir>
+      <dir>E:\vmShare\zhenghua\dede\laravel-dede\app</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -235,10 +208,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/Helpers/pscws4/PSCWS4.php" />
-        <option value="$PROJECT_DIR$/app/Helpers/pscws4/test.php" />
-        <option value="$PROJECT_DIR$/bootstrap/app.php" />
-        <option value="$PROJECT_DIR$/public/index.php" />
         <option value="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php" />
         <option value="$PROJECT_DIR$/bootstrap/cache/services.php" />
         <option value="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Application.php" />
@@ -248,7 +217,6 @@
         <option value="$PROJECT_DIR$/config/app.php" />
         <option value="$PROJECT_DIR$/app/TagIndex.php" />
         <option value="$PROJECT_DIR$/app/TagList.php" />
-        <option value="$PROJECT_DIR$/app/Dede/Controllers/ContentController.php" />
         <option value="$PROJECT_DIR$/app/Helpers/common.php" />
         <option value="$PROJECT_DIR$/app/Helpers/DedeTag.php" />
         <option value="$PROJECT_DIR$/app/Helpers/DedeAttributeParse.php" />
@@ -270,29 +238,35 @@
         <option value="$PROJECT_DIR$/app/Helpers/TagLib/infolink.lib.php" />
         <option value="$PROJECT_DIR$/app/Helpers/TagLib/memberinfos.lib.php" />
         <option value="$PROJECT_DIR$/app/Helpers/TagLib/memberlist.lib.php" />
-        <option value="$PROJECT_DIR$/app/Helpers/TagLib/mynews.lib.php" />
         <option value="$PROJECT_DIR$/app/Helpers/TagLib/productimagelist.lib.php" />
         <option value="$PROJECT_DIR$/app/Helpers/TagLib/tag.lib.php" />
         <option value="$PROJECT_DIR$/app/Helpers/TagLib/type.lib.php" />
         <option value="$PROJECT_DIR$/app/Helpers/TagLib/likesgpage.lib.php" />
         <option value="$PROJECT_DIR$/app/Helpers/TagLib/Channel/SpecialtopicLib.php" />
         <option value="$PROJECT_DIR$/app/Addonshop.php" />
-        <option value="$PROJECT_DIR$/app/ChannelType.php" />
         <option value="$PROJECT_DIR$/app/Helpers/DedeTagParse.php" />
         <option value="$PROJECT_DIR$/app/Helpers/TagLib/arclistsg.lib.php" />
         <option value="$PROJECT_DIR$/app/Helpers/TagLib/channel.lib.php" />
         <option value="$PROJECT_DIR$/app/Helpers/TagLib/likearticle.lib.php" />
         <option value="$PROJECT_DIR$/app/CfgConfig.php" />
-        <option value="$PROJECT_DIR$/app/Helpers/Common.php" />
-        <option value="$PROJECT_DIR$/app/Archives.php" />
+        <option value="$PROJECT_DIR$/app/ArcCache.php" />
+        <option value="$PROJECT_DIR$/app/Arctype.php" />
+        <option value="$PROJECT_DIR$/app/Helpers/TagLib/mynews.lib.php" />
+        <option value="$PROJECT_DIR$/app/Helpers/TagLib/mytag.lib.php" />
         <option value="$PROJECT_DIR$/app/Helpers/TagLib/ArclistLib.php" />
+        <option value="$PROJECT_DIR$/app/Helpers/Functions/helpers.php" />
+        <option value="$PROJECT_DIR$/app/Dede/Controllers/ContentController.php" />
+        <option value="$PROJECT_DIR$/app/Helpers/Common.php" />
+        <option value="$PROJECT_DIR$/app/ChannelType.php" />
+        <option value="$PROJECT_DIR$/app/Archives.php" />
       </list>
     </option>
   </component>
-  <component name="JsBuildToolGruntFileManager" detection-done="true" />
-  <component name="JsBuildToolPackageJson" detection-done="true" />
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="PhpServers">
     <servers />
@@ -379,7 +353,7 @@
       <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-ide-helper" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="x" value="-4" />
     <option name="y" value="-4" />
     <option name="width" value="1928" />
@@ -404,16 +378,6 @@
       </profile-state>
     </entry>
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
-    <OptionsSetting value="true" id="Add" />
-    <OptionsSetting value="true" id="Remove" />
-    <OptionsSetting value="true" id="Checkout" />
-    <OptionsSetting value="true" id="Update" />
-    <OptionsSetting value="true" id="Status" />
-    <OptionsSetting value="true" id="Edit" />
-    <ConfirmationsSetting value="0" id="Add" />
-    <ConfirmationsSetting value="0" id="Remove" />
-  </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
@@ -429,386 +393,52 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="laravel-dede" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="laravel-dede" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="laravel-dede" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="laravel-dede" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="laravel-dede" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="laravel-dede" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="laravel-dede" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="laravel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="laravel-dede" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="laravel-dede" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="laravel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="framework" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="laravel-dede" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="laravel-dede" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="laravel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="framework" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Illuminate" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="laravel-dede" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="laravel-dede" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="laravel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="framework" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Illuminate" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Support" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="laravel-dede" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="laravel-dede" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="laravel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="framework" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Illuminate" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Http" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="laravel-dede" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="laravel-dede" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="laravel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="framework" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Illuminate" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Http" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Concerns" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="laravel-dede" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="laravel-dede" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="laravel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="framework" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Illuminate" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Database" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="laravel-dede" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="laravel-dede" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="laravel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="framework" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Illuminate" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Database" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Query" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="laravel-dede" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="laravel-dede" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="laravel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="framework" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Illuminate" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Database" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Eloquent" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="laravel-dede" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="laravel-dede" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="laravel-dede" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="laravel-dede" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Helpers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="laravel-dede" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="laravel-dede" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Helpers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TagLib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
+          <expand>
+            <path>
+              <item name="laravel-dede" type="b2602c69:ProjectViewProjectNode" />
+              <item name="laravel-dede" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="laravel-dede" type="b2602c69:ProjectViewProjectNode" />
+              <item name="laravel-dede" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="laravel-dede" type="b2602c69:ProjectViewProjectNode" />
+              <item name="laravel-dede" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Dede" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="laravel-dede" type="b2602c69:ProjectViewProjectNode" />
+              <item name="laravel-dede" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Helpers" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="laravel-dede" type="b2602c69:ProjectViewProjectNode" />
+              <item name="laravel-dede" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Helpers" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Functions" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="laravel-dede" type="b2602c69:ProjectViewProjectNode" />
+              <item name="laravel-dede" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+          </expand>
+          <select />
         </subPane>
       </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="D:/phpStudy/WWW/DedeCMS-V5.7-UTF8-SP2/uploads" />
+    <property name="last_opened_file_path" value="D:/WWW/lcms/yyyy2" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
@@ -823,15 +453,15 @@
     <property name="js-jscs-nodeInterpreter" value="E:\Program Files\nodejs\node.exe" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\phpStudy\PHPTutorial\WWW\laravel-dede\app\Helpers\pscws4\etc" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\vmShare\zhenghua\dede\laravel-dede\app\Helpers" />
       <recent name="F:\gitc\laravel-dede\app\Helpers\TagLib" />
       <recent name="E:\vmShare\zhenghua\dede\laravel-dede\app\Helpers\TagLib\Channel" />
       <recent name="E:\phpStudy\WWW\laravel-dede\app\Helpers\TagLib\Channel" />
-      <recent name="E:\vmShare\zhenghua\dede\laravel-dede\app\Helpers" />
       <recent name="E:\phpStudy\PHPTutorial\WWW\laravel-dede\resources" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\phpStudy\PHPTutorial\WWW\laravel-dede\app\Helpers\pscws4\etc" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -847,6 +477,18 @@
     </option>
   </component>
   <component name="RunManager">
+    <configuration default="true" type="js.build_tools.grunt" factoryName="Grunt.js">
+      <node-interpreter value="project" />
+      <envs />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+    </configuration>
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
       <method />
     </configuration>
@@ -861,20 +503,6 @@
     <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
       <method />
     </configuration>
-    <configuration default="true" type="js.build_tools.grunt" factoryName="Grunt.js">
-      <envs />
-      <force value="false" />
-      <verbose value="false" />
-      <method />
-    </configuration>
-    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
-      <node-options />
-      <gulpfile />
-      <tasks />
-      <arguments />
-      <envs />
-      <method />
-    </configuration>
     <configuration default="true" type="js.build_tools.npm" factoryName="npm">
       <command value="run-script" />
       <scripts />
@@ -882,7 +510,9 @@
       <method />
     </configuration>
   </component>
-  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -891,6 +521,7 @@
       <changelist id="fb5ec994-0d5a-4baa-88da-a4296598c875" name="Default" comment="" />
       <created>1514627780950</created>
       <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
       <updated>1514627780950</updated>
       <workItem from="1514814090982" duration="628000" />
       <workItem from="1514818882820" duration="290000" />
@@ -912,34 +543,35 @@
       <workItem from="1518515125403" duration="5324000" />
       <workItem from="1519228329688" duration="1383000" />
       <workItem from="1519229733440" duration="3628000" />
+      <workItem from="1519526956247" duration="19165000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45952000" />
+    <option name="totallyTimeSpent" value="65117000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-4" y="-4" width="1928" height="1060" extended-state="6" />
+    <frame x="-4" y="-4" width="1928" height="1060" extended-state="1" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17838125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18040685" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32731137" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20280474" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.171459" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17130621" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -951,12 +583,12 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1705757" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18040685" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32864866" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24946696" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20280474" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17130621" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -993,450 +625,575 @@
           <line>69</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Helpers/Functions/helpers.php</url>
+          <line>46</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="4" />
+      <option name="time" value="5" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Concerns/HasEvents.php">
+    <entry file="file://$PROJECT_DIR$/app/Helpers/TagLib/mda.lib.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Concerns/HasGlobalScopes.php">
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard/standard_8.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Concerns/BuildsQueries.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="19" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/SoftConfig.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Download.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.12837838">
-          <caret line="6" column="14" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Helpers/TagLib/adminname.lib.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Helpers/TagLib/Channel/ImgLib.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-20.357143">
-          <caret line="51" column="46" selection-start-line="51" selection-start-column="24" selection-end-line="51" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Helpers/TagLib/Channel/SoftlinksLib.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.178572">
-          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="16" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Helpers/TagLib/Channel/specialtopic.lib.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.857143">
-          <caret line="45" column="84" selection-start-line="45" selection-start-column="84" selection-end-line="45" selection-end-column="84" />
+        <state relative-caret-position="299">
+          <caret line="464" column="9" lean-forward="false" selection-start-line="464" selection-start-column="9" selection-end-line="464" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Helpers/TagLib/ask.lib.php">
+    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Concerns/HasAttributes.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.214286">
-          <caret line="29" column="41" selection-start-line="29" selection-start-column="41" selection-end-line="29" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Helpers/TagLib/asktype.lib.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.214286">
-          <caret line="30" column="41" selection-start-line="30" selection-start-column="41" selection-end-line="30" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Helpers/TagLib/autochannel.lib.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.214286">
-          <caret line="51" column="41" selection-start-line="51" selection-start-column="41" selection-end-line="51" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Helpers/TagLib/booklist.lib.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.857143">
-          <caret line="55" column="25" selection-start-line="55" selection-start-column="25" selection-end-line="55" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Helpers/TagLib/channelartlist.lib.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.214286">
-          <caret line="59" column="35" selection-start-line="59" selection-start-column="35" selection-end-line="59" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Helpers/TagLib/feedback.lib.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.214286">
-          <caret line="46" column="20" selection-start-line="46" selection-start-column="20" selection-end-line="46" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Helpers/TagLib/group.lib.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.214286">
-          <caret line="45" column="41" selection-start-line="45" selection-start-column="41" selection-end-line="45" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Helpers/TagLib/groupthread.lib.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.214286">
-          <caret line="47" column="41" selection-start-line="47" selection-start-column="41" selection-end-line="47" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Helpers/TagLib/type.lib.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34948096">
-          <caret line="44" column="41" selection-start-line="44" selection-start-column="41" selection-end-line="44" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Helpers/TagLib/tag.lib.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34948096">
-          <caret line="38" column="41" selection-start-line="38" selection-start-column="41" selection-end-line="38" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Helpers/TagLib/productimagelist.lib.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34948096">
-          <caret line="23" column="38" selection-start-line="23" selection-start-column="38" selection-end-line="23" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Helpers/TagLib/mynews.lib.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34948096">
-          <caret line="36" column="38" selection-start-line="36" selection-start-column="38" selection-end-line="36" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Helpers/TagLib/memberlist.lib.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34948096">
-          <caret line="43" column="38" selection-start-line="43" selection-start-column="38" selection-end-line="43" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Helpers/TagLib/memberinfos.lib.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34948096">
-          <caret line="47" column="38" selection-start-line="47" selection-start-column="38" selection-end-line="47" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Helpers/TagLib/likesgpage.lib.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44809687">
-          <caret line="31" column="49" selection-start-line="31" selection-start-column="49" selection-end-line="31" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Helpers/TagLib/infolink.lib.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.1384083">
-          <caret line="54" column="38" selection-start-line="54" selection-start-column="38" selection-end-line="54" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Helpers/TagLib/infoguide.lib.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34948096">
-          <caret line="49" column="38" selection-start-line="49" selection-start-column="38" selection-end-line="49" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/ForgotPasswordController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/ResetPasswordController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.75056434">
-          <caret line="36" column="39" selection-start-line="36" selection-start-column="39" selection-end-line="36" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_ide_helper.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.12866817">
-          <caret line="12496" column="63" selection-start-line="12496" selection-start-column="63" selection-end-line="12496" selection-end-column="63" />
+        <state relative-caret-position="285">
+          <caret line="995" column="29" lean-forward="false" selection-start-line="995" selection-start-column="18" selection-end-line="995" selection-end-column="29" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php">
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard/standard_9.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5104895">
-          <caret line="227" column="29" selection-start-line="227" selection-start-column="29" selection-end-line="227" selection-end-column="29" />
+        <state relative-caret-position="198">
+          <caret line="85" column="9" lean-forward="false" selection-start-line="85" selection-start-column="9" selection-end-line="85" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Addonshop.php">
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard/standard_defines.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="30" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
-          <folding>
-            <element signature="e#23#62#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Helpers/TagLib/Channel/SpecialtopicLib.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="50" column="43" selection-start-line="50" selection-start-column="39" selection-end-line="50" selection-end-column="54" />
-          <folding>
-            <element signature="e#45#68#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34311512">
-          <caret line="519" column="20" selection-start-line="519" selection-start-column="20" selection-end-line="519" selection-end-column="20" />
+        <state relative-caret-position="198">
+          <caret line="757" column="9" lean-forward="false" selection-start-line="757" selection-start-column="9" selection-end-line="757" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php">
+    <entry file="file://$PROJECT_DIR$/bootstrap/app.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.021444695">
-          <caret line="1537" column="67" selection-start-line="1537" selection-start-column="22" selection-end-line="1537" selection-end-column="67" />
-          <folding>
-            <element signature="e#45#57#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Support/helpers.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.6785714">
-          <caret line="450" column="45" selection-start-line="450" selection-start-column="37" selection-end-line="450" selection-end-column="45" />
+        <state relative-caret-position="-302">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/com/jetbrains/php/lang/psi/stubs/data/mbstring.php">
+    <entry file="file://$PROJECT_DIR$/routes/admin.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34311512">
-          <caret line="498" column="41" selection-start-line="498" selection-start-column="34" selection-end-line="498" selection-end-column="41" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/ChannelType.php">
+    <entry file="file://$PROJECT_DIR$/routes/api.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.22799097">
-          <caret line="40" column="35" selection-start-line="40" selection-start-column="35" selection-end-line="40" selection-end-column="35" />
-          <folding>
-            <element signature="e#23#46#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Helpers/TagLib/likearticle.lib.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34311512">
-          <caret line="69" column="45" selection-start-line="69" selection-start-column="45" selection-end-line="69" selection-end-column="45" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Helpers/TagLib/arclistsg.lib.php">
+    <entry file="file://$PROJECT_DIR$/app/Helpers/pscws4/XDB_R.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3544018">
-          <caret line="156" column="50" selection-start-line="156" selection-start-column="50" selection-end-line="156" selection-end-column="50" />
-          <folding>
-            <marker date="1519465824908" expanded="true" signature="2389:2460" placeholder="SELECT addta... #@__channeltype" />
-            <marker date="1519465824908" expanded="true" signature="2484:2609" placeholder="SELECT ch.ad... #@__arctype" />
-            <marker date="1519465824908" expanded="true" signature="4192:4287" placeholder="SELECT `id`,... #@__arctype" />
-            <marker date="1519465824908" expanded="true" signature="4640:4758" placeholder="SELECT id,to... #@__arctype" />
-            <marker date="1519465824908" expanded="true" signature="4985:5095" placeholder="SELECT id,to... #@__arctype" />
-            <marker date="1519465824908" expanded="true" signature="6799:7075" placeholder="SELECT ${$ar... ${$maintable}" />
-            <marker date="1519465824908" expanded="true" signature="7378:7648" placeholder="SELECT ${$ar... ${$maintable}" />
-            <marker date="1519465824908" expanded="true" signature="11093:11200" placeholder="INSERT INTO `#@__arccache`... " />
-            <marker date="1519465824908" expanded="true" signature="11238:11306" placeholder="DELETE FROM " />
-            <marker date="1519465824908" expanded="true" signature="11725:11809" placeholder="SELECT cache... #@__arccache" />
-            <marker date="1519465824908" expanded="true" signature="12078:12206" placeholder="SELECT id,ty... #@_" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Helpers/TagLib/channel.lib.php">
+    <entry file="file://$PROJECT_DIR$/app/Helpers/pscws4/test.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34311512">
-          <caret line="127" column="37" selection-start-line="127" selection-start-column="37" selection-end-line="127" selection-end-column="37" />
-          <folding>
-            <marker date="1519465824959" expanded="true" signature="1857:1903" placeholder="SELECT * FRO... #@__arctype" />
-            <marker date="1519465824959" expanded="true" signature="2212:2393" placeholder="SELECT id,ty... #@__arctype" />
-            <marker date="1519465824959" expanded="true" signature="2490:2679" placeholder="SELECT id,ty... #@__arctype" />
-            <marker date="1519465824959" expanded="true" signature="2775:2964" placeholder="SELECT id,ty... #@__arctype" />
-            <marker date="1519465824959" expanded="true" signature="3452:3641" placeholder="SELECT id,ty... #@__arctype" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Helpers/pscws4/PSCWS4.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-684">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/SysEnum.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="11" column="27" lean-forward="false" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/CfgConfig.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.506772">
-          <caret line="90" column="31" selection-start-line="90" selection-start-column="31" selection-end-line="90" selection-end-column="31" />
+        <state relative-caret-position="-66">
+          <caret line="59" column="35" lean-forward="false" selection-start-line="59" selection-start-column="27" selection-end-line="59" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Http/Concerns/InteractsWithInput.php">
+    <entry file="file://$PROJECT_DIR$/app/Dede/Controllers/SiteConfigController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.021444695">
-          <caret line="187" column="80" selection-start-line="187" selection-start-column="72" selection-end-line="187" selection-end-column="80" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Helpers/Common.php">
+    <entry file="file://$PROJECT_DIR$/app/Dede/Controllers/ModalController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.9285715">
-          <caret line="139" column="23" selection-start-line="139" selection-start-column="23" selection-end-line="139" selection-end-column="23" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Concerns/HasTimestamps.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="44" column="25" lean-forward="true" selection-start-line="44" selection-start-column="25" selection-end-line="44" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Support/helpers.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="141">
+          <caret line="287" column="23" lean-forward="false" selection-start-line="287" selection-start-column="13" selection-end-line="287" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Addonarticle.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Addonimage.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" column="37" lean-forward="true" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Dede/Controllers/CatalogController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2375">
+          <caret line="61" column="53" lean-forward="false" selection-start-line="61" selection-start-column="53" selection-end-line="61" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Helpers/TagLib/mytag.lib.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="254">
+          <caret line="53" column="51" lean-forward="false" selection-start-line="53" selection-start-column="51" selection-end-line="53" selection-end-column="51" />
+          <folding>
+            <marker date="1519551973329" expanded="true" signature="1700:1784" ph="SELECT * FRO... ${$tablename}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Helpers/TagLib/mynews.lib.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="39" column="55" lean-forward="false" selection-start-line="39" selection-start-column="55" selection-end-line="39" selection-end-column="55" />
+          <folding>
+            <marker date="1519551973240" expanded="true" signature="1107:1170" ph="SELECT * FRO... ##@_" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Arctiny.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-285">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Arctype.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="351" column="27" lean-forward="false" selection-start-line="351" selection-start-column="27" selection-end-line="351" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard/standard_0.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="98" column="20" lean-forward="false" selection-start-line="98" selection-start-column="20" selection-end-line="98" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Admin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-701">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Addonspec.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Helpers/DedeAttribute.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="200">
+          <caret line="17" column="33" lean-forward="true" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Archives.php">
+    <entry file="file://$PROJECT_DIR$/app/Helpers/DedeTag.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-40.785713">
-          <caret line="364" column="83" selection-start-line="364" selection-start-column="83" selection-end-line="364" selection-end-column="83" />
-          <folding>
-            <element signature="e#23#46#0#PHP" expanded="true" />
-            <element signature="e#3627#5117#0#PHP" expanded="false" />
-            <element signature="e#6221#7938#0#PHP" expanded="false" />
-            <element signature="e#15038#16125#0#PHP" expanded="false" />
-          </folding>
+        <state relative-caret-position="304">
+          <caret line="21" column="16" lean-forward="true" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Helpers/DedeTagParse.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.178572">
-          <caret line="578" column="22" selection-start-line="578" selection-start-column="13" selection-end-line="578" selection-end-column="22" />
+        <state relative-caret-position="219">
+          <caret line="429" column="19" lean-forward="false" selection-start-line="429" selection-start-column="13" selection-end-line="429" selection-end-column="19" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Helpers/TagLib/mda.lib.php">
+    <entry file="file://$PROJECT_DIR$/app/ArcCache.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.029345373">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="304">
+          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Helpers/TagLib/ArclistLib.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3018648">
-          <caret line="614" column="43" selection-start-line="614" selection-start-column="43" selection-end-line="614" selection-end-column="43" />
+        <state relative-caret-position="295">
+          <caret line="75" column="36" lean-forward="false" selection-start-line="75" selection-start-column="24" selection-end-line="75" selection-end-column="36" />
           <folding>
-            <element signature="e#369#386#0#PHP" expanded="true" />
-            <element signature="e#2297#2415#0#PHP" expanded="false" />
-            <element signature="e#2354#2415#0#PHP" expanded="false" />
-            <element signature="e#2524#2966#0#PHP" expanded="false" />
-            <element signature="e#2630#2966#0#PHP" expanded="false" />
-            <element signature="e#2731#2966#0#PHP" expanded="false" />
-            <element signature="e#2810#2966#0#PHP" expanded="false" />
-            <element signature="e#2903#2966#0#PHP" expanded="false" />
-            <element signature="e#4085#4205#0#PHP" expanded="false" />
-            <element signature="e#4215#4360#0#PHP" expanded="false" />
-            <element signature="e#4302#4360#0#PHP" expanded="false" />
-            <element signature="e#4877#5834#0#PHP" expanded="false" />
-            <element signature="e#7668#7888#0#PHP" expanded="false" />
-            <element signature="e#15710#16631#0#PHP" expanded="false" />
-            <marker date="1519465824955" expanded="true" signature="11172:11267" placeholder="SELECT `id`,... #@__arctype" />
-            <marker date="1519465824955" expanded="true" signature="11986:12104" placeholder="SELECT id,to... #@__arctype" />
-            <marker date="1519465824955" expanded="true" signature="12362:12472" placeholder="SELECT id,to... #@__arctype" />
-            <marker date="1519465824955" expanded="true" signature="17617:17677" placeholder="SELECT addta... #@__channeltype" />
-            <marker date="1519465824955" expanded="true" signature="18190:18505" placeholder="SELECT arc.*... ${$maintable}" />
-            <marker date="1519465824955" expanded="true" signature="19334:19675" placeholder="SELECT arc.*... ${$maintable}" />
-            <marker date="1519465824955" expanded="true" signature="19896:19999" placeholder="SELECT arc.i... ${$maintable}" />
-            <marker date="1519465824955" expanded="true" signature="20085:20198" placeholder="SELECT arc.i... ${$maintable}" />
-            <marker date="1519465824955" expanded="true" signature="21572:21629" placeholder="UPDATE `${$m... " />
-            <marker date="1519465824955" expanded="true" signature="22712:22769" placeholder="UPDATE `${$m... " />
-            <marker date="1519465824955" expanded="true" signature="28961:29012" placeholder="SELECT tagid... #@_" />
-            <marker date="1519465824955" expanded="true" signature="29223:29463" placeholder="INSERT INTO #@_... " />
-            <marker date="1519465824955" expanded="true" signature="29572:29917" placeholder="UPDATE `#@__... " />
-            <marker date="1519465824955" expanded="true" signature="30248:30362" placeholder="INSERT INTO `#@__arccache`... " />
-            <marker date="1519465824955" expanded="true" signature="30404:30463" placeholder="DELETE FROM " />
-            <marker date="1519465824955" expanded="true" signature="31017:31087" placeholder="SELECT cache... #@__arccache" />
-            <marker date="1519465824955" expanded="true" signature="31627:31755" placeholder="SELECT id,ty... #@_" />
+            <element signature="e#38#369#0#PHP" expanded="false" />
+            <element signature="e#370#387#0#PHP" expanded="true" />
+            <element signature="e#571#720#0#PHP" expanded="false" />
+            <element signature="e#721#2064#0#PHP" expanded="false" />
+            <element signature="e#2367#2485#0#PHP" expanded="false" />
+            <element signature="e#2424#2485#0#PHP" expanded="false" />
+            <element signature="e#2594#3036#0#PHP" expanded="false" />
+            <element signature="e#2700#3036#0#PHP" expanded="false" />
+            <element signature="e#2801#3036#0#PHP" expanded="false" />
+            <element signature="e#2880#3036#0#PHP" expanded="false" />
+            <element signature="e#2973#3036#0#PHP" expanded="false" />
+            <element signature="e#4010#4145#0#PHP" expanded="false" />
+            <element signature="e#4155#4281#0#PHP" expanded="false" />
+            <element signature="e#4291#4436#0#PHP" expanded="false" />
+            <element signature="e#4378#4436#0#PHP" expanded="false" />
+            <element signature="e#4959#5916#0#PHP" expanded="false" />
+            <element signature="e#5921#30167#0#PHP" expanded="false" />
+            <element signature="e#7750#7970#0#PHP" expanded="false" />
+            <element signature="e#8364#15060#0#PHP" expanded="false" />
+            <element signature="e#8397#8495#0#PHP" expanded="false" />
+            <element signature="e#8509#8731#0#PHP" expanded="false" />
+            <element signature="e#8805#9101#0#PHP" expanded="false" />
+            <element signature="e#9134#9406#0#PHP" expanded="false" />
+            <element signature="e#9438#9629#0#PHP" expanded="false" />
+            <element signature="e#9643#9832#0#PHP" expanded="false" />
+            <element signature="e#9845#10159#0#PHP" expanded="false" />
+            <element signature="e#9924#10144#0#PHP" expanded="false" />
+            <element signature="e#10173#13995#0#PHP" expanded="false" />
+            <element signature="e#10269#13981#0#PHP" expanded="false" />
+            <element signature="e#10364#10938#0#PHP" expanded="false" />
+            <element signature="e#10502#10625#0#PHP" expanded="false" />
+            <element signature="e#11078#13981#0#PHP" expanded="false" />
+            <element signature="e#11169#13494#0#PHP" expanded="false" />
+            <element signature="e#11444#13472#0#PHP" expanded="false" />
+            <element signature="e#11733#13472#0#PHP" expanded="false" />
+            <element signature="e#11816#12792#0#PHP" expanded="false" />
+            <element signature="e#12221#12792#0#PHP" expanded="false" />
+            <element signature="e#12822#13038#0#PHP" expanded="false" />
+            <element signature="e#13039#13095#0#PHP" expanded="false" />
+            <element signature="e#13515#13963#0#PHP" expanded="false" />
+            <element signature="e#13727#13963#0#PHP" expanded="false" />
+            <element signature="e#14097#14258#0#PHP" expanded="false" />
+            <element signature="e#14272#14899#0#PHP" expanded="false" />
+            <element signature="e#14311#14885#0#PHP" expanded="false" />
+            <element signature="e#14515#14885#0#PHP" expanded="false" />
+            <element signature="e#14596#14867#0#PHP" expanded="false" />
+            <element signature="e#15112#16713#0#PHP" expanded="false" />
+            <element signature="e#15283#16713#0#PHP" expanded="false" />
+            <element signature="e#15467#16713#0#PHP" expanded="false" />
+            <element signature="e#15609#16713#0#PHP" expanded="false" />
+            <element signature="e#15792#16713#0#PHP" expanded="false" />
+            <element signature="e#15952#16713#0#PHP" expanded="false" />
+            <element signature="e#16132#16713#0#PHP" expanded="false" />
+            <element signature="e#16291#16713#0#PHP" expanded="false" />
+            <element signature="e#16803#17145#0#PHP" expanded="false" />
+            <element signature="e#17042#17145#0#PHP" expanded="false" />
+            <element signature="e#17147#17171#0#PHP" expanded="false" />
+            <element signature="e#17618#18248#0#PHP" expanded="false" />
+            <element signature="e#17837#18238#0#PHP" expanded="false" />
+            <element signature="e#18249#18251#0#PHP" expanded="false" />
+            <element signature="e#18810#19298#0#PHP" expanded="false" />
+            <element signature="e#18940#19298#0#PHP" expanded="false" />
+            <element signature="e#19014#19088#0#PHP" expanded="false" />
+            <element signature="e#19133#19288#0#PHP" expanded="false" />
+            <element signature="e#19333#19785#0#PHP" expanded="false" />
+            <element signature="e#19398#19531#0#PHP" expanded="false" />
+            <element signature="e#19815#23076#0#PHP" expanded="false" />
+            <element signature="e#19855#23066#0#PHP" expanded="false" />
+            <element signature="e#19910#19953#0#PHP" expanded="false" />
+            <element signature="e#20100#20138#0#PHP" expanded="false" />
+            <element signature="e#20472#21863#0#PHP" expanded="false" />
+            <element signature="e#20770#21004#0#PHP" expanded="false" />
+            <element signature="e#21025#21273#0#PHP" expanded="false" />
+            <element signature="e#21294#21535#0#PHP" expanded="false" />
+            <element signature="e#21575#21629#0#PHP" expanded="false" />
+            <element signature="e#21865#21922#0#PHP" expanded="false" />
+            <element signature="e#23626#28841#0#PHP" expanded="false" />
+            <element signature="e#23721#28724#0#PHP" expanded="false" />
+            <element signature="e#23899#28173#0#PHP" expanded="false" />
+            <element signature="e#24164#24293#0#PHP" expanded="false" />
+            <element signature="e#24351#24608#0#PHP" expanded="false" />
+            <element signature="e#24649#24852#0#PHP" expanded="false" />
+            <element signature="e#24875#25054#0#PHP" expanded="false" />
+            <element signature="e#25075#25293#0#PHP" expanded="false" />
+            <element signature="e#26621#27237#0#PHP" expanded="false" />
+            <element signature="e#26675#27154#0#PHP" expanded="false" />
+            <element signature="e#26743#27128#0#PHP" expanded="false" />
+            <element signature="e#26922#27128#0#PHP" expanded="false" />
+            <element signature="e#27258#27929#0#PHP" expanded="false" />
+            <element signature="e#27303#27768#0#PHP" expanded="false" />
+            <element signature="e#27501#27768#0#PHP" expanded="false" />
+            <element signature="e#27597#27741#0#PHP" expanded="false" />
+            <element signature="e#27791#27929#0#PHP" expanded="false" />
+            <element signature="e#27967#28093#0#PHP" expanded="false" />
+            <element signature="e#28113#28173#0#PHP" expanded="false" />
+            <element signature="e#28364#28651#0#PHP" expanded="false" />
+            <element signature="e#28528#28633#0#PHP" expanded="false" />
+            <element signature="e#29003#29758#0#PHP" expanded="false" />
+            <element signature="e#29785#30136#0#PHP" expanded="false" />
+            <element signature="e#29865#29980#0#PHP" expanded="false" />
+            <element signature="e#30173#30297#0#PHP" expanded="false" />
+            <element signature="e#30302#30933#0#PHP" expanded="false" />
+            <element signature="e#30746#30927#0#PHP" expanded="false" />
+            <element signature="e#30807#30927#0#PHP" expanded="false" />
+            <element signature="e#30873#30927#0#PHP" expanded="false" />
+            <element signature="e#30939#31089#0#PHP" expanded="false" />
+            <element signature="e#31094#31495#0#PHP" expanded="false" />
+            <element signature="e#31250#31379#0#PHP" expanded="false" />
+            <element signature="e#31265#31378#1#PHP" expanded="false" />
+            <element signature="e#31250#31400#0#PHP" expanded="false" />
+            <element signature="e#31250#31417#0#PHP" expanded="false" />
+            <element signature="e#31501#31741#0#PHP" expanded="false" />
+            <element signature="e#31746#33077#0#PHP" expanded="false" />
+            <element signature="e#31826#33049#0#PHP" expanded="false" />
+            <element signature="e#31987#32914#0#PHP" expanded="false" />
+            <element signature="e#32022#32274#0#PHP" expanded="false" />
+            <element signature="e#32112#32246#0#PHP" expanded="false" />
+            <element signature="e#32125#32245#1#PHP" expanded="false" />
+            <element signature="e#32143#32244#1#PHP" expanded="false" />
+            <element signature="e#32291#32590#0#PHP" expanded="false" />
+            <element signature="e#32382#32562#0#PHP" expanded="false" />
+            <element signature="e#32395#32554#0#PHP" expanded="false" />
+            <element signature="e#32427#32528#1#PHP" expanded="false" />
+            <element signature="e#32607#32900#0#PHP" expanded="false" />
+            <element signature="e#32703#32872#0#PHP" expanded="false" />
+            <element signature="e#32716#32864#0#PHP" expanded="false" />
+            <element signature="e#32748#32849#1#PHP" expanded="false" />
+            <marker date="1519556799386" expanded="false" signature="4484:4945" ph="..." />
+            <marker date="1519556799386" expanded="false" signature="29165:29216" ph="SELECT tagid... ##@_" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="179" column="13" lean-forward="false" selection-start-line="179" selection-start-column="13" selection-end-line="179" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Arcatt.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Addonsoft.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Addonshop.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="14" column="30" lean-forward="false" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Addoninfo.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Support/Arr.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="557" column="21" lean-forward="true" selection-start-line="557" selection-start-column="21" selection-end-line="557" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Support/Collection.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="1355" column="34" lean-forward="false" selection-start-line="1355" selection-start-column="34" selection-end-line="1355" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Arcrank.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/uedit/third-party/codemirror/codemirror.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="472">
+          <caret line="2648" column="90" lean-forward="true" selection-start-line="2648" selection-start-column="62" selection-end-line="2648" selection-end-column="90" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <marker date="1507276026648" expanded="true" signature="1138:1200" ph="..." />
+            <marker date="1507276026648" expanded="true" signature="1274:1317" ph="..." />
+            <marker date="1507276026648" expanded="true" signature="1506:1524" ph="..." />
+            <marker date="1507276026648" expanded="true" signature="1610:1628" ph="..." />
+            <marker date="1507276026648" expanded="true" signature="1916:1934" ph="..." />
+            <marker date="1507276026648" expanded="true" signature="1969:2049" ph="..." />
+            <marker date="1507276026648" expanded="true" signature="2109:2115" ph="..." />
+            <marker date="1507276026648" expanded="true" signature="48001:48007" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/league/flysystem/src/FilesystemInterface.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="210" column="20" lean-forward="false" selection-start-line="210" selection-start-column="20" selection-end-line="210" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Filesystem/FilesystemAdapter.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="520" column="38" lean-forward="false" selection-start-line="520" selection-start-column="38" selection-end-line="520" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_ide_helper.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="10853" column="69" lean-forward="false" selection-start-line="10853" selection-start-column="69" selection-end-line="10853" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Helpers/Functions/helpers.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="92" column="9" lean-forward="false" selection-start-line="92" selection-start-column="9" selection-end-line="92" selection-end-column="9" />
+          <folding>
+            <element signature="e#6#94#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="519" column="39" lean-forward="false" selection-start-line="519" selection-start-column="31" selection-end-line="519" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Dede/Controllers/ContentController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="551">
+          <caret line="167" column="24" lean-forward="false" selection-start-line="167" selection-start-column="12" selection-end-line="167" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Helpers/Common.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="373">
+          <caret line="424" column="29" lean-forward="false" selection-start-line="424" selection-start-column="20" selection-end-line="424" selection-end-column="29" />
+          <folding>
+            <marker date="1519563644313" expanded="true" signature="14728:14805" ph="Update `##@__... " />
+            <marker date="1519563644313" expanded="true" signature="14895:14957" ph="Update `##@__... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/phpstorm.jar!/resources/html5-schema/html5/common.rnc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="124" column="18" lean-forward="false" selection-start-line="124" selection-start-column="18" selection-end-line="124" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/ChannelType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="648">
+          <caret line="86" column="24" lean-forward="true" selection-start-line="86" selection-start-column="24" selection-end-line="86" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Archives.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="344" column="43" lean-forward="false" selection-start-line="344" selection-start-column="43" selection-end-line="344" selection-end-column="43" />
+          <folding>
+            <element signature="e#23#46#0#PHP" expanded="true" />
+            <marker date="1519564552709" expanded="true" signature="30403:30516" ph="Select id Fr... ##@__arctiny" />
+            <marker date="1519564552709" expanded="true" signature="30562:30674" ph="Select id Fr... ##@__arctiny" />
+            <marker date="1519564552709" expanded="true" signature="30877:31197" ph="Select arc.i... ##@__archives" />
           </folding>
         </state>
       </provider>

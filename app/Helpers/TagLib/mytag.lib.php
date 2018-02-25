@@ -48,10 +48,10 @@ function lib_GetMyTagT(&$refObj, $typeid,$tagname,$tablename)
     global $dsql;
     if($tagname=='') return '';
     if(trim($typeid)=='') $typeid=0;
-    if( !empty($refObj->Fields['typeid']) && $typeid==0) $typeid = $refObj->Fields['typeid'];
+    if( !empty($refObj->fields['typeid']) && $typeid==0) $typeid = $refObj->fields['typeid'];
     
     $typesql = $row = '';
-    if($typeid > 0) $typesql = " And typeid IN(0,".GetTopids($typeid).") ";
+    if($typeid > 0) $typesql = " And typeid IN(0,".Arctype::getTopIdWithCaches($typeid).") ";
     
     $row = $dsql->GetOne(" SELECT * FROM $tablename WHERE tagname LIKE '$tagname' $typesql ORDER BY typeid DESC ");
     if(!is_array($row)) return '';

@@ -55,7 +55,7 @@ function lib_channel(&$cTag,&$refObj)
         if( isset($refObj->TypeLink->TypeInfos['id']) )
         {
             $typeid = $refObj->TypeLink->TypeInfos['id'];
-            $reid = $refObj->TypeLink->TypeInfos['reid'];
+            $reid = $refObj->arctype->reid;
             $topid = $refObj->TypeLink->TypeInfos['topid'];
         }
         else {
@@ -113,7 +113,7 @@ function lib_channel(&$cTag,&$refObj)
         $dsql->SetQuery($sql);
       $dsql->Execute();
     }
-    $GLOBALS['autoindex'] = 0;
+    CfgConfig::sysConfig()->autoindex = 0;
     for($i=0;$i < $line;$i++)
     {
         if($col>1) $likeType .= "<dl>\r\n";
@@ -154,7 +154,7 @@ function lib_channel(&$cTag,&$refObj)
                 }
             }
             if($col>1) $likeType .= "</dd>\r\n";
-            $GLOBALS['autoindex']++;
+            CfgConfig::sysConfig()->autoindex++;
         }
         //Loop Col
         if($col>1)

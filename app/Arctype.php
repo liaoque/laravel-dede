@@ -146,7 +146,7 @@ class Arctype extends Model
 
     public function channelType()
     {
-        return $this->hasOne(ChannelType::class , 'id', 'channeltype');
+        return $this->hasOne(ChannelType::class, 'id', 'channeltype');
     }
 
 
@@ -281,7 +281,7 @@ class Arctype extends Model
             $idList = [];
             $result = self::getAllWithCache();
             foreach ($result as $id => $value) {
-                if (strpos($value['path'].'', $this->id.'') === 0) {
+                if (strpos($value['path'] . '', $this->id . '') === 0) {
                     $idList[] = $id;
                 }
             }
@@ -349,6 +349,16 @@ class Arctype extends Model
         return $data;
     }
 
+    public static function getTopIdWithCache($tid)
+    {
+        $cfg_Cs = self::getAllWithCache();
+        if (!isset($cfg_Cs[$tid]['reid']) || $cfg_Cs[$tid]['reid'] == 0) {
+            return $tid;
+        } else {
+            return self::getTopIdWithCache($cfg_Cs[$tid]['reid']);
+        }
+    }
+
     public static function getChildAllWithCache($id)
     {
         $list = [];
@@ -357,7 +367,7 @@ class Arctype extends Model
         if (!empty($all)) {
             $path = $all[$id]['path'];
             foreach ($all as $id => $v) {
-                if (strpos( $v['path'].'', $path.'') === 0) {
+                if (strpos($v['path'] . '', $path . '') === 0) {
                     $list[$id] = $v;
                 }
             }

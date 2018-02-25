@@ -43,12 +43,12 @@ function lib_infolink(&$cTag,&$refObj)
         $smalltypes = explode(',', $refObj->TypeLink->TypeInfos['smalltypes']);
     }
     
-    if(empty($refObj->Fields['typeid'])) {
+    if(empty($refObj->fields['typeid'])) {
         $row = $dsql->GetOne("SELECT id FROM `#@__arctype` WHERE channeltype='-8' And reid = '0' ");
         $typeid = (is_array($row) ? $row['id'] : 0);
     }
     else {
-        $typeid = $refObj->Fields['typeid'];
+        $typeid = $refObj->fields['typeid'];
     }
     
     $innerText = trim($cTag->GetInnerText());

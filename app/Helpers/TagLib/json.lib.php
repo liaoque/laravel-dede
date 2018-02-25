@@ -38,7 +38,7 @@ function lib_json(&$cTag,&$refObj)
     
     $mcache = new MiniCache;
 
-    $GLOBALS['autoindex'] = 0;
+    CfgConfig::sysConfig()->autoindex = 0;
     $chash = md5($url);
     
     if(!$row = $mcache->Get($chash))
@@ -59,7 +59,7 @@ function lib_json(&$cTag,&$refObj)
 
     foreach($row as $key => $value)
     {
-        $GLOBALS['autoindex']++;
+        CfgConfig::sysConfig()->autoindex++;
         foreach($ctp->cTags as $tagid=>$cTag)
         {
             if($cTag->getName()=='array')

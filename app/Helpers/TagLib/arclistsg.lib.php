@@ -209,7 +209,7 @@ function lib_arclistsg(&$cTag,&$refObj)
     $dtp2 = new DedeTagParse();
     $dtp2->setNameSpace("field","[","]");
     $dtp2->loadString($innertext);
-    $GLOBALS['autoindex'] = 0;
+    CfgConfig::sysConfig()->autoindex = 0;
     $ids = array();
     for($i=0;$i<$line;$i++)
     {
@@ -220,7 +220,7 @@ function lib_arclistsg(&$cTag,&$refObj)
             {
                 $ids[] = $row['aid'];
 
-                $row['filename'] = $row['arcurl'] = GetFileUrl($row['id'],$row['typeid'],$row['senddate'],$row['title'],1,
+                $row['filename'] = $row['arcurl'] = getFileUrl($row['id'],$row['typeid'],$row['senddate'],$row['title'],1,
                 0,$row['namerule'],$row['typedir'],0,'',$row['moresite'],$row['siteurl'],$row['sitepath']);
 
                 $row['typeurl'] = GetTypeUrl($row['typeid'],$row['typedir'],$row['isdefault'],$row['defaultname'],$row['ispart'],
@@ -247,7 +247,7 @@ function lib_arclistsg(&$cTag,&$refObj)
                 $row['textlink'] = "<a href='".$row['filename']."'>".$row['title']."</a>";
                 $row['plusurl'] = $row['phpurl'] = CfgConfig::sysConfig()->cfg_phpurl;
                 $row['memberurl'] = CfgConfig::sysConfig()->cfg_memberurl;
-                $row['templeturl'] = $GLOBALS['cfg_templeturl'];
+                $row['templeturl'] = CfgConfig::sysConfig()->cfg_memberurl;
 
                 if(is_array($dtp2->cTags))
                 {
@@ -264,7 +264,7 @@ function lib_arclistsg(&$cTag,&$refObj)
                             else $dtp2->assign($k,'');
                         }
                     }
-                    $GLOBALS['autoindex']++;
+                    CfgConfig::sysConfig()->autoindex++;
                 }
 
                 $artlist .= $dtp2->getResult()."\r\n";

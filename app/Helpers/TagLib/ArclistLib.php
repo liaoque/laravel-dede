@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Helpers\TagLib;
 
 /**
@@ -12,12 +13,15 @@ namespace App\Helpers\TagLib;
  * @license        http://help.dedecms.com/usersguide/license.html
  * @link           http://www.dedecms.com
  */
+use App\ArcCache;
 use App\Archives;
+use App\Arcmulti;
 use App\Arctype;
 use App\CfgConfig;
 use App\ChannelType;
 use App\Helpers\Common;
 use App\Helpers\DedeTagParse;
+use Illuminate\Support\Collection;
 
 /**
  *  arclist解析标签
@@ -63,13 +67,13 @@ use App\Helpers\DedeTagParse;
 
 class ArclistLib
 {
-    function lib_arclist(&$cTag, &$refObj)
+    function lib_arclist($cTag, $refObj)
     {
         global $envs;
 
         $autopartid = 0;
         $tagid = '';
-        $tagname = $cTag->GetTagName();
+        $tagname = $cTag->getTagName();
         $channelid = $cTag->getAtt('channelid');
 
         //增加对分页内容的处理
@@ -116,11 +120,11 @@ class ArclistLib
 
         $typeid = trim($cTag->getAtt('typeid'));
         if (empty($typeid)) {
-            $typeid = (isset($refObj->Fields['typeid']) ? $refObj->Fields['typeid'] : $envs['typeid']);
+            $typeid = (isset($refObj->fields['typeid']) ? $refObj->fields['typeid'] : $envs['typeid']);
         }
 
         if ($listtype == 'autolist') {
-            $typeid = lib_GetAutoChannelID($cTag->getAtt('partsort'), $typeid);
+            $typeid = self::lib_getAutoChannelID($cTag->getAtt('partsort'), $typeid);
         }
 
         if ($cTag->getAtt('att') == '') {
@@ -129,7 +133,7 @@ class ArclistLib
             $flag = $cTag->getAtt('att');
         }
 
-        return lib_arclistDone
+        return self::lib_arclistDone
         (
             $refObj, $cTag, $typeid, $cTag->getAtt('row'), $cTag->getAtt('col'), $titlelen, $infolen,
             $cTag->getAtt('imgwidth'), $cTag->getAtt('imgheight'), $listtype, $orderby,
@@ -223,7 +227,7 @@ class ArclistLib
             }
 
             if ($writer == 'this') {
-                $wmid = isset($refObj->Fields['mid']) ? $refObj->Fields['mid'] : 0;
+                $wmid = isset($refObj->fields['mid']) ? $refObj->fields['mid'] : 0;
                 $query->where('mid', $wmid);
 //                $orwheres[] = " arc.mid = '$wmid' ";
             }
@@ -264,7 +268,7 @@ class ArclistLib
                 //指定了多个栏目时，不再获取子类的id
                 if (preg_match('#,#', $typeid)) {
                     //指定了getall属性或主页模板例外
-                    if ($getall == 1 || empty($refObj->Fields['typeid'])) {
+                    if ($getall == 1 || empty($refObj->fields['typeid'])) {
                         $typeids = explode(',', $typeid);
                         foreach ($typeids as $ttid) {
                             $typeidss[] = Common::getSonIds($ttid);
@@ -439,7 +443,7 @@ class ArclistLib
         if ($idlist != '' || $GLOBALS['_arclistEnv'] == 'index' || $cfg_index_cache == 0) {
             $needSaveCache = false;
         } else {
-            $idlist = GetArclistCache($taghash);
+            $idlist = self::getArclistCache($taghash);
             if ($idlist != '') {
                 $needSaveCache = false;
             }
@@ -538,7 +542,7 @@ class ArclistLib
         $dtp2 = new DedeTagParse();
         $dtp2->setNameSpace('field', '[', ']');
         $dtp2->loadString($innertext);
-        $GLOBALS['autoindex'] = 0;
+        CfgConfig::sysConfig()->autoindex = 0;
         $ids = array();
         $orderWeight = array();
 
@@ -583,7 +587,7 @@ class ArclistLib
 
                     $row['plusurl'] = $row['phpurl'] = CfgConfig::sysConfig()->cfg_phpurl;
                     $row['memberurl'] = CfgConfig::sysConfig()->cfg_memberurl;
-                    $row['templeturl'] = $GLOBALS['cfg_templeturl'];
+                    $row['templeturl'] = CfgConfig::sysConfig()->cfg_memberurl;
 
                     if (is_array($dtp2->cTags)) {
                         foreach ($dtp2->cTags as $k => $cTag) {
@@ -595,10 +599,10 @@ class ArclistLib
                                 else $dtp2->assign($k, '');
                             }
                         }
-                        $GLOBALS['autoindex']++;
+                        CfgConfig::sysConfig()->autoindex++;
                     }
                     if ($pagesize > 0) {
-                        if ($GLOBALS['autoindex'] <= $pagesize) {
+                        if (CfgConfig::sysConfig()->autoindex <= $pagesize) {
                             $liststr = $dtp2->getResult();
                             $artlist .= $liststr . "\r\n";
                         } else {
@@ -625,7 +629,7 @@ class ArclistLib
                 $isweight = strtolower($isweight);
                 if ($isweight == 'y') {
                     $artlist = '';
-                    $orderWeight = list_sort_by($orderWeight, 'weight', 'asc');
+                    $orderWeight = self::listSortBy($orderWeight, 'weight', 'asc');
 
                     foreach ($orderWeight as $vv) {
                         $artlist .= $vv['arclist'];
@@ -643,31 +647,22 @@ class ArclistLib
         //分页特殊处理
         if ($pagesize > 0) {
             $artlist .= "    </div>\r\n";
-            $row = $dsql->GetOne("SELECT tagid FROM #@__arcmulti WHERE tagid='$tagid'");
+            $row = Arcmulti::where('tagid', $tagid)->first();
+
+//            $row = $dsql->GetOne("SELECT tagid FROM #@__arcmulti WHERE tagid='$tagid'");
             $uptime = time();
             $attstr = addslashes(serialize($attarray));
             $innertext = addslashes($innertext);
-            if (!is_array($row)) {
-                $query = "
-          INSERT INTO #@__arcmulti(tagid,uptime,innertext,pagesize,arcids,ordersql,addfieldsSql,addfieldsSqlJoin,attstr)
-          VALUES('$tagid','$uptime','$innertext','$pagesize','$idsstr','$ordersql','$addfieldsSql','$addfieldsSqlJoin','$attstr');
-        ";
-                $dsql->ExecuteNoneQuery($query);
-            } else {
-                $query = "UPDATE `#@__arcmulti`
-           SET
-           uptime='$uptime',
-           innertext='$innertext',
-           pagesize='$pagesize',
-           arcids='$idsstr',
-           ordersql='$ordersql',
-           addfieldsSql='$addfieldsSql',
-           addfieldsSqlJoin='$addfieldsSqlJoin',
-           attstr='$attstr'
-           WHERE tagid='$tagid'
-        ";
-                $dsql->ExecuteNoneQuery($query);
-            }
+            $row->tagid = $tagid;
+            $row->uptime = $uptime;
+            $row->innertext = $innertext;
+            $row->pagesize = $pagesize;
+            $row->arcids = $idsstr;
+            $row->ordersql = $ordersql;
+            $row->addfieldsSql = $addfieldsSql;
+            $row->addfieldsSqlJoin = $addfieldsSqlJoin;
+            $row->attstr = $attstr;
+            $row->save();
         }
 
         //保存ID缓存
@@ -676,9 +671,9 @@ class ArclistLib
             if ($cfg_cache_type == 'content' && $idsstr != '0') {
                 $idsstr = addslashes($artlist);
             }
-            $inquery = "INSERT INTO `#@__arccache`(`md5hash`,`uptime`,`cachedata`) VALUES ('" . $taghash . "','" . time() . "', '$idsstr'); ";
-            $dsql->ExecuteNoneQuery("DELETE FROM `#@__arccache` WHERE md5hash='" . $taghash . "' ");
-            $dsql->ExecuteNoneQuery($inquery);
+            $arcCache = ArcCache::where('md5hash', $taghash)->first();
+            $arcCache->cachedata = $idsstr;
+            $arcCache->save();
         }
         return $artlist;
     }
@@ -690,13 +685,14 @@ class ArclistLib
      * @param     string $md5hash 唯一识别hash
      * @return    string
      */
-    function GetArclistCache($md5hash)
+    public static function getArclistCache($md5hash)
     {
-        global $dsql, $envs, $cfg_makesign_cache, $cfg_index_cache, $cfg_cache_type;
+        $cfg_makesign_cache = CfgConfig::sysConfig()->cfg_makesign_cache;
+        $cfg_index_cache = CfgConfig::sysConfig()->cfg_index_cache;
         if ($cfg_index_cache <= 0) return '';
-        if (isset($envs['makesign']) && $cfg_makesign_cache == 'N') return '';
+        if ($cfg_makesign_cache == 'N') return '';
         $mintime = time() - $cfg_index_cache;
-        $arr = $dsql->GetOne("SELECT cachedata,uptime FROM `#@__arccache` WHERE md5hash = '$md5hash' ");
+        $arr = ArcCache::where('md5hash', $md5hash)->first(['cachedata', 'uptime'])->toArray();
         if (!is_array($arr)) {
             return '';
         } else if ($arr['uptime'] < $mintime) {
@@ -714,14 +710,16 @@ class ArclistLib
      * @param     string $topid
      * @return    string
      */
-    function lib_GetAutoChannelID($sortid, $topid)
+    public static function lib_getAutoChannelID($sortid, $topid)
     {
-        global $dsql;
         if (empty($sortid)) $sortid = 1;
         $getstart = $sortid - 1;
-        $row = $dsql->GetOne("SELECT id,typename FROM #@__arctype WHERE reid='{$topid}' And ispart<2 And ishidden<>'1' ORDER BY sortrank asc limit $getstart,1");
-        if (!is_array($row)) return 0;
-        else return $row['id'];
+        $row = Arctype::where([
+            ['reid', '=', $topid],
+            ['ispart', '<', 2],
+            ['ishidden', '<>', 1],
+        ])->orderBy('sortrank')->skip($getstart)->first()->toArray();
+        return empty($row['id']) ? 0 : $row['id'];
     }
 
     /**
@@ -734,25 +732,34 @@ class ArclistLib
      *            asc正向排序 desc逆向排序 nat自然排序
      * @return    array
      */
-    function list_sort_by($list, $field, $sortby = 'asc')
+    public static function listSortBy($list, $field, $sortby = 'asc')
     {
         if (is_array($list)) {
-            $refer = $resultSet = array();
-            foreach ($list as $i => $data)
-                $refer[$i] = &$data[$field];
+            $resultSet = array();
+//            foreach ($list as $i => $data)
+//                $refer[$i] = &$data[$field];
             switch ($sortby) {
                 case 'asc': // 正向排序
-                    asort($refer);
+//                    asort($refer);
+                    $resultSet = array_values(array_sort($list, function ($value) use ($field) {
+                        return $value[$field];
+                    }));
                     break;
                 case 'desc':// 逆向排序
-                    arsort($refer);
+//                    arsort($refer);
+                    $resultSet = array_values(Collection::make($list)->sortBy(function ($value) use ($field) {
+                        return $value[$field];
+                    }, SORT_REGULAR, SORT_DESC)->all());
                     break;
                 case 'nat': // 自然排序
-                    natcasesort($refer);
+//                    natcasesort($refer);
+                    $resultSet = array_values(Collection::make($list)->sortBy(function ($value) use ($field) {
+                        return $value[$field];
+                    }, SORT_NATURAL)->all());
                     break;
             }
-            foreach ($refer as $key => $val)
-                $resultSet[] = &$list[$key];
+//            foreach ($refer as $key => $val)
+//                $resultSet[] = &$list[$key];
             return $resultSet;
         }
         return false;

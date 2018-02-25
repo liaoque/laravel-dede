@@ -37,7 +37,7 @@ function lib_mynews(&$cTag,&$refObj)
     if(empty($innertext)) $innertext =Common::getSysTemplets('mynews.htm');
 
     $idsql = '';
-    if($envs['typeid'] > 0) $idsql = " WHERE typeid='".GetTopid($this->TypeID)."' ";
+    if($envs['typeid'] > 0) $idsql = " WHERE typeid='".Arctype::getTopIdWithCache($this->TypeID)."' ";
     $dsql->SetQuery("SELECT * FROM #@__mynews $idsql ORDER BY senddate DESC LIMIT 0,$row");
     $dsql->Execute();
     $ctp = new DedeTagParse();

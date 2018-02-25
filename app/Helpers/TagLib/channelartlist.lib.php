@@ -90,7 +90,7 @@ function lib_channelartlist(&$cTag,&$refObj)
     {
         $GLOBALS['itemindex']++;
         $pv = new PartView($typeids[$i]['id']);
-        $pv->Fields['typeurl'] = GetOneTypeUrlA($typeids[$i]);
+        $pv->fields['typeurl'] = GetOneTypeUrlA($typeids[$i]);
         $pv->SetTemplet($innertext,'string');
         $artlist .= $pv->getResult();
         $GLOBALS['itemparity'] = ($GLOBALS['itemparity']==1 ? 2 : 1);

@@ -53,10 +53,10 @@ function lib_loop(&$cTag,&$refObj)
     $ctp = new DedeTagParse();
     $ctp->setNameSpace("field","[","]");
     $ctp->LoadSource($innertext);
-    $GLOBALS['autoindex'] = 0;
+    CfgConfig::sysConfig()->autoindex = 0;
     while($row = $dsql->GetArray())
     {
-        $GLOBALS['autoindex']++;
+        CfgConfig::sysConfig()->autoindex++;
         foreach($ctp->cTags as $tagid=>$cTag)
         {
                 if($cTag->getName()=='array')

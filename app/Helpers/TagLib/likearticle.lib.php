@@ -48,21 +48,21 @@ function lib_likearticle(&$cTag,&$refObj)
     $ids = array();
     $tids = array();
     
-    if(!empty($refObj->Fields['tags'])) {
-        $keyword = $refObj->Fields['tags'];
+    if(!empty($refObj->fields['tags'])) {
+        $keyword = $refObj->fields['tags'];
     }
     else {
-        $keyword = ( !empty($refObj->Fields['keywords']) ? $refObj->Fields['keywords'] : '' );
+        $keyword = ( !empty($refObj->fields['keywords']) ? $refObj->fields['keywords'] : '' );
     }
     
     $typeid = ( !empty($mytypeid) ? $mytypeid : 0 );
     if(empty($typeid))
     {
-        if(!empty($refObj->Typelink->TypeInfos['reid'])) {
-             $typeid = $refObj->Typelink->TypeInfos['reid'];
+        if(!empty($refObj->arctype->reid)) {
+             $typeid = $refObj->arctype->reid;
         }
         else {
-             if(!empty($refObj->Fields['typeid'])) $typeid = $refObj->Fields['typeid'];
+             if(!empty($refObj->fields['typeid'])) $typeid = $refObj->fields['typeid'];
         }
     }
     
@@ -72,9 +72,9 @@ function lib_likearticle(&$cTag,&$refObj)
     
     $limitRow = $row - count($ids);
     $keyword = '';
-    if(!empty($refObj->Fields['keywords']))
+    if(!empty($refObj->fields['keywords']))
     {
-            $keywords = explode(',' , trim($refObj->Fields['keywords']));
+            $keywords = explode(',' , trim($refObj->fields['keywords']));
             $keyword = '';
             $n = 1;
             foreach($keywords as $k)
@@ -88,7 +88,7 @@ function lib_likearticle(&$cTag,&$refObj)
                 $n++;
             }
     }
-    $arcid = (!empty($refObj->Fields['id']) ? $refObj->Fields['aid'] : 0);
+    $arcid = (!empty($refObj->fields['id']) ? $refObj->fields['aid'] : 0);
     if( empty($arcid) || $byabs==0 )
     {
         $orderquery = " ORDER BY arc.id desc ";     
@@ -129,7 +129,7 @@ function lib_likearticle(&$cTag,&$refObj)
     $dtp2 = new DedeTagParse();
     $dtp2->setNameSpace('field', '[', ']');
     $dtp2->loadString($innertext);
-    $GLOBALS['autoindex'] = 0;
+    CfgConfig::sysConfig()->autoindex = 0;
     $line = $row;
     for($i=0; $i < $line; $i++)
     {
@@ -149,7 +149,7 @@ function lib_likearticle(&$cTag,&$refObj)
                     $row['arcrank'] = $row['corank'];
                 }
 
-                $row['filename'] = $row['arcurl'] = GetFileUrl($row['id'],$row['typeid'],$row['senddate'],$row['title'],$row['ismake'],
+                $row['filename'] = $row['arcurl'] = getFileUrl($row['id'],$row['typeid'],$row['senddate'],$row['title'],$row['ismake'],
                 $row['arcrank'],$row['namerule'],$row['typedir'],$row['money'],$row['filename'],$row['moresite'],$row['siteurl'],$row['sitepath']);
 
                 $row['typeurl'] = GetTypeUrl($row['typeid'],$row['typedir'],$row['isdefault'],$row['defaultname'],$row['ispart'],
@@ -175,7 +175,7 @@ function lib_likearticle(&$cTag,&$refObj)
                 $row['textlink'] = "<a href='".$row['filename']."'>".$row['title']."</a>";
                 $row['plusurl'] = $row['phpurl'] = CfgConfig::sysConfig()->cfg_phpurl;
                 $row['memberurl'] = CfgConfig::sysConfig()->cfg_memberurl;
-                $row['templeturl'] = $GLOBALS['cfg_templeturl'];
+                $row['templeturl'] = CfgConfig::sysConfig()->cfg_memberurl;
                 
                 if(is_array($dtp2->cTags))
                 {
@@ -189,7 +189,7 @@ function lib_likearticle(&$cTag,&$refObj)
                             else $dtp2->assign($k,'');
                         }
                     }
-                    $GLOBALS['autoindex']++;
+                    CfgConfig::sysConfig()->autoindex++;
                 }
 
                 $artlist .= $dtp2->getResult()."\r\n";

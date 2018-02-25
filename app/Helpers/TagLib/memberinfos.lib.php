@@ -35,7 +35,7 @@ function lib_memberinfos(&$cTag,&$refObj)
     
     if(empty($mid))
     {
-        if(!empty($refObj->Fields['mid'])) $mid =  $refObj->Fields['mid'];
+        if(!empty($refObj->fields['mid'])) $mid =  $refObj->fields['mid'];
         else $mid = 1;
     }
     else
@@ -60,7 +60,7 @@ function lib_memberinfos(&$cTag,&$refObj)
     while($row = $dsql->GetArray('mb'))
     {
         if($row['matt']==10) return '';
-        $row['spaceurl'] = $GLOBALS['cfg_basehost'].'/member/index.php?uid='.$row['userid'];
+        $row['spaceurl'] = CfgConfig::sysConfig()->cfg_basehost.'/member/index.php?uid='.$row['userid'];
         if(empty($row['face'])) {
             $row['face']=($row['sex']=='女')?  CfgConfig::sysConfig()->cfg_memberurl.'/templets/images/dfgirl.png' : CfgConfig::sysConfig()->cfg_memberurl.'/templets/images/dfboy.png';
         }

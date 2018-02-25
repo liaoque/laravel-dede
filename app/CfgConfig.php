@@ -15,6 +15,7 @@ class CfgConfig extends Model
     public $cfg_df_namerule = '{typedir}/{Y}/{M}{D}/{aid}';
     public $cfg_basedir = '';
     public $cfg_mainsite = '';
+    public $autondex = 0;
 
 
     public function __construct(array $attributes = [])
@@ -99,9 +100,22 @@ class CfgConfig extends Model
     }
 
 
+    public function getCfgTempletsDirAttribute()
+    {
+        return $cfg_plus_dir = $this->cfg_cmspath . '/templets';
+    }
+
+
+    public function getCfgTempletsUrlAttribute()
+    {
+        return $cfg_templeturl = $this->cfg_mainsite . $this->cfg_templeturl;
+    }
+
+
 //    public function getCfgBasehostAttribute($value)
 //    {
 //        return ucfirst($value);
 //    }
+
 
 }
